@@ -1,11 +1,11 @@
 # WarOsso: droid app
 
-WarOsso is the owner's own Android app, built from `SPEC.md`. It follows the droid conventions for
+WarOsso is the owner's own Android app. It follows the droid conventions for
 branches, commit identity, signing and releases, loaded with `/droid`. It has no upstream: skip the
 skill's fork, sync and upstream-PR workflows, and its `-fork.<n>` tags.
 
-`SPEC.md` is the source of truth for behaviour. Where it is silent, take the simplest option and
-name the choice in the commit message.
+`README.md` describes the behaviour and the JVM tests in `app/src/test` pin its rules. Where both
+are silent, take the simplest option and name the choice in the commit message.
 
 ## Releases
 
@@ -26,7 +26,7 @@ name the choice in the commit message.
   problems only show up there.
 - `git config --local user.email` ends in `@users.noreply.github.com`.
 
-## Hard rules from the spec
+## Hard rules
 
 - **Every dependency is FOSS.** Note its licence next to the entry in `gradle/libs.versions.toml`.
   Google Play Services, Firebase, ARCore and other proprietary SDKs stay out.
@@ -38,7 +38,7 @@ name the choice in the commit message.
 
 ## Layout
 
-- `domain/` is pure Kotlin and holds every rule the spec tests: geometry, lookup, door hints, range
+- `domain/` is pure Kotlin and holds every tested rule: geometry, lookup, door hints, range
   filling, refresh diff, AR label layout. New rules go there with a JVM test.
 - `data/`, `sensors/` and `ui/` are the Android side. `AppContainer` wires them by hand.
 - `ComplexRepository.data` is the one read path: a whole snapshot, re-read after every write.

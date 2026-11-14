@@ -1,4 +1,4 @@
-# Every library here must be FOSS (SPEC.md section 1). The licence is noted next to each entry.
+# Every library here must be FOSS. The licence is noted next to each entry.
 [versions]
 agp = "9.5.1"
 kotlin = "2.4.21"

@@ -179,7 +179,7 @@ private fun RefreshReview(review: RefreshState.Review, onApply: () -> Unit, onOp
     }
 }
 
-/** "3 new numbers, 1 removed: 57" (SPEC.md 5.3). */
+/** "3 new numbers, 1 removed: 57". */
 @Composable
 private fun summaryOf(diff: RefreshDiff): String = listOfNotNull(
     diff.added.takeIf { it.isNotEmpty() }?.let { pluralStringResource(R.plurals.refresh_added, it.size, it.size) },

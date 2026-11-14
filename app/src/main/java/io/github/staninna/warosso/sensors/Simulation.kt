@@ -23,7 +23,7 @@ data class Simulation(
 )
 
 /**
- * Debug builds only (SPEC.md section 8): a fake position and heading that enter the app through
+ * Debug builds only: a fake position and heading that enter the app through
  * the same [LocationSource] and [OrientationSource] the real sensors use.
  */
 class PositionSimulator {

@@ -46,7 +46,7 @@ private val TopOverlayHeight = 140.dp
 
 /**
  * Map mode: the user's dot with its accuracy circle, every entrance, the target highlighted and
- * a straight line to it (SPEC.md 5.1). The target is an entrance or a front door on the street.
+ * a straight line to it. The target is an entrance or a front door on the street.
  */
 @Composable
 fun FindMap(

@@ -23,7 +23,7 @@ import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
-/** The shape of `warosso.json` (SPEC.md section 7). */
+/** The shape of `warosso.json`. */
 @Serializable
 private data class ExportFile(
     val schemaVersion: Int,

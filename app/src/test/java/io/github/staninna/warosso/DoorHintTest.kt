@@ -9,7 +9,7 @@ import org.junit.Assert.assertNull
 import org.junit.Test
 
 class DoorHintTest {
-    // Odd numbers counting down, as on the ground floor in SPEC.md.
+    // Odd numbers counting down, as on a ground-floor gallery.
     private val gallery = listOf(169, 167, 165, 163, 161, 159, 157, 155, 153, 151)
 
     @Test

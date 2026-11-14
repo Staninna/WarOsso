@@ -15,7 +15,7 @@ import org.maplibre.android.offline.OfflineTilePyramidRegionDefinition
 import org.maplibre.android.geometry.LatLng as MapLatLng
 
 /**
- * Keeps the complex's map tiles on the phone (SPEC.md section 1), for both the light and the
+ * Keeps the complex's map tiles on the phone, for both the light and the
  * dark style. One region per style; a new polygon replaces the old regions.
  */
 class OfflineTiles(private val context: Context) {

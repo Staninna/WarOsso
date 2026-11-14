@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "io.github.staninna.warosso"
-        // One phone, one Android version (SPEC.md section 1).
+        // One phone, one Android version.
         minSdk = 37
         targetSdk = 37
         // Every release push bumps both; CI refuses a versionName whose tag already exists.

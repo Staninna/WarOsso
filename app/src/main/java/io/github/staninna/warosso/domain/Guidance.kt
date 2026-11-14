@@ -2,7 +2,7 @@ package io.github.staninna.warosso.domain
 
 /** A position reading. [declinationDeg] is how far magnetic north is east of true north there. */
 data class Fix(val latLng: LatLng, val accuracyM: Float, val declinationDeg: Float = 0f) {
-    /** Too vague to trust the arrow (SPEC.md 5.1). */
+    /** Too vague to trust the arrow. */
     val isWeak: Boolean get() = accuracyM > WEAK_ACCURACY_M
 
     companion object {

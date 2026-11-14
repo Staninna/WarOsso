@@ -47,8 +47,6 @@ Setup shows which numbers are not covered yet. Settings can export your setup to
 `tools/fetch-seed.sh` downloads the address list again from the Overpass API and rewrites
 `app/src/main/assets/seed.json`.
 
-`SPEC.md` describes what the app does and why.
-
 ## Licence and credits
 
 WarOsso is licensed under the [GNU General Public License 3.0](LICENSE).

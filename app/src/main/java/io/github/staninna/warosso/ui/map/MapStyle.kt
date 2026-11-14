@@ -49,7 +49,7 @@ private val LABEL_FONT = arrayOf("Noto Sans Regular")
 
 /**
  * Starts MapLibre. It would normally ask Android whether there is a network, which takes the
- * ACCESS_NETWORK_STATE permission. WarOsso does not hold it (SPEC.md section 1), so MapLibre is
+ * ACCESS_NETWORK_STATE permission. WarOsso does not hold it, so MapLibre is
  * told to always try: offline, a request fails fast and the cached tiles are used.
  */
 internal fun initMapLibre(context: Context) {

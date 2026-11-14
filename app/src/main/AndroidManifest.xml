@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- The whole list (SPEC.md section 1). Coarse location rides along because Android only
+    <!-- The whole list. Coarse location rides along because Android only
          shows the precise-location dialog when both are requested. -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

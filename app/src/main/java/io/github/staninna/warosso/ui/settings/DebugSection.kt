@@ -13,7 +13,7 @@ import io.github.staninna.warosso.ui.components.ConnectedSection
 import kotlin.math.roundToInt
 
 /**
- * The debug menu (debug builds only, SPEC.md section 8). With simulation on, a long-press on the
+ * The debug menu (debug builds only). With simulation on, a long-press on the
  * Find map sets the position and the dot can be dragged; the sliders here fake the rest.
  */
 @Composable

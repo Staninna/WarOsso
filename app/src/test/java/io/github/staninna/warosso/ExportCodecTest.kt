@@ -85,7 +85,7 @@ class ExportCodecTest {
     }
 
     @Test
-    fun `the file reads like the spec example`() {
+    fun `the file is readable JSON with compact door lists and explicit nulls`() {
         val text = ExportCodec.encode(data.setup, exportedAt)
         assertTrue(text, version in text)
         assertTrue(text, """"exportedAt": "2026-11-14T16:00:00+01:00"""" in text)

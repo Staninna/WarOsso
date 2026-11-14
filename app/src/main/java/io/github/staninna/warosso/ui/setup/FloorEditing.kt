@@ -185,7 +185,7 @@ private fun AddDoorDialog(bagNumbers: List<Int>, onAdd: (Int) -> Unit, onDismiss
 
 /**
  * A new floor from two numbers: "from" is the leftmost door, "to" the rightmost. The list in
- * between is filled with the numbers BAG has, in the typed direction (SPEC.md 5.2).
+ * between is filled with the numbers BAG has, in the typed direction.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

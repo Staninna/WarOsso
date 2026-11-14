@@ -98,7 +98,7 @@ fun Resources.floorStep(route: Route.ViaEntrance): String {
     }
 }
 
-/** The one-line directions from SPEC.md 5.1, without the building name (the card shows that as its title). */
+/** The one-line directions, without the building name (the card shows that as its title). */
 fun Resources.directionsLine(data: ComplexData, number: Int, route: Route): String = when (route) {
     is Route.StreetDoor -> getString(R.string.directions_street_door)
     is Route.ViaEntrance -> {

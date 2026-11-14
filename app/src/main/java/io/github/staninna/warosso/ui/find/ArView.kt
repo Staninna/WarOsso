@@ -86,7 +86,7 @@ private val ArrowSize = 172.dp
 
 /**
  * The camera with the complex drawn over it: a label on every entrance and an arrow on the
- * ground towards the target (SPEC.md 5.1). Without the camera permission the labels and the
+ * ground towards the target. Without the camera permission the labels and the
  * arrow still work, on a plain background.
  */
 @Composable
