@@ -1,0 +1,3868 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-14T16:26:04Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2729348128,
+  "lat": 51.5974157,
+  "lon": 4.8017385,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "10",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729348787,
+  "lat": 51.5983095,
+  "lon": 4.7992556,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "100",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729348997,
+  "lat": 51.5983181,
+  "lon": 4.7992113,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "102",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729349171,
+  "lat": 51.5983323,
+  "lon": 4.7992661,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "104",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729349323,
+  "lat": 51.5983415,
+  "lon": 4.7992235,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "106",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729349606,
+  "lat": 51.5983568,
+  "lon": 4.7992749,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "108",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729349908,
+  "lat": 51.5983638,
+  "lon": 4.7992365,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "110",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729350109,
+  "lat": 51.5983898,
+  "lon": 4.7992478,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "112",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729350124,
+  "lat": 51.5983849,
+  "lon": 4.7993045,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "114",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729350173,
+  "lat": 51.5986332,
+  "lon": 4.7991276,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "118",
+    "addr:postcode": "4816JX",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729350331,
+  "lat": 51.5978171,
+  "lon": 4.8015798,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "12",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729350610,
+  "lat": 51.5986354,
+  "lon": 4.7991712,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "120",
+    "addr:postcode": "4816JX",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729350760,
+  "lat": 51.5986665,
+  "lon": 4.7991720,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "124",
+    "addr:postcode": "4816JX",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729351476,
+  "lat": 51.5982244,
+  "lon": 4.8013973,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "14",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729352548,
+  "lat": 51.5986301,
+  "lon": 4.8012986,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "16",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729353127,
+  "lat": 51.5989639,
+  "lon": 4.8015908,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "18",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729353138,
+  "lat": 51.5978208,
+  "lon": 4.7990159,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "18",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729353989,
+  "lat": 51.5978371,
+  "lon": 4.7990264,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "20",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729354399,
+  "lat": 51.5978470,
+  "lon": 4.7989797,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "22",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729354814,
+  "lat": 51.5978603,
+  "lon": 4.7990336,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "24",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729355406,
+  "lat": 51.5978705,
+  "lon": 4.7989902,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "26",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729355474,
+  "lat": 51.5977890,
+  "lon": 4.7989239,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "2600-TRC",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729356170,
+  "lat": 51.5978842,
+  "lon": 4.7990449,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "28",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729357827,
+  "lat": 51.5978933,
+  "lon": 4.7989982,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "30",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729358395,
+  "lat": 51.5979076,
+  "lon": 4.7990571,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "32",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729358975,
+  "lat": 51.5979172,
+  "lon": 4.7990129,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "34",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729359522,
+  "lat": 51.5979320,
+  "lon": 4.7990668,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "36",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729359923,
+  "lat": 51.5979401,
+  "lon": 4.7990242,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "38",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729361115,
+  "lat": 51.5974034,
+  "lon": 4.8013742,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "4",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729361420,
+  "lat": 51.5979559,
+  "lon": 4.7990789,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "40",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729362033,
+  "lat": 51.5979651,
+  "lon": 4.7990372,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "42",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729363098,
+  "lat": 51.5979793,
+  "lon": 4.7990894,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "44",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729365873,
+  "lat": 51.5979885,
+  "lon": 4.7990477,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "46",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729367770,
+  "lat": 51.5980027,
+  "lon": 4.7990999,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "48",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729369431,
+  "lat": 51.5980108,
+  "lon": 4.7990590,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "50",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729370010,
+  "lat": 51.5980266,
+  "lon": 4.7991112,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "52",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729370187,
+  "lat": 51.5980342,
+  "lon": 4.7990704,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "54",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729370517,
+  "lat": 51.5980500,
+  "lon": 4.7991234,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "56",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729370726,
+  "lat": 51.5980561,
+  "lon": 4.7990834,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "58",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729371159,
+  "lat": 51.5970697,
+  "lon": 4.8004875,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "6",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "amenity": "community_centre",
+    "club": "scout",
+    "community_centre": "club_home",
+    "name": "Albert Schweitzer Groep",
+    "ref:scoutingnl": "1498",
+    "short_name": "ASG",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "website": "http://www.asgbreda.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2729371333,
+  "lat": 51.5980740,
+  "lon": 4.7991364,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "60",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729371471,
+  "lat": 51.5980820,
+  "lon": 4.7990938,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "62",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729371717,
+  "lat": 51.5980974,
+  "lon": 4.7991486,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "64",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729371860,
+  "lat": 51.5981060,
+  "lon": 4.7991060,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "66",
+    "addr:postcode": "4816JV",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729372229,
+  "lat": 51.5981218,
+  "lon": 4.7991582,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "68",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729372873,
+  "lat": 51.5981299,
+  "lon": 4.7991182,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "70",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729372967,
+  "lat": 51.5981457,
+  "lon": 4.7991704,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "72",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729373080,
+  "lat": 51.5981512,
+  "lon": 4.7991279,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "74",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729373342,
+  "lat": 51.5981675,
+  "lon": 4.7991809,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "76",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729373474,
+  "lat": 51.5981782,
+  "lon": 4.7991400,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "78",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729373578,
+  "lat": 51.5972818,
+  "lon": 4.8017565,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "8",
+    "addr:postcode": "4816KA",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729374350,
+  "lat": 51.5981915,
+  "lon": 4.7991956,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "80",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729374488,
+  "lat": 51.5982001,
+  "lon": 4.7991530,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "82",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729374687,
+  "lat": 51.5982159,
+  "lon": 4.7992086,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "84",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729374840,
+  "lat": 51.5982235,
+  "lon": 4.7991652,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "86",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729375204,
+  "lat": 51.5982393,
+  "lon": 4.7992191,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "88",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729375853,
+  "lat": 51.5982479,
+  "lon": 4.7991765,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "90",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729376102,
+  "lat": 51.5982632,
+  "lon": 4.7992312,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "92",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729376328,
+  "lat": 51.5982723,
+  "lon": 4.7991903,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "94",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729376416,
+  "lat": 51.5982871,
+  "lon": 4.7992426,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "96",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 2729376486,
+  "lat": 51.5982942,
+  "lon": 4.7991992,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "98",
+    "addr:postcode": "4816JW",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2014-02-11"
+  }
+},
+{
+  "type": "node",
+  "id": 4688426191,
+  "lat": 51.5967687,
+  "lon": 4.8013263,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "6A",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2017-02-16"
+  }
+},
+{
+  "type": "node",
+  "id": 9389208421,
+  "lat": 51.5970039,
+  "lon": 4.8014378,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "9430-TRAF",
+    "addr:street": "Frankenthalerstraat",
+    "source": "BAG",
+    "source:date": "2022-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 9905828966,
+  "lat": 51.5985991,
+  "lon": 4.7991119,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "116A",
+    "addr:street": "Klaverweide",
+    "source": "BAG",
+    "source:date": "2022-07-23"
+  }
+},
+{
+  "type": "node",
+  "id": 12485113645,
+  "lat": 51.5978773,
+  "lon": 4.8010471,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "107",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2025-01-08"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384590,
+  "lat": 51.5972225,
+  "lon": 4.8011807,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "29",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384591,
+  "lat": 51.5975733,
+  "lon": 4.8011766,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "71",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384592,
+  "lat": 51.5975181,
+  "lon": 4.8008729,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "79",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384593,
+  "lat": 51.5975308,
+  "lon": 4.8008727,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "105",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384594,
+  "lat": 51.5972225,
+  "lon": 4.8012671,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "27",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384595,
+  "lat": 51.5980660,
+  "lon": 4.8009972,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "111",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384596,
+  "lat": 51.5976259,
+  "lon": 4.8009374,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "89",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384597,
+  "lat": 51.5972946,
+  "lon": 4.8012376,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "19",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384598,
+  "lat": 51.5975453,
+  "lon": 4.8010467,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "75",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384599,
+  "lat": 51.5976395,
+  "lon": 4.8011318,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "57",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428384600,
+  "lat": 51.5980466,
+  "lon": 4.8008519,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "115",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389038,
+  "lat": 51.5976229,
+  "lon": 4.8004404,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "167",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389039,
+  "lat": 51.5982585,
+  "lon": 4.8005387,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "201",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389040,
+  "lat": 51.5978115,
+  "lon": 4.8004585,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "189",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389041,
+  "lat": 51.5977578,
+  "lon": 4.8004591,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "191",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389042,
+  "lat": 51.5980540,
+  "lon": 4.8005186,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "149",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389043,
+  "lat": 51.5978117,
+  "lon": 4.8004800,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "159",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389044,
+  "lat": 51.5979323,
+  "lon": 4.8004795,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "213",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389045,
+  "lat": 51.5977173,
+  "lon": 4.8003948,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "241",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389046,
+  "lat": 51.5977572,
+  "lon": 4.8004381,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "221",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389047,
+  "lat": 51.5980001,
+  "lon": 4.8004786,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "181",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389048,
+  "lat": 51.5976226,
+  "lon": 4.8003955,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "227",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389049,
+  "lat": 51.5981086,
+  "lon": 4.8005195,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "177",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389050,
+  "lat": 51.5981634,
+  "lon": 4.8005415,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "145",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389051,
+  "lat": 51.5978523,
+  "lon": 4.8005016,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "157",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389052,
+  "lat": 51.5978525,
+  "lon": 4.8004361,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "235",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389053,
+  "lat": 51.5981077,
+  "lon": 4.8005422,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "147",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389054,
+  "lat": 51.5982170,
+  "lon": 4.8005392,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "173",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389055,
+  "lat": 51.5978527,
+  "lon": 4.8004797,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "187",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389056,
+  "lat": 51.5975808,
+  "lon": 4.8003734,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "229",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389057,
+  "lat": 51.5975807,
+  "lon": 4.8003550,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "247",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389058,
+  "lat": 51.5980548,
+  "lon": 4.8004779,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "209",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389059,
+  "lat": 51.5979334,
+  "lon": 4.8005006,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "183",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389060,
+  "lat": 51.5976765,
+  "lon": 4.8003746,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "243",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389061,
+  "lat": 51.5977169,
+  "lon": 4.8004380,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "193",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389062,
+  "lat": 51.5982161,
+  "lon": 4.8005620,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "143",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389063,
+  "lat": 51.5978114,
+  "lon": 4.8004365,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "219",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389064,
+  "lat": 51.5979064,
+  "lon": 4.8004581,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "233",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389065,
+  "lat": 51.5975810,
+  "lon": 4.8004183,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "169",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389066,
+  "lat": 51.5979066,
+  "lon": 4.8005000,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "185",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389067,
+  "lat": 51.5982179,
+  "lon": 4.8005164,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "203",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389068,
+  "lat": 51.5980002,
+  "lon": 4.8004998,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "151",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389069,
+  "lat": 51.5979065,
+  "lon": 4.8004781,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "215",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389070,
+  "lat": 51.5982586,
+  "lon": 4.8005598,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "171",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389071,
+  "lat": 51.5980010,
+  "lon": 4.8004542,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "211",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389072,
+  "lat": 51.5976219,
+  "lon": 4.8004173,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "197",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389073,
+  "lat": 51.5976767,
+  "lon": 4.8004163,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "195",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389074,
+  "lat": 51.5979332,
+  "lon": 4.8004567,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "231",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389075,
+  "lat": 51.5975822,
+  "lon": 4.8003958,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "199",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389076,
+  "lat": 51.5976759,
+  "lon": 4.8003954,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "225",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389077,
+  "lat": 51.5981632,
+  "lon": 4.8004960,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "205",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389078,
+  "lat": 51.5980549,
+  "lon": 4.8004991,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "179",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389079,
+  "lat": 51.5977176,
+  "lon": 4.8004601,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "163",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389080,
+  "lat": 51.5981085,
+  "lon": 4.8004951,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "207",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389081,
+  "lat": 51.5978113,
+  "lon": 4.8004150,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "237",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389082,
+  "lat": 51.5976771,
+  "lon": 4.8004386,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "165",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389083,
+  "lat": 51.5979062,
+  "lon": 4.8005218,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "155",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389084,
+  "lat": 51.5976225,
+  "lon": 4.8003736,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "245",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389085,
+  "lat": 51.5981633,
+  "lon": 4.8005188,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "175",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389086,
+  "lat": 51.5977579,
+  "lon": 4.8004808,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "161",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389087,
+  "lat": 51.5977571,
+  "lon": 4.8004164,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "239",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389088,
+  "lat": 51.5977168,
+  "lon": 4.8004159,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "223",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428389089,
+  "lat": 51.5978520,
+  "lon": 4.8004579,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "217",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409801,
+  "lat": 51.5972764,
+  "lon": 4.8012378,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "1",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409802,
+  "lat": 51.5976402,
+  "lon": 4.8010675,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "85",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409803,
+  "lat": 51.5972046,
+  "lon": 4.8011809,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "11",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409804,
+  "lat": 51.5972037,
+  "lon": 4.8010081,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "15",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409805,
+  "lat": 51.5976113,
+  "lon": 4.8008505,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "93",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409806,
+  "lat": 51.5975863,
+  "lon": 4.8012407,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "69",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409807,
+  "lat": 51.5976529,
+  "lon": 4.8011748,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "55",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409808,
+  "lat": 51.5972217,
+  "lon": 4.8010065,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "33",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409809,
+  "lat": 51.5972400,
+  "lon": 4.8010934,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "49",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409810,
+  "lat": 51.5976257,
+  "lon": 4.8010017,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "61",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409811,
+  "lat": 51.5973127,
+  "lon": 4.8012374,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "37",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409812,
+  "lat": 51.5980838,
+  "lon": 4.8010545,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "125",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409813,
+  "lat": 51.5973115,
+  "lon": 4.8010066,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "43",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409814,
+  "lat": 51.5980842,
+  "lon": 4.8009958,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "127",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409815,
+  "lat": 51.5976260,
+  "lon": 4.8010669,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "59",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409816,
+  "lat": 51.5980664,
+  "lon": 4.8009391,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "129",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409817,
+  "lat": 51.5979756,
+  "lon": 4.8008528,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "139",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409818,
+  "lat": 51.5976527,
+  "lon": 4.8011316,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "83",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409819,
+  "lat": 51.5972405,
+  "lon": 4.8012655,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "45",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409820,
+  "lat": 51.5972766,
+  "lon": 4.8011803,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "3",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409821,
+  "lat": 51.5975865,
+  "lon": 4.8011756,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "97",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409822,
+  "lat": 51.5973114,
+  "lon": 4.8010634,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "41",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409823,
+  "lat": 51.5976115,
+  "lon": 4.8008937,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "91",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409824,
+  "lat": 51.5975593,
+  "lon": 4.8011117,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "73",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409825,
+  "lat": 51.5980122,
+  "lon": 4.8009967,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "135",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409826,
+  "lat": 51.5972941,
+  "lon": 4.8010643,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "23",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409827,
+  "lat": 51.5972396,
+  "lon": 4.8011805,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "47",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409828,
+  "lat": 51.5975976,
+  "lon": 4.8008507,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "67",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409829,
+  "lat": 51.5973124,
+  "lon": 4.8011791,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "39",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409830,
+  "lat": 51.5979942,
+  "lon": 4.8010551,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "117",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409831,
+  "lat": 51.5980121,
+  "lon": 4.8010554,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "133",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409832,
+  "lat": 51.5972046,
+  "lon": 4.8010945,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "13",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409833,
+  "lat": 51.5975730,
+  "lon": 4.8011107,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "99",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409834,
+  "lat": 51.5980478,
+  "lon": 4.8009393,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "113",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409835,
+  "lat": 51.5976671,
+  "lon": 4.8011754,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "81",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409836,
+  "lat": 51.5980662,
+  "lon": 4.8010541,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "109",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409837,
+  "lat": 51.5976127,
+  "lon": 4.8009384,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "63",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409838,
+  "lat": 51.5980649,
+  "lon": 4.8008522,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "131",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409839,
+  "lat": 51.5975988,
+  "lon": 4.8008938,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "65",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409840,
+  "lat": 51.5975322,
+  "lon": 4.8009614,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "77",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409841,
+  "lat": 51.5972400,
+  "lon": 4.8010069,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "51",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409842,
+  "lat": 51.5975444,
+  "lon": 4.8009588,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "103",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409843,
+  "lat": 51.5975585,
+  "lon": 4.8010466,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "101",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409844,
+  "lat": 51.5979947,
+  "lon": 4.8009400,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "137",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409845,
+  "lat": 51.5979764,
+  "lon": 4.8009397,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "121",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409846,
+  "lat": 51.5972046,
+  "lon": 4.8012674,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "9",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409847,
+  "lat": 51.5972396,
+  "lon": 4.8009205,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "53",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409848,
+  "lat": 51.5972757,
+  "lon": 4.8010063,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "7",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409849,
+  "lat": 51.5972212,
+  "lon": 4.8010943,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "31",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409850,
+  "lat": 51.5972938,
+  "lon": 4.8010061,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "25",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409851,
+  "lat": 51.5976394,
+  "lon": 4.8010016,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "87",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409852,
+  "lat": 51.5979943,
+  "lon": 4.8009970,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "119",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409853,
+  "lat": 51.5972947,
+  "lon": 4.8011786,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "21",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409854,
+  "lat": 51.5979577,
+  "lon": 4.8008536,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "123",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409855,
+  "lat": 51.5972037,
+  "lon": 4.8009210,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "17",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409856,
+  "lat": 51.5976000,
+  "lon": 4.8012398,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "95",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409857,
+  "lat": 51.5972208,
+  "lon": 4.8009201,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "35",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13428409858,
+  "lat": 51.5972765,
+  "lon": 4.8010638,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "5",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-01-03"
+  }
+},
+{
+  "type": "node",
+  "id": 13529457308,
+  "lat": 51.5982587,
+  "lon": 4.8005809,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "141",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-02-06"
+  }
+},
+{
+  "type": "node",
+  "id": 13529457309,
+  "lat": 51.5979335,
+  "lon": 4.8005217,
+  "tags": {
+    "addr:city": "Breda",
+    "addr:housenumber": "153",
+    "addr:postcode": "4816KZ",
+    "addr:street": "Bulkpad",
+    "source": "BAG",
+    "source:date": "2026-02-06"
+  }
+},
+{
+  "type": "way",
+  "id": 267498633,
+  "bounds": {
+    "minlat": 51.5985864,
+    "minlon": 4.8012416,
+    "maxlat": 51.5987651,
+    "maxlon": 4.8014463
+  },
+  "nodes": [
+    2729427476,
+    2729428116,
+    2729428975,
+    2729428933,
+    2729430403,
+    2729430972,
+    2729428003,
+    2729427556,
+    2729426460,
+    2729426091,
+    2729427476
+  ],
+  "geometry": [
+    { "lat": 51.5986604, "lon": 4.8012416 },
+    { "lat": 51.5986718, "lon": 4.8013128 },
+    { "lat": 51.5986894, "lon": 4.8013056 },
+    { "lat": 51.5986869, "lon": 4.8012902 },
+    { "lat": 51.5987430, "lon": 4.8012673 },
+    { "lat": 51.5987651, "lon": 4.8014065 },
+    { "lat": 51.5986679, "lon": 4.8014463 },
+    { "lat": 51.5986634, "lon": 4.8014176 },
+    { "lat": 51.5986128, "lon": 4.8014383 },
+    { "lat": 51.5985864, "lon": 4.8012718 },
+    { "lat": 51.5986604, "lon": 4.8012416 }
+  ],
+  "tags": {
+    "building": "house",
+    "ref:bag": "0758100000072549",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1993"
+  }
+},
+{
+  "type": "way",
+  "id": 267498785,
+  "bounds": {
+    "minlat": 51.5977637,
+    "minlon": 4.8015179,
+    "maxlat": 51.5978777,
+    "maxlon": 4.8018098
+  },
+  "nodes": [
+    2729410389,
+    2729410822,
+    2729410197,
+    2729410525,
+    2729409374,
+    2729409371,
+    2729409076,
+    2729408912,
+    2729409304,
+    2729408768,
+    2729410389
+  ],
+  "geometry": [
+    { "lat": 51.5978563, "lon": 4.8015179 },
+    { "lat": 51.5978777, "lon": 4.8016450 },
+    { "lat": 51.5978392, "lon": 4.8016617 },
+    { "lat": 51.5978588, "lon": 4.8017779 },
+    { "lat": 51.5978060, "lon": 4.8018008 },
+    { "lat": 51.5978055, "lon": 4.8017978 },
+    { "lat": 51.5977777, "lon": 4.8018098 },
+    { "lat": 51.5977697, "lon": 4.8017623 },
+    { "lat": 51.5977962, "lon": 4.8017508 },
+    { "lat": 51.5977637, "lon": 4.8015581 },
+    { "lat": 51.5978563, "lon": 4.8015179 }
+  ],
+  "tags": {
+    "building": "house",
+    "ref:bag": "0758100000010147",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1934"
+  }
+},
+{
+  "type": "way",
+  "id": 267499315,
+  "bounds": {
+    "minlat": 51.5977232,
+    "minlon": 4.7988600,
+    "maxlat": 51.5984369,
+    "maxlon": 4.7993625
+  },
+  "nodes": [
+    2729422743,
+    2729409321,
+    2729409167,
+    2729407646,
+    2729407923,
+    2729408191,
+    2729408747,
+    2729408203,
+    1104176686,
+    2729409980,
+    2729409561,
+    2729423215,
+    11503143885,
+    2729422743
+  ],
+  "geometry": [
+    { "lat": 51.5984102, "lon": 4.7993625 },
+    { "lat": 51.5977985, "lon": 4.7990554 },
+    { "lat": 51.5977874, "lon": 4.7991104 },
+    { "lat": 51.5977232, "lon": 4.7990781 },
+    { "lat": 51.5977307, "lon": 4.7990408 },
+    { "lat": 51.5977443, "lon": 4.7990477 },
+    { "lat": 51.5977623, "lon": 4.7989584 },
+    { "lat": 51.5977466, "lon": 4.7989506 },
+    { "lat": 51.5977649, "lon": 4.7988600 },
+    { "lat": 51.5978290, "lon": 4.7988921 },
+    { "lat": 51.5978230, "lon": 4.7989218 },
+    { "lat": 51.5984369, "lon": 4.7992300 },
+    { "lat": 51.5984184, "lon": 4.7993218 },
+    { "lat": 51.5984102, "lon": 4.7993625 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "ref:bag": "0758100000028613",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1972"
+  }
+},
+{
+  "type": "way",
+  "id": 267499551,
+  "bounds": {
+    "minlat": 51.5973559,
+    "minlon": 4.8012542,
+    "maxlat": 51.5974355,
+    "maxlon": 4.8014192
+  },
+  "nodes": [
+    2729397781,
+    2729398342,
+    2729397322,
+    2729397254,
+    2729397004,
+    2729396955,
+    2729396706,
+    2729396579,
+    2729397781
+  ],
+  "geometry": [
+    { "lat": 51.5974226, "lon": 4.8012542 },
+    { "lat": 51.5974355, "lon": 4.8014112 },
+    { "lat": 51.5973979, "lon": 4.8014192 },
+    { "lat": 51.5973974, "lon": 4.8014126 },
+    { "lat": 51.5973778, "lon": 4.8014168 },
+    { "lat": 51.5973734, "lon": 4.8013625 },
+    { "lat": 51.5973638, "lon": 4.8013646 },
+    { "lat": 51.5973559, "lon": 4.8012684 },
+    { "lat": 51.5974226, "lon": 4.8012542 }
+  ],
+  "tags": {
+    "building": "house",
+    "name": "Pietocor",
+    "ref:bag": "0758100000010133",
+    "source": "BAG",
+    "source:date": "2025-02-22",
+    "start_date": "1927"
+  }
+},
+{
+  "type": "way",
+  "id": 267499869,
+  "bounds": {
+    "minlat": 51.5969296,
+    "minlon": 4.7986249,
+    "maxlat": 51.5974177,
+    "maxlon": 4.7991005
+  },
+  "nodes": [
+    2729396951,
+    2729395888,
+    2729395886,
+    2729386492,
+    2729386534,
+    2729386588,
+    2729387154,
+    2729385499,
+    2729385488,
+    2729382754,
+    2729382755,
+    2729382036,
+    2729381812,
+    2729381820,
+    2729381813,
+    2729385469,
+    2729386199,
+    2729395501,
+    2729395487,
+    2729396735,
+    2729396975,
+    2729397483,
+    2729397745,
+    2729396951
+  ],
+  "geometry": [
+    { "lat": 51.5973729, "lon": 4.7989322 },
+    { "lat": 51.5973218, "lon": 4.7989388 },
+    { "lat": 51.5973212, "lon": 4.7989266 },
+    { "lat": 51.5970636, "lon": 4.7989600 },
+    { "lat": 51.5970654, "lon": 4.7989989 },
+    { "lat": 51.5970684, "lon": 4.7989985 },
+    { "lat": 51.5970724, "lon": 4.7990860 },
+    { "lat": 51.5970501, "lon": 4.7990886 },
+    { "lat": 51.5970498, "lon": 4.7990837 },
+    { "lat": 51.5969696, "lon": 4.7990931 },
+    { "lat": 51.5969698, "lon": 4.7990980 },
+    { "lat": 51.5969476, "lon": 4.7991005 },
+    { "lat": 51.5969296, "lon": 4.7987005 },
+    { "lat": 51.5969326, "lon": 4.7987002 },
+    { "lat": 51.5969301, "lon": 4.7986450 },
+    { "lat": 51.5970489, "lon": 4.7986312 },
+    { "lat": 51.5970509, "lon": 4.7986756 },
+    { "lat": 51.5973069, "lon": 4.7986418 },
+    { "lat": 51.5973063, "lon": 4.7986309 },
+    { "lat": 51.5973656, "lon": 4.7986249 },
+    { "lat": 51.5973758, "lon": 4.7988003 },
+    { "lat": 51.5974107, "lon": 4.7987969 },
+    { "lat": 51.5974177, "lon": 4.7989263 },
+    { "lat": 51.5973729, "lon": 4.7989322 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000028612",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1970"
+  }
+},
+{
+  "type": "way",
+  "id": 267500252,
+  "bounds": {
+    "minlat": 51.5969873,
+    "minlon": 4.8001649,
+    "maxlat": 51.5970174,
+    "maxlon": 4.8002573
+  },
+  "nodes": [
+    2729383419,
+    2729384220,
+    2729384177,
+    2729382993,
+    2729383419
+  ],
+  "geometry": [
+    { "lat": 51.5969904, "lon": 4.8001649 },
+    { "lat": 51.5970174, "lon": 4.8001673 },
+    { "lat": 51.5970142, "lon": 4.8002573 },
+    { "lat": 51.5969873, "lon": 4.8002549 },
+    { "lat": 51.5969904, "lon": 4.8001649 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000102737",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1997"
+  }
+},
+{
+  "type": "way",
+  "id": 267500265,
+  "bounds": {
+    "minlat": 51.5967187,
+    "minlon": 4.8010197,
+    "maxlat": 51.5968401,
+    "maxlon": 4.8013524
+  },
+  "nodes": [
+    2729380352,
+    2729380640,
+    2729379583,
+    2729379105,
+    2729380352
+  ],
+  "geometry": [
+    { "lat": 51.5968245, "lon": 4.8010197 },
+    { "lat": 51.5968401, "lon": 4.8013392 },
+    { "lat": 51.5967342, "lon": 4.8013524 },
+    { "lat": 51.5967187, "lon": 4.8010330 },
+    { "lat": 51.5968245, "lon": 4.8010197 }
+  ],
+  "tags": {
+    "building": "service",
+    "ref:bag": "0758100000102738",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1997",
+    "utility": "telecom"
+  }
+},
+{
+  "type": "way",
+  "id": 267500626,
+  "bounds": {
+    "minlat": 51.5986103,
+    "minlon": 4.7990698,
+    "maxlat": 51.5987824,
+    "maxlon": 4.7992483
+  },
+  "nodes": [
+    2729431471,
+    2729426493,
+    9905828945,
+    9905828965,
+    2729426431,
+    2729431384,
+    2729431471
+  ],
+  "geometry": [
+    { "lat": 51.5987824, "lon": 4.7992314 },
+    { "lat": 51.5986167, "lon": 4.7992483 },
+    { "lat": 51.5986139, "lon": 4.7991757 },
+    { "lat": 51.5986108, "lon": 4.7990980 },
+    { "lat": 51.5986103, "lon": 4.7990867 },
+    { "lat": 51.5987760, "lon": 4.7990698 },
+    { "lat": 51.5987824, "lon": 4.7992314 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "ref:bag": "0758100000028823",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1962"
+  }
+},
+{
+  "type": "way",
+  "id": 267500802,
+  "bounds": {
+    "minlat": 51.5969902,
+    "minlon": 4.8014087,
+    "maxlat": 51.5970178,
+    "maxlon": 4.8014667
+  },
+  "nodes": [
+    2729384181,
+    2729384226,
+    2729383455,
+    2729383416,
+    2729384181
+  ],
+  "geometry": [
+    { "lat": 51.5970144, "lon": 4.8014087 },
+    { "lat": 51.5970178, "lon": 4.8014629 },
+    { "lat": 51.5969932, "lon": 4.8014667 },
+    { "lat": 51.5969902, "lon": 4.8014123 },
+    { "lat": 51.5970144, "lon": 4.8014087 }
+  ],
+  "tags": {
+    "building": "service",
+    "building:levels": "1",
+    "operator": "Enexis",
+    "operator:wikidata": "Q2036673",
+    "power": "substation",
+    "ref": "9430",
+    "ref:bag": "0758100000102717",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1997",
+    "substation": "minor_distribution",
+    "utility": "power"
+  }
+},
+{
+  "type": "way",
+  "id": 267500854,
+  "bounds": {
+    "minlat": 51.5974033,
+    "minlon": 4.8019552,
+    "maxlat": 51.5974691,
+    "maxlon": 4.8020642
+  },
+  "nodes": [
+    2729399102,
+    2729399746,
+    2729397736,
+    2729397378,
+    2729399102
+  ],
+  "geometry": [
+    { "lat": 51.5974557, "lon": 4.8019552 },
+    { "lat": 51.5974691, "lon": 4.8020438 },
+    { "lat": 51.5974167, "lon": 4.8020642 },
+    { "lat": 51.5974033, "lon": 4.8019756 },
+    { "lat": 51.5974557, "lon": 4.8019552 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000010145",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1980"
+  }
+},
+{
+  "type": "way",
+  "id": 267502672,
+  "bounds": {
+    "minlat": 51.5984736,
+    "minlon": 4.8017694,
+    "maxlat": 51.5985406,
+    "maxlon": 4.8018563
+  },
+  "nodes": [
+    2729423699,
+    2729423602,
+    2729425209,
+    2729425463,
+    2729423699
+  ],
+  "geometry": [
+    { "lat": 51.5984844, "lon": 4.8018563 },
+    { "lat": 51.5984736, "lon": 4.8017951 },
+    { "lat": 51.5985299, "lon": 4.8017694 },
+    { "lat": 51.5985406, "lon": 4.8018307 },
+    { "lat": 51.5984844, "lon": 4.8018563 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000072550",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "2000"
+  }
+},
+{
+  "type": "way",
+  "id": 267503354,
+  "bounds": {
+    "minlat": 51.5971381,
+    "minlon": 4.7990665,
+    "maxlat": 51.5972034,
+    "maxlon": 4.7991232
+  },
+  "nodes": [
+    2729389709,
+    2729391740,
+    2729391781,
+    2729389732,
+    2729389709
+  ],
+  "geometry": [
+    { "lat": 51.5971381, "lon": 4.7990739 },
+    { "lat": 51.5972013, "lon": 4.7990665 },
+    { "lat": 51.5972034, "lon": 4.7991161 },
+    { "lat": 51.5971403, "lon": 4.7991232 },
+    { "lat": 51.5971381, "lon": 4.7990739 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000102736",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1970"
+  }
+},
+{
+  "type": "way",
+  "id": 267503936,
+  "bounds": {
+    "minlat": 51.5973430,
+    "minlon": 4.7990505,
+    "maxlat": 51.5973883,
+    "maxlon": 4.7991018
+  },
+  "nodes": [
+    2729397144,
+    2729396422,
+    2729396402,
+    2729397111,
+    2729397144
+  ],
+  "geometry": [
+    { "lat": 51.5973883, "lon": 4.7990957 },
+    { "lat": 51.5973456, "lon": 4.7991018 },
+    { "lat": 51.5973430, "lon": 4.7990566 },
+    { "lat": 51.5973858, "lon": 4.7990505 },
+    { "lat": 51.5973883, "lon": 4.7990957 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000102735",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1970"
+  }
+},
+{
+  "type": "way",
+  "id": 267504086,
+  "bounds": {
+    "minlat": 51.5987924,
+    "minlon": 4.8010522,
+    "maxlat": 51.5991028,
+    "maxlon": 4.8021591
+  },
+  "nodes": [
+    12524326439,
+    4688424569,
+    4688424568,
+    2729436211,
+    4688424576,
+    4688424567,
+    2729437061,
+    4688424575,
+    4688424574,
+    2729435344,
+    2729433810,
+    4688424572,
+    4688424573,
+    4688424571,
+    4688424570,
+    12524326438,
+    12524326437,
+    12524326436,
+    12524326435,
+    12524326434,
+    12524326439
+  ],
+  "geometry": [
+    { "lat": 51.5989381, "lon": 4.8010522 },
+    { "lat": 51.5989624, "lon": 4.8011984 },
+    { "lat": 51.5989516, "lon": 4.8012030 },
+    { "lat": 51.5989556, "lon": 4.8012273 },
+    { "lat": 51.5989614, "lon": 4.8012621 },
+    { "lat": 51.5989633, "lon": 4.8012614 },
+    { "lat": 51.5990672, "lon": 4.8018891 },
+    { "lat": 51.5991028, "lon": 4.8021038 },
+    { "lat": 51.5989733, "lon": 4.8021591 },
+    { "lat": 51.5989378, "lon": 4.8019443 },
+    { "lat": 51.5988446, "lon": 4.8013818 },
+    { "lat": 51.5988338, "lon": 4.8013167 },
+    { "lat": 51.5988357, "lon": 4.8013159 },
+    { "lat": 51.5988259, "lon": 4.8012569 },
+    { "lat": 51.5988063, "lon": 4.8012653 },
+    { "lat": 51.5987932, "lon": 4.8011900 },
+    { "lat": 51.5988034, "lon": 4.8011853 },
+    { "lat": 51.5987924, "lon": 4.8011184 },
+    { "lat": 51.5988299, "lon": 4.8011019 },
+    { "lat": 51.5988291, "lon": 4.8010976 },
+    { "lat": 51.5989381, "lon": 4.8010522 }
+  ],
+  "tags": {
+    "building": "industrial",
+    "ref:bag": "0758100000093522",
+    "source": "BAG",
+    "source:date": "2025-01-22",
+    "start_date": "1993"
+  }
+},
+{
+  "type": "way",
+  "id": 267504950,
+  "bounds": {
+    "minlat": 51.5981456,
+    "minlon": 4.8016899,
+    "maxlat": 51.5982049,
+    "maxlon": 4.8017808
+  },
+  "nodes": [
+    2729415489,
+    2729415713,
+    2729414561,
+    2729414466,
+    2729414759,
+    2729414714,
+    2729415489
+  ],
+  "geometry": [
+    { "lat": 51.5981930, "lon": 4.8016899 },
+    { "lat": 51.5982049, "lon": 4.8017591 },
+    { "lat": 51.5981518, "lon": 4.8017808 },
+    { "lat": 51.5981456, "lon": 4.8017449 },
+    { "lat": 51.5981634, "lon": 4.8017376 },
+    { "lat": 51.5981581, "lon": 4.8017064 },
+    { "lat": 51.5981930, "lon": 4.8016899 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000099977",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "2009"
+  }
+},
+{
+  "type": "way",
+  "id": 267504989,
+  "bounds": {
+    "minlat": 51.5970166,
+    "minlon": 4.8001683,
+    "maxlat": 51.5972787,
+    "maxlon": 4.8005572
+  },
+  "nodes": [
+    2729384398,
+    2729387922,
+    2729387354,
+    2729395023,
+    2729394787,
+    2729384205,
+    2729384398
+  ],
+  "geometry": [
+    { "lat": 51.5970284, "lon": 4.8001683 },
+    { "lat": 51.5970907, "lon": 4.8001738 },
+    { "lat": 51.5970822, "lon": 4.8004415 },
+    { "lat": 51.5972787, "lon": 4.8004574 },
+    { "lat": 51.5972756, "lon": 4.8005572 },
+    { "lat": 51.5970166, "lon": 4.8005358 },
+    { "lat": 51.5970284, "lon": 4.8001683 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000010136",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1994"
+  }
+},
+{
+  "type": "way",
+  "id": 267505875,
+  "bounds": {
+    "minlat": 51.5973651,
+    "minlon": 4.8016787,
+    "maxlat": 51.5974796,
+    "maxlon": 4.8019225
+  },
+  "nodes": [
+    2729399058,
+    2729400422,
+    2729397853,
+    2729398311,
+    2729397259,
+    2729396723,
+    2729399045,
+    2729399058
+  ],
+  "geometry": [
+    { "lat": 51.5974543, "lon": 4.8016855 },
+    { "lat": 51.5974796, "lon": 4.8018471 },
+    { "lat": 51.5974278, "lon": 4.8018699 },
+    { "lat": 51.5974334, "lon": 4.8019081 },
+    { "lat": 51.5973977, "lon": 4.8019225 },
+    { "lat": 51.5973651, "lon": 4.8017143 },
+    { "lat": 51.5974532, "lon": 4.8016787 },
+    { "lat": 51.5974543, "lon": 4.8016855 }
+  ],
+  "tags": {
+    "building": "house",
+    "ref:bag": "0758100000010144",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1938"
+  }
+},
+{
+  "type": "way",
+  "id": 267506298,
+  "bounds": {
+    "minlat": 51.5981141,
+    "minlon": 4.8013085,
+    "maxlat": 51.5983441,
+    "maxlon": 4.8015731
+  },
+  "nodes": [
+    2729419882,
+    2729420648,
+    2729416239,
+    2729416673,
+    2729414516,
+    2729414382,
+    2729414011,
+    2729413649,
+    2729419882
+  ],
+  "geometry": [
+    { "lat": 51.5983207, "lon": 4.8013085 },
+    { "lat": 51.5983441, "lon": 4.8014405 },
+    { "lat": 51.5982180, "lon": 4.8014977 },
+    { "lat": 51.5982252, "lon": 4.8015382 },
+    { "lat": 51.5981485, "lon": 4.8015731 },
+    { "lat": 51.5981413, "lon": 4.8015325 },
+    { "lat": 51.5981373, "lon": 4.8015343 },
+    { "lat": 51.5981141, "lon": 4.8014026 },
+    { "lat": 51.5983207, "lon": 4.8013085 }
+  ],
+  "tags": {
+    "building": "house",
+    "ref:bag": "0758100000010148",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1901"
+  }
+},
+{
+  "type": "way",
+  "id": 267506526,
+  "bounds": {
+    "minlat": 51.5972021,
+    "minlon": 4.8017083,
+    "maxlat": 51.5973279,
+    "maxlon": 4.8020505
+  },
+  "nodes": [
+    2729392188,
+    2729395754,
+    2729395375,
+    2729396123,
+    2729395760,
+    2729391750,
+    2729392225,
+    2729391782,
+    2729392188
+  ],
+  "geometry": [
+    { "lat": 51.5972180, "lon": 4.8017083 },
+    { "lat": 51.5973096, "lon": 4.8017326 },
+    { "lat": 51.5972961, "lon": 4.8018636 },
+    { "lat": 51.5973279, "lon": 4.8018722 },
+    { "lat": 51.5973098, "lon": 4.8020505 },
+    { "lat": 51.5972021, "lon": 4.8020219 },
+    { "lat": 51.5972199, "lon": 4.8018488 },
+    { "lat": 51.5972039, "lon": 4.8018446 },
+    { "lat": 51.5972180, "lon": 4.8017083 }
+  ],
+  "tags": {
+    "building": "house",
+    "ref:bag": "0758100000010138",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "start_date": "1928"
+  }
+},
+{
+  "type": "way",
+  "id": 1080740916,
+  "bounds": {
+    "minlat": 51.5985844,
+    "minlon": 4.7990980,
+    "maxlat": 51.5986139,
+    "maxlon": 4.7991781
+  },
+  "nodes": [
+    9905828965,
+    9905828979,
+    9905828964,
+    9905828945,
+    9905828965
+  ],
+  "geometry": [
+    { "lat": 51.5986108, "lon": 4.7990980 },
+    { "lat": 51.5985844, "lon": 4.7991004 },
+    { "lat": 51.5985875, "lon": 4.7991781 },
+    { "lat": 51.5986139, "lon": 4.7991757 },
+    { "lat": 51.5986108, "lon": 4.7990980 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000113212",
+    "source": "BAG",
+    "source:date": "2022-07-23",
+    "start_date": "2011"
+  }
+},
+{
+  "type": "way",
+  "id": 1349622875,
+  "bounds": {
+    "minlat": 51.5980136,
+    "minlon": 4.8007803,
+    "maxlat": 51.5981171,
+    "maxlon": 4.8010933
+  },
+  "nodes": [
+    12485113529,
+    12485113528,
+    12485113527,
+    12485113523,
+    12485113529
+  ],
+  "geometry": [
+    { "lat": 51.5980683, "lon": 4.8007803 },
+    { "lat": 51.5981171, "lon": 4.8010695 },
+    { "lat": 51.5980624, "lon": 4.8010933 },
+    { "lat": 51.5980136, "lon": 4.8008041 },
+    { "lat": 51.5980683, "lon": 4.8007803 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "name": "Linde",
+    "ref:bag": "0758100000116354",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1349622876,
+  "bounds": {
+    "minlat": 51.5975614,
+    "minlon": 4.8003398,
+    "maxlat": 51.5982785,
+    "maxlon": 4.8005975
+  },
+  "nodes": [
+    12485113546,
+    12485113543,
+    12485113542,
+    12485113539,
+    12485113536,
+    12485113535,
+    12485113534,
+    12485113533,
+    12485113546
+  ],
+  "geometry": [
+    { "lat": 51.5975711, "lon": 4.8003398 },
+    { "lat": 51.5979535, "lon": 4.8004458 },
+    { "lat": 51.5979565, "lon": 4.8004176 },
+    { "lat": 51.5982785, "lon": 4.8005069 },
+    { "lat": 51.5982688, "lon": 4.8005975 },
+    { "lat": 51.5979498, "lon": 4.8005091 },
+    { "lat": 51.5979468, "lon": 4.8005376 },
+    { "lat": 51.5975614, "lon": 4.8004307 },
+    { "lat": 51.5975711, "lon": 4.8003398 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "name": "Esdoorn",
+    "ref:bag": "0758100000116355",
+    "source": "BAG",
+    "source:date": "2026-02-09",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1349622877,
+  "bounds": {
+    "minlat": 51.5975797,
+    "minlon": 4.8007895,
+    "maxlat": 51.5977112,
+    "maxlon": 4.8012491
+  },
+  "nodes": [
+    12485113553,
+    12485113549,
+    12485113547,
+    12485113554,
+    12485113552,
+    12485113551,
+    12485113553
+  ],
+  "geometry": [
+    { "lat": 51.5976956, "lon": 4.8012070 },
+    { "lat": 51.5976493, "lon": 4.8012275 },
+    { "lat": 51.5975797, "lon": 4.8008132 },
+    { "lat": 51.5976347, "lon": 4.8007895 },
+    { "lat": 51.5977112, "lon": 4.8012454 },
+    { "lat": 51.5977026, "lon": 4.8012491 },
+    { "lat": 51.5976956, "lon": 4.8012070 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "ref:bag": "0758100000116352",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1349622878,
+  "bounds": {
+    "minlat": 51.5977235,
+    "minlon": 4.8009540,
+    "maxlat": 51.5979094,
+    "maxlon": 4.8011454
+  },
+  "nodes": [
+    12485113563,
+    12485113562,
+    12485113561,
+    12485113560,
+    12485113559,
+    12485113558,
+    12485113557,
+    12485113556,
+    12485113563
+  ],
+  "geometry": [
+    { "lat": 51.5978018, "lon": 4.8009540 },
+    { "lat": 51.5978082, "lon": 4.8009919 },
+    { "lat": 51.5978837, "lon": 4.8009591 },
+    { "lat": 51.5979094, "lon": 4.8011113 },
+    { "lat": 51.5978311, "lon": 4.8011454 },
+    { "lat": 51.5978247, "lon": 4.8011074 },
+    { "lat": 51.5977492, "lon": 4.8011403 },
+    { "lat": 51.5977235, "lon": 4.8009881 },
+    { "lat": 51.5978018, "lon": 4.8009540 }
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0758100000116353",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1353493439,
+  "bounds": {
+    "minlat": 51.5972606,
+    "minlon": 4.8009058,
+    "maxlat": 51.5973338,
+    "maxlon": 4.8013286
+  },
+  "nodes": [
+    12524326432,
+    12524326431,
+    12524326428,
+    12524326427,
+    12524326429,
+    12524326426,
+    12524326433,
+    12524326430,
+    12524326432
+  ],
+  "geometry": [
+    { "lat": 51.5973209, "lon": 4.8009058 },
+    { "lat": 51.5973338, "lon": 4.8009072 },
+    { "lat": 51.5973157, "lon": 4.8013286 },
+    { "lat": 51.5973068, "lon": 4.8013276 },
+    { "lat": 51.5973086, "lon": 4.8012850 },
+    { "lat": 51.5972606, "lon": 4.8012797 },
+    { "lat": 51.5972756, "lon": 4.8009292 },
+    { "lat": 51.5973197, "lon": 4.8009341 },
+    { "lat": 51.5973209, "lon": 4.8009058 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "ref:bag": "0758100000116351",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1420191485,
+  "bounds": {
+    "minlat": 51.5969816,
+    "minlon": 4.8012909,
+    "maxlat": 51.5970085,
+    "maxlon": 4.8013809
+  },
+  "nodes": [
+    13050166415,
+    13050166414,
+    13050166413,
+    13050166412,
+    13050166415
+  ],
+  "geometry": [
+    { "lat": 51.5970037, "lon": 4.8012909 },
+    { "lat": 51.5970085, "lon": 4.8013778 },
+    { "lat": 51.5969864, "lon": 4.8013809 },
+    { "lat": 51.5969816, "lon": 4.8012941 },
+    { "lat": 51.5970037, "lon": 4.8012909 }
+  ],
+  "tags": {
+    "building": "container",
+    "building:levels": "1",
+    "generator:output:electricity": "yes",
+    "power": "generator"
+  }
+},
+{
+  "type": "way",
+  "id": 1444664779,
+  "bounds": {
+    "minlat": 51.5970528,
+    "minlon": 4.8013086,
+    "maxlat": 51.5970828,
+    "maxlon": 4.8013687
+  },
+  "nodes": [
+    13255633444,
+    13255633441,
+    13255633442,
+    13255633443,
+    13255633444
+  ],
+  "geometry": [
+    { "lat": 51.5970528, "lon": 4.8013097 },
+    { "lat": 51.5970819, "lon": 4.8013086 },
+    { "lat": 51.5970828, "lon": 4.8013676 },
+    { "lat": 51.5970536, "lon": 4.8013687 },
+    { "lat": 51.5970528, "lon": 4.8013097 }
+  ],
+  "tags": {
+    "building": "shed",
+    "building:levels": "1",
+    "note": "2025-10-24: onnauwkeurig, satalietdataportal mosaic latest gebruikt.",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1444664780,
+  "bounds": {
+    "minlat": 51.5982566,
+    "minlon": 4.8008097,
+    "maxlat": 51.5983178,
+    "maxlon": 4.8009771
+  },
+  "nodes": [
+    13255633448,
+    13255633445,
+    13255633446,
+    13255633447,
+    13255633448
+  ],
+  "geometry": [
+    { "lat": 51.5982566, "lon": 4.8008256 },
+    { "lat": 51.5982894, "lon": 4.8008097 },
+    { "lat": 51.5983178, "lon": 4.8009612 },
+    { "lat": 51.5982849, "lon": 4.8009771 },
+    { "lat": 51.5982566, "lon": 4.8008256 }
+  ],
+  "tags": {
+    "building": "shed",
+    "building:levels": "1",
+    "note": "2025-10-24: onnauwkeurig, satalietdataportal mosaic latest gebruikt.",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1444664781,
+  "bounds": {
+    "minlat": 51.5982383,
+    "minlon": 4.8010200,
+    "maxlat": 51.5982703,
+    "maxlon": 4.8010698
+  },
+  "nodes": [
+    13255633452,
+    13255633449,
+    13255633450,
+    13255633451,
+    13255633452
+  ],
+  "geometry": [
+    { "lat": 51.5982641, "lon": 4.8010200 },
+    { "lat": 51.5982703, "lon": 4.8010590 },
+    { "lat": 51.5982445, "lon": 4.8010698 },
+    { "lat": 51.5982383, "lon": 4.8010308 },
+    { "lat": 51.5982641, "lon": 4.8010200 }
+  ],
+  "tags": {
+    "building": "container",
+    "building:levels": "1",
+    "note": "2025-10-24: onnauwkeurig, satalietdataportal mosaic latest gebruikt. Complex wasserete",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1444664782,
+  "bounds": {
+    "minlat": 51.5982999,
+    "minlon": 4.8009846,
+    "maxlat": 51.5983391,
+    "maxlon": 4.8010495
+  },
+  "nodes": [
+    13255633456,
+    13255633453,
+    13255633454,
+    13255633455,
+    13255633456
+  ],
+  "geometry": [
+    { "lat": 51.5982999, "lon": 4.8009986 },
+    { "lat": 51.5983299, "lon": 4.8009846 },
+    { "lat": 51.5983391, "lon": 4.8010355 },
+    { "lat": 51.5983091, "lon": 4.8010495 },
+    { "lat": 51.5982999, "lon": 4.8009986 }
+  ],
+  "tags": {
+    "building": "shed",
+    "building:levels": "1",
+    "note": "2025-10-24: onnauwkeurig, satalietdataportal mosaic latest gebruikt. Afvalverzamelpunt.",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1463902207,
+  "bounds": {
+    "minlat": 51.5971842,
+    "minlon": 4.8008776,
+    "maxlat": 51.5972597,
+    "maxlon": 4.8013205
+  },
+  "nodes": [
+    13428409407,
+    13428409406,
+    13428409405,
+    13428409404,
+    13428409407
+  ],
+  "geometry": [
+    { "lat": 51.5972029, "lon": 4.8008776 },
+    { "lat": 51.5972597, "lon": 4.8008839 },
+    { "lat": 51.5972410, "lon": 4.8013205 },
+    { "lat": 51.5971842, "lon": 4.8013142 },
+    { "lat": 51.5972029, "lon": 4.8008776 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "name": "Eik",
+    "ref:bag": "0758100000118562",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1463902208,
+  "bounds": {
+    "minlat": 51.5979377,
+    "minlon": 4.8007907,
+    "maxlat": 51.5980453,
+    "maxlon": 4.8011247
+  },
+  "nodes": [
+    13428409415,
+    13428409414,
+    13428409413,
+    13428409412,
+    13428409411,
+    13428409410,
+    13428409409,
+    13428409408,
+    13428409415
+  ],
+  "geometry": [
+    { "lat": 51.5979927, "lon": 4.8007907 },
+    { "lat": 51.5980386, "lon": 4.8010630 },
+    { "lat": 51.5980425, "lon": 4.8010613 },
+    { "lat": 51.5980453, "lon": 4.8010780 },
+    { "lat": 51.5979941, "lon": 4.8011004 },
+    { "lat": 51.5979976, "lon": 4.8011214 },
+    { "lat": 51.5979900, "lon": 4.8011247 },
+    { "lat": 51.5979377, "lon": 4.8008146 },
+    { "lat": 51.5979927, "lon": 4.8007907 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "ref:bag": "0758100000118564",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+},
+{
+  "type": "way",
+  "id": 1463902209,
+  "bounds": {
+    "minlat": 51.5974989,
+    "minlon": 4.8007706,
+    "maxlat": 51.5976392,
+    "maxlon": 4.8013002
+  },
+  "nodes": [
+    13428409419,
+    13428409418,
+    13428409417,
+    13428409416,
+    13428409419
+  ],
+  "geometry": [
+    { "lat": 51.5975538, "lon": 4.8007706 },
+    { "lat": 51.5976392, "lon": 4.8012761 },
+    { "lat": 51.5975842, "lon": 4.8013002 },
+    { "lat": 51.5974989, "lon": 4.8007945 },
+    { "lat": 51.5975538, "lon": 4.8007706 }
+  ],
+  "tags": {
+    "building": "apartments",
+    "name": "Berk",
+    "ref:bag": "0758100000118563",
+    "source": "BAG",
+    "source:date": "2026-01-03",
+    "start_date": "2025"
+  }
+}
+
+  ]
+}

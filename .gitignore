@@ -1,0 +1,26 @@
+# Build output
+build/
+.gradle/
+.kotlin/
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Signed release builds from build-signed.sh
+dist/
+
+# Local configuration
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# The owner's real setup data is never committed (SPEC.md section 2).
+warosso.json
+warosso*.json
+
+# IDE
+.idea/
+*.iml
+.DS_Store

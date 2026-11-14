@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shared actions -->
+    <string name="action_back">Terug</string>
+    <string name="action_cancel">Annuleren</string>
+    <string name="action_done">Klaar</string>
+    <string name="action_ok">Oké</string>
+    <string name="action_add">Toevoegen</string>
+    <string name="action_save">Opslaan</string>
+    <string name="action_rename">Naam wijzigen</string>
+    <string name="action_retry">Opnieuw proberen</string>
+    <string name="action_allow">Toestaan</string>
+    <string name="action_turn_on">Aanzetten</string>
+    <string name="loading">Laden…</string>
+
+    <!-- How things are called -->
+    <string name="building_block">Blok %1$s</string>
+    <string name="building_unnumbered">Gebouw</string>
+    <string name="entrance_default_name">Ingang %1$d</string>
+    <string name="entrance_type_stairwell">Trappenhuis</string>
+    <string name="entrance_type_intercom">Intercom</string>
+    <string name="number_range">%1$d-%2$d</string>
+    <string name="floor_ground">Begane grond</string>
+    <string name="floor_n">Verdieping %1$d</string>
+    <string name="distance_m">%1$d m</string>
+    <string name="ordinal_pattern">{0,selectordinal,other{#e}}</string>
+    <string name="door_from_left">%1$s deur van links</string>
+    <string name="door_from_right">%1$s deur van rechts</string>
+    <string name="door_only">de enige deur</string>
+    <plurals name="count_doors">
+        <item quantity="one">%1$d deur</item>
+        <item quantity="other">%1$d deuren</item>
+    </plurals>
+    <plurals name="count_numbers">
+        <item quantity="one">%1$d nummer</item>
+        <item quantity="other">%1$d nummers</item>
+    </plurals>
+    <plurals name="count_entrances">
+        <item quantity="one">%1$d ingang</item>
+        <item quantity="other">%1$d ingangen</item>
+    </plurals>
+
+    <!-- Find -->
+    <string name="find_prompt">Welk nummer?</string>
+    <string name="find_action">Zoek</string>
+    <string name="find_progress">%3$s: %1$d van %2$d nummers ingesteld</string>
+    <string name="welcome_title">Eerst je complex instellen</string>
+    <string name="welcome_body">WarOsso kent de %1$d huisnummers van %2$s. Geef aan waar de ingangen zijn en bij welke deuren ze uitkomen, dan wijst de app je de weg naar elke deur.</string>
+    <string name="welcome_action">Begin met instellen</string>
+    <string name="not_found_title">%1$d niet gevonden</string>
+    <string name="not_found_did_you_mean">Bedoel je een van deze?</string>
+    <string name="not_found_no_suggestions">De adreslijst is leeg. Haal hem opnieuw op bij OpenStreetMap via Instellingen.</string>
+    <string name="not_set_up_title">%1$d is nog niet ingesteld</string>
+    <string name="not_set_up_body">Het nummer staat in de adreslijst, maar bij geen enkele ingang.</string>
+    <string name="not_set_up_action">Naar Instellen</string>
+
+    <!-- Guidance -->
+    <string name="action_stop_guidance">Stoppen</string>
+    <string name="action_show_map">Kaart tonen</string>
+    <string name="action_show_camera">Camera tonen</string>
+    <string name="action_recenter">Terug naar mijn positie</string>
+    <string name="action_toggle_directions">Stappen tonen of verbergen</string>
+    <string name="banner_location_permission">WarOsso heeft je exacte locatie nodig om je de weg te wijzen.</string>
+    <string name="banner_location_off">Locatie staat uit.</string>
+    <string name="banner_gps_searching">Gps zoeken…</string>
+    <string name="banner_gps_weak">Gps zwak ±%1$d m</string>
+    <string name="banner_compass">Kompas is van slag. Beweeg de telefoon in een 8.</string>
+    <string name="banner_camera_off">Camera staat uit. Sta hem toe om de ingangen voor je te zien.</string>
+    <string name="arrived_title">Je bent er</string>
+    <string name="directions_line">%1$s → %2$s · %3$s</string>
+    <string name="step_ring">Bel aan bij %1$d op de intercom</string>
+    <string name="step_ground_floor">begane grond</string>
+    <string name="step_stairs_to_floor">trap naar verdieping %1$d</string>
+    <string name="step_inner_stairs_to_floor">binnentrap naar verdieping %1$d</string>
+    <string name="step_to_floor">verdieping %1$d</string>
+    <string name="step_number">Nummer %1$d</string>
+
+    <!-- Setup -->
+    <string name="setup_title">Instellen</string>
+    <string name="setup_progress">%1$d van %2$d nummers</string>
+    <string name="setup_hint_first">Tik op de kaart waar een trappenhuis of een voordeur is.</string>
+    <string name="setup_hint">Tik op de kaart voor een nieuwe ingang. Versleep een stip om hem te verplaatsen.</string>
+    <string name="setup_entrance_empty">Nog geen deuren</string>
+    <string name="setup_area">Gebied</string>
+    <string name="setup_buildings">Gebouwen</string>
+    <plurals name="setup_missing">
+        <item quantity="one">%1$d ontbreekt</item>
+        <item quantity="other">%1$d ontbreken</item>
+    </plurals>
+    <string name="setup_pending_title">Nieuwe ingang hier?</string>
+    <string name="setup_pending_body">Sleep de stip naar de precieze plek van de trap of de deur.</string>
+    <string name="setup_pending_add">Ingang toevoegen</string>
+    <string name="setup_no_buildings">De kaartgegevens bevatten geen gebouwen. Haal ze opnieuw op bij OpenStreetMap via Instellingen.</string>
+    <string name="setup_area_title">Gebied van het complex</string>
+    <string name="setup_area_body">Versleep een hoek om hem te verplaatsen. Tik op een kleine stip voor een extra hoek, tik op een hoek om hem weg te halen.</string>
+    <string name="setup_area_reset">Terug naar cirkel</string>
+    <string name="setup_street_title">Straat van het complex</string>
+    <string name="building_rename_title">Geef dit gebouw een naam</string>
+    <string name="building_rename_label">Naam</string>
+    <string name="building_rename_hint">Laat leeg voor %1$s.</string>
+    <plurals name="missing_title">
+        <item quantity="one">%1$d nummer heeft nog geen ingang</item>
+        <item quantity="other">%1$d nummers hebben nog geen ingang</item>
+    </plurals>
+    <string name="missing_body">Deze staan in de adreslijst en liggen binnen het gebied, maar bij geen enkele ingang.</string>
+    <string name="missing_none_title">Elk nummer heeft een ingang</string>
+    <string name="missing_none_body">De hele adreslijst binnen het gebied is ingedeeld.</string>
+
+    <!-- Entrance editor -->
+    <string name="entrance_section">Ingang</string>
+    <string name="entrance_type">Soort</string>
+    <string name="entrance_type_stairwell_hint">Een buitentrap naar de galerijen.</string>
+    <string name="entrance_type_intercom_hint">Een gedeelde voordeur met een intercom.</string>
+    <string name="entrance_inner_stairs">Trap achter de deur</string>
+    <string name="entrance_inner_stairs_hint">De aanwijzingen zeggen dan dat je de binnentrap neemt.</string>
+    <string name="entrance_name">Naam</string>
+    <string name="entrance_note">Notitie</string>
+    <string name="entrance_note_hint">Staat bij de aanwijzingen, bijvoorbeeld “blauwe deur naast de fietsenstalling”.</string>
+    <string name="entrance_building">Gebouw</string>
+    <string name="entrance_delete">Ingang verwijderen</string>
+    <string name="entrance_delete_title">Deze ingang verwijderen?</string>
+    <string name="entrance_delete_body">De verdiepingen en deuren verdwijnen mee.</string>
+    <string name="suggestions_title">Voorgestelde verdiepingen</string>
+    <string name="suggestion_item">%1$s · %2$s</string>
+    <string name="suggestions_add_all">Alles toevoegen</string>
+    <string name="suggestions_hint">Afgelezen uit de adreslijst van dit gebouw. Controleer daarna de volgorde van de deuren.</string>
+    <string name="floor_add">Verdieping toevoegen</string>
+    <string name="floor_replace">Verdieping vervangen</string>
+    <string name="floor_delete">Verdieping verwijderen</string>
+    <string name="floor_reverse">Volgorde omdraaien</string>
+    <string name="floor_order_hint">van links naar rechts, met je gezicht naar het gebouw</string>
+    <string name="floor_lower">Een verdieping lager</string>
+    <string name="floor_higher">Een verdieping hoger</string>
+    <string name="floor_range_hint">Typ de meest linkse en de meest rechtse deur, met je gezicht naar het gebouw. De nummers ertussen komen uit de adreslijst.</string>
+    <string name="floor_from">Van (links)</string>
+    <string name="floor_to">Tot (rechts)</string>
+    <string name="floor_preview_empty">Typ beide nummers om de deuren te zien.</string>
+    <string name="floor_preview_none">De adreslijst heeft geen nummers tussen deze twee.</string>
+    <string name="door_add">Deur toevoegen</string>
+    <string name="door_number">Huisnummer</string>
+    <string name="door_not_in_bag">Dit nummer staat niet in de adreslijst.</string>
+    <string name="door_move_left">Naar links</string>
+    <string name="door_move_right">Naar rechts</string>
+    <string name="door_remove">Weghalen</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_guidance">Navigeren</string>
+    <string name="settings_auto_switch">Wisselen door kantelen</string>
+    <string name="settings_auto_switch_hint">Telefoon rechtop voor de camera, plat voor de kaart. Uit geeft een knop om te wisselen.</string>
+    <string name="settings_vibrate">Trillen bij aankomst</string>
+    <string name="settings_vibrate_hint">Eén trilling zodra je binnen 10 m van de ingang bent.</string>
+    <string name="settings_appearance">Uiterlijk</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_follow_system">Systeem</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_data">Jouw indeling</string>
+    <string name="settings_export">Indeling exporteren</string>
+    <string name="settings_export_hint">Bewaar het gebied, de ingangen en de deuren als warosso.json.</string>
+    <string name="settings_import">Indeling importeren</string>
+    <string name="settings_import_hint">Vervang je indeling door een warosso.json-bestand.</string>
+    <string name="settings_refresh">Verversen vanuit OpenStreetMap</string>
+    <string name="settings_refresh_hint">Haal de adreslijst opnieuw op en bekijk wat er veranderd is.</string>
+    <string name="settings_about">Over</string>
+    <string name="about_version">Versie %1$s</string>
+    <string name="about_license">Licentie</string>
+    <string name="about_license_hint">Vrije software onder de GNU General Public License 3.0.</string>
+    <string name="about_osm">© OpenStreetMap-bijdragers</string>
+    <string name="about_osm_hint">Adressen, gebouwen en de kaart komen van OpenStreetMap, onder de Open Database License.</string>
+    <string name="about_openfreemap">OpenFreeMap</string>
+    <string name="about_openfreemap_hint">Kaarttegels © OpenMapTiles, geleverd door OpenFreeMap. Getekend met MapLibre.</string>
+    <string name="about_font">Google Sans Flex</string>
+    <string name="about_font_hint">Het lettertype, onder de SIL Open Font License 1.1.</string>
+    <string name="export_done">Indeling geëxporteerd</string>
+    <string name="import_done">Indeling geïmporteerd</string>
+    <string name="import_confirm_title">Je indeling vervangen?</string>
+    <string name="import_confirm_body">Het bestand bevat %1$s aan %2$s. Je huidige gebied, ingangen en gebouwnamen worden vervangen.</string>
+    <string name="import_confirm_action">Vervangen</string>
+    <string name="import_failed_title">Importeren mislukt</string>
+    <string name="import_newer_schema">Dit bestand komt uit een nieuwere WarOsso (formaat %1$d). Deze versie leest tot en met formaat %2$d. Werk de app bij en probeer het opnieuw.</string>
+    <string name="import_not_an_export">Dit is geen exportbestand van WarOsso.</string>
+    <string name="import_broken_reference">Het bestand is beschadigd: een ingang verwijst naar gebouw %1$d, dat niet in het bestand staat.</string>
+    <string name="file_error_title">Probleem met het bestand</string>
+    <string name="file_error_body">Het bestand kon niet worden gelezen of geschreven. Kies een andere plek en probeer het opnieuw.</string>
+
+    <!-- Refresh from OpenStreetMap -->
+    <string name="refresh_title">Adreslijst</string>
+    <string name="refresh_loading">OpenStreetMap raadplegen…</string>
+    <string name="refresh_failed_title">Geen antwoord van OpenStreetMap</string>
+    <string name="refresh_failed_body">Controleer je verbinding. De server kan ook druk zijn; dan helpt het om een minuut te wachten.</string>
+    <string name="refresh_same_title">Niets veranderd</string>
+    <string name="refresh_same_body">De adreslijst op je telefoon is gelijk aan OpenStreetMap.</string>
+    <plurals name="refresh_added">
+        <item quantity="one">%1$d nieuw nummer</item>
+        <item quantity="other">%1$d nieuwe nummers</item>
+    </plurals>
+    <plurals name="refresh_removed">
+        <item quantity="one">%1$d verdwenen: %2$s</item>
+        <item quantity="other">%1$d verdwenen: %2$s</item>
+    </plurals>
+    <string name="refresh_review_body">Er verandert niets tot je bijwerkt. Je ingangen en deuren blijven altijd zoals ze zijn.</string>
+    <string name="refresh_applied">De adreslijst is bijgewerkt. Je ingangen en deuren zijn nog zoals ze waren.</string>
+    <string name="refresh_new">Nieuw</string>
+    <string name="refresh_removed">Verdwenen</string>
+    <string name="refresh_affected">Ingangen om na te lopen</string>
+    <string name="refresh_affected_removed">Bevat %1$s, niet meer in de adreslijst</string>
+    <string name="refresh_affected_new">Nieuw in dit gebouw: %1$s</string>
+    <string name="refresh_apply">Adreslijst bijwerken</string>
+</resources>

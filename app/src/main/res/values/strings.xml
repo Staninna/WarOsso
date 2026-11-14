@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">WarOsso</string>
+
+    <!-- Shared actions -->
+    <string name="action_back">Back</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_done">Done</string>
+    <string name="action_ok">OK</string>
+    <string name="action_add">Add</string>
+    <string name="action_save">Save</string>
+    <string name="action_rename">Rename</string>
+    <string name="action_retry">Try again</string>
+    <string name="action_allow">Allow</string>
+    <string name="action_turn_on">Turn on</string>
+    <string name="loading">Loading…</string>
+
+    <!-- How things are called -->
+    <string name="building_block">Block %1$s</string>
+    <string name="building_unnumbered">Building</string>
+    <string name="entrance_default_name">Entrance %1$d</string>
+    <string name="entrance_type_stairwell">Stairwell</string>
+    <string name="entrance_type_intercom">Intercom</string>
+    <string name="number_range">%1$d-%2$d</string>
+    <string name="floor_ground">Ground floor</string>
+    <string name="floor_n">Floor %1$d</string>
+    <string name="distance_m">%1$d m</string>
+    <!-- An ICU message: keep the braces, translate only the suffixes. -->
+    <string name="ordinal_pattern">{0,selectordinal,one{#st}two{#nd}few{#rd}other{#th}}</string>
+    <string name="door_from_left">%1$s door from the left</string>
+    <string name="door_from_right">%1$s door from the right</string>
+    <string name="door_only">the only door</string>
+    <plurals name="count_doors">
+        <item quantity="one">%1$d door</item>
+        <item quantity="other">%1$d doors</item>
+    </plurals>
+    <plurals name="count_numbers">
+        <item quantity="one">%1$d number</item>
+        <item quantity="other">%1$d numbers</item>
+    </plurals>
+    <plurals name="count_entrances">
+        <item quantity="one">%1$d entrance</item>
+        <item quantity="other">%1$d entrances</item>
+    </plurals>
+
+    <!-- Find -->
+    <string name="find_prompt">Which number?</string>
+    <string name="find_placeholder" translatable="false">0</string>
+    <string name="find_action">Find</string>
+    <string name="find_progress">%3$s: %1$d of %2$d numbers set up</string>
+    <string name="welcome_title">Let\'s set up your complex</string>
+    <string name="welcome_body">WarOsso knows the %1$d house numbers of %2$s. Mark where the entrances are and which doors they lead to, and it will walk you to any of them.</string>
+    <string name="welcome_action">Start setup</string>
+    <string name="not_found_title">%1$d not found</string>
+    <string name="not_found_did_you_mean">Did you mean one of these?</string>
+    <string name="not_found_no_suggestions">The address list has no numbers at all. Refresh it from OpenStreetMap in Settings.</string>
+    <string name="not_set_up_title">%1$d is not set up yet</string>
+    <string name="not_set_up_body">It is in the address list, but no entrance lists this door.</string>
+    <string name="not_set_up_action">Open Setup</string>
+
+    <!-- Guidance -->
+    <string name="action_stop_guidance">Stop</string>
+    <string name="action_show_map">Show the map</string>
+    <string name="action_show_camera">Show the camera</string>
+    <string name="action_recenter">Back to my position</string>
+    <string name="action_toggle_directions">Show or hide the steps</string>
+    <string name="banner_location_permission">WarOsso needs your precise location to guide you.</string>
+    <string name="banner_location_off">Location is switched off.</string>
+    <string name="banner_gps_searching">Looking for GPS…</string>
+    <string name="banner_gps_weak">GPS weak ±%1$d m</string>
+    <string name="banner_compass">Compass is off. Move the phone in a figure 8.</string>
+    <string name="banner_camera_off">Camera is off. Allow it to see the entrances in front of you.</string>
+    <string name="arrived_title">You\'re here</string>
+    <string name="directions_line">%1$s → %2$s · %3$s</string>
+    <string name="step_ring">Ring %1$d at the intercom</string>
+    <string name="step_ground_floor">ground floor</string>
+    <string name="step_stairs_to_floor">stairs to floor %1$d</string>
+    <string name="step_inner_stairs_to_floor">inner stairs to floor %1$d</string>
+    <string name="step_to_floor">floor %1$d</string>
+    <string name="step_number">Number %1$d</string>
+
+    <!-- Setup -->
+    <string name="setup_title">Setup</string>
+    <string name="setup_progress">%1$d of %2$d numbers</string>
+    <string name="setup_hint_first">Tap the map where a stairwell or a front door is.</string>
+    <string name="setup_hint">Tap the map to add an entrance. Drag a marker to move it.</string>
+    <string name="setup_entrance_empty">No doors yet</string>
+    <string name="setup_area">Area</string>
+    <string name="setup_buildings">Buildings</string>
+    <plurals name="setup_missing">
+        <item quantity="one">%1$d missing</item>
+        <item quantity="other">%1$d missing</item>
+    </plurals>
+    <string name="setup_pending_title">New entrance here?</string>
+    <string name="setup_pending_body">Drag the marker to the exact spot of the stairs or the door.</string>
+    <string name="setup_pending_add">Add entrance</string>
+    <string name="setup_no_buildings">The map data has no buildings. Refresh from OpenStreetMap in Settings.</string>
+    <string name="setup_area_title">Complex area</string>
+    <string name="setup_area_body">Drag a corner to move it. Tap a small dot to add a corner, tap a corner to remove it.</string>
+    <string name="setup_area_reset">Reset to circle</string>
+    <string name="setup_street_title">Street of the complex</string>
+    <string name="building_rename_title">Name this building</string>
+    <string name="building_rename_label">Name</string>
+    <string name="building_rename_hint">Leave empty to call it %1$s.</string>
+    <plurals name="missing_title">
+        <item quantity="one">%1$d number has no entrance yet</item>
+        <item quantity="other">%1$d numbers have no entrance yet</item>
+    </plurals>
+    <string name="missing_body">These are in the address list and inside the complex area, but no entrance lists them.</string>
+    <string name="missing_none_title">Every number has an entrance</string>
+    <string name="missing_none_body">The whole address list inside the complex area is covered.</string>
+
+    <!-- Entrance editor -->
+    <string name="entrance_section">Entrance</string>
+    <string name="entrance_type">Type</string>
+    <string name="entrance_type_stairwell_hint">Outdoor stairs up to the galleries.</string>
+    <string name="entrance_type_intercom_hint">A shared front door with an intercom.</string>
+    <string name="entrance_inner_stairs">Stairs behind the door</string>
+    <string name="entrance_inner_stairs_hint">The directions will say to take the inner stairs.</string>
+    <string name="entrance_name">Name</string>
+    <string name="entrance_note">Note</string>
+    <string name="entrance_note_hint">Shown with the directions, for example “blue door next to the bike shed”.</string>
+    <string name="entrance_building">Building</string>
+    <string name="entrance_delete">Delete entrance</string>
+    <string name="entrance_delete_title">Delete this entrance?</string>
+    <string name="entrance_delete_body">Its floors and doors are deleted with it.</string>
+    <string name="suggestions_title">Suggested floors</string>
+    <string name="suggestion_item">%1$s · %2$s</string>
+    <string name="suggestions_add_all">Add all</string>
+    <string name="suggestions_hint">Read off the address list of this building. Check the order of the doors afterwards.</string>
+    <string name="floor_add">Add floor</string>
+    <string name="floor_replace">Replace floor</string>
+    <string name="floor_delete">Delete floor</string>
+    <string name="floor_reverse">Reverse the order</string>
+    <string name="floor_order_hint">left to right, facing the building</string>
+    <string name="floor_lower">One floor down</string>
+    <string name="floor_higher">One floor up</string>
+    <string name="floor_range_hint">Type the leftmost and the rightmost door as you face the building. The numbers in between come from the address list.</string>
+    <string name="floor_from">From (left)</string>
+    <string name="floor_to">To (right)</string>
+    <string name="floor_preview_empty">Type both numbers to see the doors.</string>
+    <string name="floor_preview_none">The address list has no numbers between these two.</string>
+    <string name="door_add">Add a door</string>
+    <string name="door_number">House number</string>
+    <string name="door_not_in_bag">This number is not in the address list.</string>
+    <string name="door_move_left">Move left</string>
+    <string name="door_move_right">Move right</string>
+    <string name="door_remove">Remove</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_guidance">Guidance</string>
+    <string name="settings_auto_switch">Switch view by tilt</string>
+    <string name="settings_auto_switch_hint">Hold the phone upright for the camera, flat for the map. Off shows a button instead.</string>
+    <string name="settings_vibrate">Vibrate on arrival</string>
+    <string name="settings_vibrate_hint">One buzz when you are within 10 m of the entrance.</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_follow_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_data">Your setup</string>
+    <string name="settings_export">Export setup</string>
+    <string name="settings_export_hint">Save the area, entrances and doors as warosso.json.</string>
+    <string name="settings_import">Import setup</string>
+    <string name="settings_import_hint">Replace your setup with a warosso.json file.</string>
+    <string name="settings_refresh">Refresh from OpenStreetMap</string>
+    <string name="settings_refresh_hint">Fetch the address list again and review what changed.</string>
+    <string name="settings_about">About</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_license">Licence</string>
+    <string name="about_license_hint">Free software under the GNU General Public License 3.0.</string>
+    <string name="about_osm">© OpenStreetMap contributors</string>
+    <string name="about_osm_hint">Addresses, buildings and the map come from OpenStreetMap, under the Open Database License.</string>
+    <string name="about_openfreemap">OpenFreeMap</string>
+    <string name="about_openfreemap_hint">Map tiles © OpenMapTiles, served by OpenFreeMap. Drawn with MapLibre.</string>
+    <string name="about_font">Google Sans Flex</string>
+    <string name="about_font_hint">The typeface, under the SIL Open Font License 1.1.</string>
+    <string name="export_done">Setup exported</string>
+    <string name="import_done">Setup imported</string>
+    <string name="import_confirm_title">Replace your setup?</string>
+    <string name="import_confirm_body">The file holds %1$s on %2$s. Your current area, entrances and building names are replaced.</string>
+    <string name="import_confirm_action">Replace</string>
+    <string name="import_failed_title">Could not import</string>
+    <string name="import_newer_schema">This file was made by a newer WarOsso (format %1$d). This version reads up to format %2$d. Update the app and try again.</string>
+    <string name="import_not_an_export">This is not a WarOsso export file.</string>
+    <string name="import_broken_reference">The file is damaged: an entrance points at building %1$d, which is not in the file.</string>
+    <string name="file_error_title">File problem</string>
+    <string name="file_error_body">The file could not be read or written. Pick another place and try again.</string>
+
+    <!-- Refresh from OpenStreetMap -->
+    <string name="refresh_title">Address list</string>
+    <string name="refresh_loading">Asking OpenStreetMap…</string>
+    <string name="refresh_failed_title">No answer from OpenStreetMap</string>
+    <string name="refresh_failed_body">Check your connection. The server can also be busy; then it helps to wait a minute.</string>
+    <string name="refresh_same_title">Nothing changed</string>
+    <string name="refresh_same_body">The address list on your phone matches OpenStreetMap.</string>
+    <plurals name="refresh_added">
+        <item quantity="one">%1$d new number</item>
+        <item quantity="other">%1$d new numbers</item>
+    </plurals>
+    <plurals name="refresh_removed">
+        <item quantity="one">%1$d removed: %2$s</item>
+        <item quantity="other">%1$d removed: %2$s</item>
+    </plurals>
+    <string name="refresh_review_body">Nothing is changed until you update. Your entrances and doors always stay as they are.</string>
+    <string name="refresh_applied">The address list is updated. Your entrances and doors are as they were.</string>
+    <string name="refresh_new">New</string>
+    <string name="refresh_removed">Removed</string>
+    <string name="refresh_affected">Entrances to check</string>
+    <string name="refresh_affected_removed">Lists %1$s, no longer in the address list</string>
+    <string name="refresh_affected_new">New in its building: %1$s</string>
+    <string name="refresh_apply">Update the address list</string>
+
+    <!-- Debug menu: debug builds only, never translated. -->
+    <string name="debug_title" translatable="false">Debug</string>
+    <string name="debug_simulate" translatable="false">Simulate position</string>
+    <string name="debug_simulate_hint" translatable="false">Long-press the Find map to set where you are, or drag the dot.</string>
+    <string name="debug_accuracy" translatable="false">GPS accuracy: ±%1$d m</string>
+    <string name="debug_heading" translatable="false">Fake heading</string>
+    <string name="debug_tilt" translatable="false">Fake tilt</string>
+    <string name="debug_compass" translatable="false">Compass reliable</string>
+</resources>
