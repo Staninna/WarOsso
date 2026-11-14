@@ -17,8 +17,8 @@ android {
         minSdk = 37
         targetSdk = 37
         // Every release push bumps both; CI refuses a versionName whose tag already exists.
-        versionCode = 3
-        versionName = "0.2.1"
+        versionCode = 4
+        versionName = "0.2.2"
 
         ndk {
             // The phone is arm64. x86_64 stays in so the minified release can be tried on an emulator.

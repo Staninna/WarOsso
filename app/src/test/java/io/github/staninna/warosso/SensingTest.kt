@@ -6,6 +6,7 @@ import io.github.staninna.warosso.domain.Orientation
 import io.github.staninna.warosso.domain.PositionFilter
 import io.github.staninna.warosso.domain.PositionReading
 import io.github.staninna.warosso.domain.Rotation
+import io.github.staninna.warosso.domain.TurnedAroundAlert
 import io.github.staninna.warosso.domain.Vec3
 import io.github.staninna.warosso.domain.Walk
 import io.github.staninna.warosso.domain.WalkTracker
@@ -264,5 +265,25 @@ class SensingTest {
         // Standing still for a fix starts the count again.
         assertNull(tracker.walk(null to 270f, 90f to 270f, 90f to 270f, 90f to 270f))
         assertTrue(tracker.update(90f, 270f)!!.headingAgainst)
+    }
+
+    @Test
+    fun `the turned-around warning outlasts the walk that raised it`() {
+        val alert = TurnedAroundAlert()
+        val against = Walk(courseDeg = 90.0, headingAgainst = true)
+        assertNull(alert.update(null, nowMs = 0))
+        assertEquals(90.0, alert.update(against, nowMs = 1_000)!!, 0.0)
+        // Pointing the phone ahead as asked, then stopping to tap Fix.
+        assertEquals(90.0, alert.update(Walk(90.0, headingAgainst = false), nowMs = 2_000)!!, 0.0)
+        assertEquals(90.0, alert.update(null, nowMs = 1_000 + TurnedAroundAlert.HOLD_MS)!!, 0.0)
+        assertNull(alert.update(null, nowMs = 1_001 + TurnedAroundAlert.HOLD_MS))
+    }
+
+    @Test
+    fun `the turned-around warning goes once acted on`() {
+        val alert = TurnedAroundAlert()
+        alert.update(Walk(90.0, headingAgainst = true), nowMs = 0)
+        alert.dismiss()
+        assertNull(alert.update(null, nowMs = 1_000))
     }
 }

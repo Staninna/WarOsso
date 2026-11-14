@@ -65,3 +65,38 @@ fun meanDirection(directionsDeg: List<Double>): Double {
     val radians = directionsDeg.map(Math::toRadians)
     return normalizeDegrees(Math.toDegrees(atan2(radians.sumOf(::sin), radians.sumOf(::cos))))
 }
+
+/**
+ * Keeps the "turned around" warning up long enough to act on. The warning asks the user to point
+ * the phone the way they walk, and doing so makes the heading agree with the walk at once; a
+ * corner or a stop ends the walk too. So the warning stays for [HOLD_MS] after the walk last
+ * disagreed, and remembers that walk's course for the fix.
+ */
+class TurnedAroundAlert {
+    private var courseDeg: Double? = null
+    private var lastAgainstAtMs = 0L
+
+    /**
+     * @param walk the latest walk, see [WalkTracker.update].
+     * @param nowMs a monotonic clock.
+     * @return the course to set the heading to while the warning shows, otherwise null.
+     */
+    fun update(walk: Walk?, nowMs: Long): Double? {
+        if (walk != null && walk.headingAgainst) {
+            courseDeg = walk.courseDeg
+            lastAgainstAtMs = nowMs
+        } else if (courseDeg != null && nowMs - lastAgainstAtMs > HOLD_MS) {
+            courseDeg = null
+        }
+        return courseDeg
+    }
+
+    /** The user has acted on the warning. */
+    fun dismiss() {
+        courseDeg = null
+    }
+
+    companion object {
+        const val HOLD_MS = 20_000L
+    }
+}
