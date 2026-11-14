@@ -1,0 +1,219 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "e8f894be6289a6fe6310cec7e555a786",
+    "entities": [
+      {
+        "tableName": "complex",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`street` TEXT NOT NULL, `polygon` TEXT NOT NULL, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "street",
+            "columnName": "street",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "polygon",
+            "columnName": "polygon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "address",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`street` TEXT NOT NULL, `number` INTEGER NOT NULL, `buildingOsmId` INTEGER, `partOsmId` INTEGER, `lat` REAL NOT NULL, `lon` REAL NOT NULL, PRIMARY KEY(`street`, `number`))",
+        "fields": [
+          {
+            "fieldPath": "street",
+            "columnName": "street",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "number",
+            "columnName": "number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "buildingOsmId",
+            "columnName": "buildingOsmId",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "partOsmId",
+            "columnName": "partOsmId",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "latLng.lat",
+            "columnName": "lat",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latLng.lon",
+            "columnName": "lon",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "street",
+            "number"
+          ]
+        }
+      },
+      {
+        "tableName": "building",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`osmId` INTEGER NOT NULL, `osmName` TEXT, `customName` TEXT, `outline` TEXT NOT NULL, `streetDoors` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`osmId`))",
+        "fields": [
+          {
+            "fieldPath": "osmId",
+            "columnName": "osmId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "osmName",
+            "columnName": "osmName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "customName",
+            "columnName": "customName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "outline",
+            "columnName": "outline",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streetDoors",
+            "columnName": "streetDoors",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "osmId"
+          ]
+        }
+      },
+      {
+        "tableName": "entrance",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `buildingOsmId` INTEGER NOT NULL, `type` TEXT NOT NULL, `innerStairs` INTEGER NOT NULL, `name` TEXT, `note` TEXT, `floors` TEXT NOT NULL, `lat` REAL NOT NULL, `lon` REAL NOT NULL, FOREIGN KEY(`buildingOsmId`) REFERENCES `building`(`osmId`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "buildingOsmId",
+            "columnName": "buildingOsmId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "innerStairs",
+            "columnName": "innerStairs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "floors",
+            "columnName": "floors",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latLng.lat",
+            "columnName": "lat",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latLng.lon",
+            "columnName": "lon",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_entrance_buildingOsmId",
+            "unique": false,
+            "columnNames": [
+              "buildingOsmId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entrance_buildingOsmId` ON `${TABLE_NAME}` (`buildingOsmId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "building",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "buildingOsmId"
+            ],
+            "referencedColumns": [
+              "osmId"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e8f894be6289a6fe6310cec7e555a786')"
+    ]
+  }
+}

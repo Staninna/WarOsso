@@ -7,7 +7,7 @@
     <string name="action_ok">Oké</string>
     <string name="action_add">Toevoegen</string>
     <string name="action_save">Opslaan</string>
-    <string name="action_rename">Naam wijzigen</string>
+    <string name="action_edit">Bewerken</string>
     <string name="action_retry">Opnieuw proberen</string>
     <string name="action_allow">Toestaan</string>
     <string name="action_turn_on">Aanzetten</string>
@@ -19,6 +19,7 @@
     <string name="entrance_default_name">Ingang %1$d</string>
     <string name="entrance_type_stairwell">Trappenhuis</string>
     <string name="entrance_type_intercom">Intercom</string>
+    <string name="entrance_type_door">Deur</string>
     <string name="number_range">%1$d-%2$d</string>
     <string name="floor_ground">Begane grond</string>
     <string name="floor_n">Verdieping %1$d</string>
@@ -39,6 +40,10 @@
         <item quantity="one">%1$d ingang</item>
         <item quantity="other">%1$d ingangen</item>
     </plurals>
+    <plurals name="count_own_doors">
+        <item quantity="one">%1$d eigen voordeur</item>
+        <item quantity="other">%1$d eigen voordeuren</item>
+    </plurals>
 
     <!-- Find -->
     <string name="find_prompt">Welk nummer?</string>
@@ -51,7 +56,7 @@
     <string name="not_found_did_you_mean">Bedoel je een van deze?</string>
     <string name="not_found_no_suggestions">De adreslijst is leeg. Haal hem opnieuw op bij OpenStreetMap via Instellingen.</string>
     <string name="not_set_up_title">%1$d is nog niet ingesteld</string>
-    <string name="not_set_up_body">Het nummer staat in de adreslijst, maar bij geen enkele ingang.</string>
+    <string name="not_set_up_body">Het nummer staat in de adreslijst, maar bij geen enkele ingang, en het gebouw heeft geen voordeuren aan de straat.</string>
     <string name="not_set_up_action">Naar Instellen</string>
 
     <!-- Guidance -->
@@ -74,6 +79,9 @@
     <string name="step_inner_stairs_to_floor">binnentrap naar verdieping %1$d</string>
     <string name="step_to_floor">verdieping %1$d</string>
     <string name="step_number">Nummer %1$d</string>
+    <string name="directions_street_door">Begane grond · eigen voordeur aan de straat</string>
+    <string name="step_from_street">Rechtstreeks vanaf de straat</string>
+    <string name="step_own_door">Eigen voordeur</string>
 
     <!-- Setup -->
     <string name="setup_title">Instellen</string>
@@ -95,15 +103,16 @@
     <string name="setup_area_body">Versleep een hoek om hem te verplaatsen. Tik op een kleine stip voor een extra hoek, tik op een hoek om hem weg te halen.</string>
     <string name="setup_area_reset">Rond de gebouwen</string>
     <string name="setup_street_title">Straat van het complex</string>
-    <string name="building_rename_title">Geef dit gebouw een naam</string>
     <string name="building_rename_label">Naam</string>
     <string name="building_rename_hint">Laat leeg voor %1$s.</string>
+    <string name="building_street_doors">Begane grond heeft geen ingang nodig</string>
+    <string name="building_street_doors_hint">Nummers die bij geen ingang staan, zijn voordeuren aan de straat. Je loopt er rechtstreeks heen.</string>
     <plurals name="missing_title">
-        <item quantity="one">%1$d nummer heeft nog geen ingang</item>
-        <item quantity="other">%1$d nummers hebben nog geen ingang</item>
+        <item quantity="one">%1$d nummer is nog niet ingedeeld</item>
+        <item quantity="other">%1$d nummers zijn nog niet ingedeeld</item>
     </plurals>
-    <string name="missing_body">Deze staan in de adreslijst en liggen binnen het gebied, maar bij geen enkele ingang.</string>
-    <string name="missing_none_title">Elk nummer heeft een ingang</string>
+    <string name="missing_body">Deze staan in de adreslijst en liggen binnen het gebied, maar bij geen enkele ingang. Zijn het voordeuren aan de straat, geef dat dan aan bij hun gebouw onder Gebouwen.</string>
+    <string name="missing_none_title">Elk nummer is ingedeeld</string>
     <string name="missing_none_body">De hele adreslijst binnen het gebied is ingedeeld.</string>
 
     <!-- Entrance editor -->
@@ -111,6 +120,7 @@
     <string name="entrance_type">Soort</string>
     <string name="entrance_type_stairwell_hint">Een buitentrap naar de galerijen.</string>
     <string name="entrance_type_intercom_hint">Een gedeelde voordeur met een intercom.</string>
+    <string name="entrance_type_door_hint">Een gewone deur: geen intercom, geen buitentrap. De eigen voordeur van een woning bijvoorbeeld.</string>
     <string name="entrance_inner_stairs">Trap achter de deur</string>
     <string name="entrance_inner_stairs_hint">De aanwijzingen zeggen dan dat je de binnentrap neemt.</string>
     <string name="entrance_name">Naam</string>

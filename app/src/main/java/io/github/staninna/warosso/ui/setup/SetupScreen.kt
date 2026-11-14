@@ -54,7 +54,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.staninna.warosso.R
 import io.github.staninna.warosso.domain.ComplexData
 import io.github.staninna.warosso.domain.Entrance
-import io.github.staninna.warosso.domain.EntranceType
 import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.edgeMidpoints
 import io.github.staninna.warosso.ui.appViewModel
@@ -63,6 +62,7 @@ import io.github.staninna.warosso.ui.components.Placeholder
 import io.github.staninna.warosso.ui.components.TonalIconButton
 import io.github.staninna.warosso.ui.entranceBadge
 import io.github.staninna.warosso.ui.entranceName
+import io.github.staninna.warosso.ui.icon
 import io.github.staninna.warosso.ui.map.Framing
 import io.github.staninna.warosso.ui.map.MapCanvas
 import io.github.staninna.warosso.ui.map.MapEvent
@@ -177,7 +177,7 @@ fun SetupScreen(onBack: () -> Unit, onOpenEntrance: (Long) -> Unit) {
     }
 
     when (sheet) {
-        SetupSheet.BUILDINGS -> BuildingsSheet(data, onRename = viewModel::renameBuilding, onDismiss = { sheet = null })
+        SetupSheet.BUILDINGS -> BuildingsSheet(data, onChange = viewModel::updateBuilding, onDismiss = { sheet = null })
         SetupSheet.MISSING -> MissingNumbersSheet(data, onDismiss = { sheet = null })
         SetupSheet.STREET -> StreetDialog(data, onPick = viewModel::setStreet, onDismiss = { sheet = null })
         null -> Unit
@@ -259,7 +259,7 @@ private fun EntranceChip(data: ComplexData, entrance: Entrance, onClick: () -> U
         modifier = Modifier.heightIn(min = 56.dp),
     ) {
         Icon(
-            painterResource(if (entrance.type == EntranceType.STAIRWELL) R.drawable.ic_stairs else R.drawable.ic_doorbell),
+            painterResource(entrance.type.icon),
             contentDescription = null,
             modifier = Modifier.size(20.dp),
         )

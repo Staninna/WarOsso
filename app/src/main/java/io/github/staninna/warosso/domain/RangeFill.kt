@@ -47,3 +47,13 @@ fun suggestFloors(numbersByPart: Collection<Collection<Int>>, existing: List<Flo
         .map { floor -> FloorDoors(floor, runsPerPart.flatMap { it.getOrElse(floor) { emptyList() } }.sorted()) }
         .filter { it.floor !in usedFloors && it.doors.none(usedDoors::contains) }
 }
+
+/**
+ * [suggestFloors] for [entrance] from its building's numbers. Where the building has
+ * [Building.streetDoors] the ground floor needs no entrance, so it is not proposed.
+ */
+fun ComplexData.suggestFloorsFor(entrance: Entrance): List<FloorDoors> {
+    val groundFromStreet = building(entrance.buildingOsmId)?.streetDoors == true
+    return suggestFloors(numbersByPartOf(entrance.buildingOsmId), entrance.floors)
+        .filterNot { groundFromStreet && it.floor == 0 }
+}

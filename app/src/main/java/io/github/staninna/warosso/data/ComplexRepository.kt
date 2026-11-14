@@ -44,8 +44,9 @@ class ComplexRepository(
     fun updateComplex(change: (Complex) -> Complex): Job =
         launchWrite { dao.complex()?.let { dao.upsert(change(it)) } }
 
-    fun renameBuilding(osmId: Long, name: String): Job =
-        launchWrite { dao.renameBuilding(osmId, name.trim().ifEmpty { null }) }
+    /** Stores the owner's settings of a building. An empty [name] goes back to the building's own name. */
+    fun updateBuilding(osmId: Long, name: String, streetDoors: Boolean): Job =
+        launchWrite { dao.updateBuilding(osmId, name.trim().ifEmpty { null }, streetDoors) }
 
     /** Adds an empty entrance at [latLng] on the nearest building. Null when OSM has no buildings to attach it to. */
     suspend fun addEntrance(latLng: LatLng): Long? = awaitWrite {

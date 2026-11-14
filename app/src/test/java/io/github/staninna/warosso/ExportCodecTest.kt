@@ -24,7 +24,12 @@ class ExportCodecTest {
 
     private val data = complexData(
         addresses = listOf(address(151, buildingOsmId = 1)),
-        buildings = listOf(building(1, name = "Esdoorn").copy(customName = "Home"), building(2, northM = 60.0), building(3, northM = -60.0)),
+        buildings = listOf(
+            building(1, name = "Esdoorn").copy(customName = "Home"),
+            building(2, northM = 60.0),
+            building(3, northM = -60.0),
+            building(4, eastM = 60.0).copy(streetDoors = true),
+        ),
         entrances = listOf(
             Entrance(
                 id = 7,
@@ -43,8 +48,11 @@ class ExportCodecTest {
                 note = "Blue door [2,3], ring twice",
                 floors = listOf(FloorDoors(3, listOf(51))),
             ),
+            Entrance(id = 11, buildingOsmId = 1, latLng = CENTER.offset(30.0, 270.0), type = EntranceType.DOOR, floors = listOf(FloorDoors(0, listOf(107)))),
         ),
     )
+
+    private val version = """"schemaVersion": ${ExportCodec.SCHEMA_VERSION}"""
 
     @Test
     fun `export then import gives the same setup back`() {
@@ -53,9 +61,10 @@ class ExportCodecTest {
         // Positions are written to the centimetre.
         assertEquals(data.complex.copy(polygon = data.complex.polygon.map { it.rounded() }), imported.complex)
         assertEquals(data.entrances.map { it.copy(id = 0, latLng = it.latLng.rounded()) }, imported.entrances)
-        // Building 3 has no setup, so it is not in the file. OSM names are not setup either.
+        // Building 3 has no setup, so it is not in the file. Building 4 has no entrance, but its
+        // ground floor is marked as street doors. OSM names are not setup either.
         assertEquals(
-            data.buildings.take(2).map { it.copy(osmName = null, outline = it.outline.map { corner -> corner.rounded() }) },
+            data.buildings.filter { it.osmId != 3L }.map { it.copy(osmName = null, outline = it.outline.map { corner -> corner.rounded() }) },
             imported.buildings,
         )
         assertEquals(data.entrances[1].note, imported.entrances[1].note)
@@ -78,7 +87,7 @@ class ExportCodecTest {
     @Test
     fun `the file reads like the spec example`() {
         val text = ExportCodec.encode(data.setup, exportedAt)
-        assertTrue(text, """"schemaVersion": 1""" in text)
+        assertTrue(text, version in text)
         assertTrue(text, """"exportedAt": "2026-11-14T16:00:00+01:00"""" in text)
         assertTrue(text, """"doors": [169, 167, 165]""" in text)
         assertTrue(text, """"id": "e7"""" in text)
@@ -88,9 +97,10 @@ class ExportCodecTest {
 
     @Test
     fun `a file from a future schema is refused with both versions named`() {
-        val future = ExportCodec.encode(data.setup, exportedAt).replace(""""schemaVersion": 1""", """"schemaVersion": 2""")
+        val newer = ExportCodec.SCHEMA_VERSION + 1
+        val future = ExportCodec.encode(data.setup, exportedAt).replace(version, """"schemaVersion": $newer""")
         val error = assertThrows(ImportException.NewerSchema::class.java) { ExportCodec.decode(future) }
-        assertEquals(2, error.found)
+        assertEquals(newer, error.found)
         assertEquals(ExportCodec.SCHEMA_VERSION, error.supported)
     }
 
@@ -99,7 +109,7 @@ class ExportCodecTest {
         // A made-up version 0 that called the street "streetName".
         val current = ExportCodec.encode(data.setup, exportedAt)
         val old = current
-            .replace(""""schemaVersion": 1""", """"schemaVersion": 0""")
+            .replace(version, """"schemaVersion": 0""")
             .replace(""""street":""", """"streetName":""")
         val fromZero: (JsonObject) -> JsonObject = { document ->
             val complex = document.getValue("complex") as JsonObject
@@ -109,12 +119,25 @@ class ExportCodecTest {
             JsonObject(document + ("complex" to renamed))
         }
 
-        assertEquals(ExportCodec.decode(current), ExportCodec.decode(old, migrations = mapOf(0 to fromZero)))
+        val migrations = (1 until ExportCodec.SCHEMA_VERSION).associateWith<Int, (JsonObject) -> JsonObject> { { it } } + (0 to fromZero)
+        assertEquals(ExportCodec.decode(current), ExportCodec.decode(old, migrations))
+    }
+
+    @Test
+    fun `a version 1 file, from before street doors, still imports`() {
+        val current = ExportCodec.encode(data.setup, exportedAt)
+        val old = current
+            .replace(version, """"schemaVersion": 1""")
+            .replace(Regex(""",\s*"streetDoors": (true|false)"""), "")
+        assertFalse("streetDoors" in old)
+
+        val expected = ExportCodec.decode(current)
+        assertEquals(expected.copy(buildings = expected.buildings.map { it.copy(streetDoors = false) }), ExportCodec.decode(old))
     }
 
     @Test
     fun `an older schema without a migration is refused`() {
-        val old = ExportCodec.encode(data.setup, exportedAt).replace(""""schemaVersion": 1""", """"schemaVersion": 0""")
+        val old = ExportCodec.encode(data.setup, exportedAt).replace(version, """"schemaVersion": 0""")
         assertThrows(ImportException.NotAnExport::class.java) { ExportCodec.decode(old) }
     }
 

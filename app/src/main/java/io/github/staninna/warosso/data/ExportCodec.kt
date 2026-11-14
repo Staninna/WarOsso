@@ -37,7 +37,12 @@ private data class ExportFile(
 private data class ExportComplex(val street: String, val polygon: List<LatLng>)
 
 @Serializable
-private data class ExportBuilding(val osmId: Long, val customName: String?, val outline: List<LatLng>)
+private data class ExportBuilding(
+    val osmId: Long,
+    val customName: String?,
+    val outline: List<LatLng>,
+    val streetDoors: Boolean = false,
+)
 
 @Serializable
 private data class ExportEntrance(
@@ -66,10 +71,13 @@ sealed class ImportException(message: String, cause: Throwable? = null) : Except
 typealias SchemaMigration = (JsonObject) -> JsonObject
 
 object ExportCodec {
-    const val SCHEMA_VERSION = 1
+    const val SCHEMA_VERSION = 2
 
-    /** Keyed by the version a step upgrades from. Empty while version 1 is the only one. */
-    private val MIGRATIONS: Map<Int, SchemaMigration> = emptyMap()
+    /**
+     * Keyed by the version a step upgrades from. Version 2 added the `DOOR` entrance type and
+     * `streetDoors` on a building. A version 1 file has neither and reads as it is.
+     */
+    private val MIGRATIONS: Map<Int, SchemaMigration> = mapOf(1 to { it })
 
     private val json = Json { encodeDefaults = true }
 
@@ -79,7 +87,7 @@ object ExportCodec {
             schemaVersion = SCHEMA_VERSION,
             exportedAt = exportedAt.truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
             complex = ExportComplex(setup.complex.street, setup.complex.polygon.map(LatLng::rounded)),
-            buildings = setup.buildings.map { ExportBuilding(it.osmId, it.customName, it.outline.map(LatLng::rounded)) },
+            buildings = setup.buildings.map { ExportBuilding(it.osmId, it.customName, it.outline.map(LatLng::rounded), it.streetDoors) },
             entrances = setup.entrances.map {
                 val position = it.latLng.rounded()
                 ExportEntrance(
@@ -138,7 +146,7 @@ object ExportCodec {
         }
         return Setup(
             complex = Complex(file.complex.street, file.complex.polygon),
-            buildings = file.buildings.map { Building(it.osmId, osmName = null, it.customName, it.outline) },
+            buildings = file.buildings.map { Building(it.osmId, osmName = null, it.customName, it.outline, it.streetDoors) },
             entrances = file.entrances.map {
                 Entrance(
                     buildingOsmId = it.buildingOsmId,

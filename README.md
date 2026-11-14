@@ -28,11 +28,15 @@ outlines, both as mapped in OpenStreetMap. What it cannot know is where the entr
 doors they lead to. You add that once, in Setup:
 
 1. Tap the map where a stairwell or shared front door is.
-2. Say whether it is a stairwell or an intercom door.
+2. Say whether it is a stairwell, an intercom door or a plain door.
 3. Add its floors. The app proposes them from the address list; you check the order of the doors,
    left to right as you face the building.
 
-Setup shows which numbers no entrance covers yet. Settings can export your setup to
+Where the ground-floor homes have their own front door on the street, they need no entrance. Open
+Buildings, tap the building and switch on "Ground floor needs no entrance". Every number of that
+building that no entrance lists is then walked to directly, to its point in the address list.
+
+Setup shows which numbers are not covered yet. Settings can export your setup to
 `warosso.json` and import it again.
 
 ## Building

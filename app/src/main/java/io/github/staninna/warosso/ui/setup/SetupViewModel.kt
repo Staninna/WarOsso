@@ -113,8 +113,8 @@ class SetupViewModel(private val repository: ComplexRepository) : ViewModel() {
         repository.updateComplex { it.copy(street = street) }
     }
 
-    fun renameBuilding(osmId: Long, name: String) {
-        repository.renameBuilding(osmId, name)
+    fun updateBuilding(osmId: Long, name: String, streetDoors: Boolean) {
+        repository.updateBuilding(osmId, name, streetDoors)
     }
 
     private fun dragEntrance(id: Long, point: LatLng, done: Boolean) {

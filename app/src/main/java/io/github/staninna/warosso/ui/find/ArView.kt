@@ -65,7 +65,9 @@ import io.github.staninna.warosso.domain.ComplexData
 import io.github.staninna.warosso.domain.FieldOfView
 import io.github.staninna.warosso.domain.Fix
 import io.github.staninna.warosso.domain.Guidance
+import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.Orientation
+import io.github.staninna.warosso.domain.Route
 import io.github.staninna.warosso.domain.Side
 import io.github.staninna.warosso.domain.angleDelta
 import io.github.staninna.warosso.domain.bearingTo
@@ -150,12 +152,16 @@ private fun ArOverlay(
     bottomInset: Dp,
 ) {
     val resources = LocalResources.current
-    val targetId = guidance.route.entrance.id
+    val route = guidance.route
+    val targetId = route.targetId
     // Every entrance with its label text, far to near and the target last: composed in that
     // order, nearer labels are drawn over farther ones and nothing ever covers the target.
-    val labelled = remember(data, fix.latLng, targetId, resources) {
-        data.entrances
-            .map { ArSubject(it.id, fix.latLng.bearingTo(it.latLng), fix.latLng.distanceTo(it.latLng), it.id == targetId) to resources.entranceBadge(data, it) }
+    val labelled = remember(data, fix.latLng, route, guidance.number, resources) {
+        fun subject(id: Long, at: LatLng) = ArSubject(id, fix.latLng.bearingTo(at), fix.latLng.distanceTo(at), id == targetId)
+        val entrances = data.entrances.map { subject(it.id, it.latLng) to resources.entranceBadge(data, it) }
+        // A front door on the street is no entrance, so it brings its own label: the number.
+        val ownDoor = (route as? Route.StreetDoor)?.let { subject(targetId, it.target) to guidance.number.toString() }
+        (entrances + listOfNotNull(ownDoor))
             .sortedWith(compareBy<Pair<ArSubject, String>> { (subject, _) -> subject.isTarget }.thenByDescending { (subject, _) -> subject.distanceM })
     }
     val subjects = remember(labelled) { labelled.map { it.first } }

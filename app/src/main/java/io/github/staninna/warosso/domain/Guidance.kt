@@ -15,7 +15,7 @@ data class Guidance(
     val number: Int,
     val route: Route,
     val distanceM: Double?,
-    /** Direction of the entrance, clockwise from true north. */
+    /** Direction of the route's target, clockwise from true north. */
     val bearingDeg: Double?,
     val arrived: Boolean,
 ) {
@@ -27,20 +27,21 @@ data class Guidance(
 }
 
 /**
- * Picks the entrance closest to [fix] and measures the way there. Called again on every fix, so
- * the target switches when another entrance gets closer. Without a fix the first route stands in.
+ * Picks the route whose target is closest to [fix] and measures the way there. Called again on
+ * every fix, so the target switches when another entrance gets closer. Without a fix the first
+ * route stands in.
  */
 fun Lookup.Found.guide(fix: Fix?, wasArrived: Boolean): Guidance {
     if (fix == null) return Guidance(number, routes.first(), distanceM = null, bearingDeg = null, arrived = false)
 
     val route = routes.nearestTo(fix.latLng)
-    val distance = fix.latLng.distanceTo(route.entrance.latLng)
+    val distance = fix.latLng.distanceTo(route.target)
     val arrivalRadius = if (wasArrived) Guidance.LEAVE_RADIUS_M else Guidance.ARRIVE_RADIUS_M
     return Guidance(
         number = number,
         route = route,
         distanceM = distance,
-        bearingDeg = fix.latLng.bearingTo(route.entrance.latLng),
+        bearingDeg = fix.latLng.bearingTo(route.target),
         arrived = distance <= arrivalRadius,
     )
 }

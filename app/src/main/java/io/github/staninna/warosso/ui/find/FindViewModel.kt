@@ -44,7 +44,7 @@ sealed interface FindUiState {
     /** The database is still being read. */
     data object Loading : FindUiState
 
-    /** No entrance is set up yet, so there is nothing to search. */
+    /** Nothing is set up yet, so there is no number to walk to. */
     data class Welcome(val data: ComplexData) : FindUiState
 
     data class Search(val data: ComplexData, val query: String, val miss: Lookup.Miss?) : FindUiState
@@ -104,7 +104,7 @@ class FindViewModel(
     ) { (data, query, miss), guidance, location, settings ->
         when {
             data == null -> FindUiState.Loading
-            data.entrances.isEmpty() -> FindUiState.Welcome(data)
+            !data.canGuide -> FindUiState.Welcome(data)
             guidance != null -> FindUiState.Guiding(data, guidance, location, manualSwitch = settings?.autoSwitchView == false)
             else -> FindUiState.Search(data, query, miss)
         }

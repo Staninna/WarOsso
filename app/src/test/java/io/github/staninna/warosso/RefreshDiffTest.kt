@@ -91,18 +91,27 @@ class RefreshDiffTest {
     }
 
     @Test
+    fun `a building with street doors keeps them through a refresh, even without an entrance`() {
+        val marked = current.copy(buildings = listOf(blockA, blockB.copy(streetDoors = true)), entrances = emptyList())
+        assertTrue(marked.withOsm(OsmData(marked.addresses, listOf(blockA, blockB))).building(2)!!.streetDoors)
+        // Gone from OSM, it stays for the setting it carries.
+        assertTrue(marked.withOsm(OsmData(marked.addresses, listOf(blockA))).building(2)!!.streetDoors)
+    }
+
+    @Test
     fun `an import replaces the setup and keeps the address list`() {
         val imported = Setup(
             complex = current.complex.copy(street = "Klaverweide"),
-            buildings = listOf(blockB.copy(osmName = null, customName = "Shed"), building(9, eastM = 80.0)),
+            buildings = listOf(blockB.copy(osmName = null, customName = "Shed", streetDoors = true), building(9, eastM = 80.0)),
             entrances = listOf(entrance(5, buildingOsmId = 9, floors = arrayOf(listOf(1)))),
         )
         val after = current.withSetup(imported)
 
         assertEquals("Klaverweide", after.complex.street)
         assertEquals(current.addresses, after.addresses)
-        // A known building keeps its OSM name and takes the imported custom name, or loses its own.
+        // A known building keeps its OSM name and takes the imported settings, or loses its own.
         assertNull(after.building(1)!!.customName)
+        assertTrue(after.building(2)!!.streetDoors)
         assertEquals("Linde", after.building(1)!!.osmName)
         assertEquals("Shed", after.building(2)!!.customName)
         assertEquals(imported.buildings[1], after.building(9))

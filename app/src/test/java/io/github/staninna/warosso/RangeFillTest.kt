@@ -3,6 +3,7 @@ package io.github.staninna.warosso
 import io.github.staninna.warosso.domain.FloorDoors
 import io.github.staninna.warosso.domain.fillRange
 import io.github.staninna.warosso.domain.suggestFloors
+import io.github.staninna.warosso.domain.suggestFloorsFor
 import io.github.staninna.warosso.domain.suggestRuns
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -93,5 +94,16 @@ class RangeFillTest {
         val linde = listOf(109, 111, 113, 115, 125, 127, 129, 131)
         val existing = listOf(FloorDoors(0, listOf(115, 113, 111, 109)))
         assertEquals(listOf(FloorDoors(1, listOf(125, 127, 129, 131))), suggestFloors(listOf(linde), existing))
+    }
+
+    @Test
+    fun `a ground floor with its doors on the street is not proposed`() {
+        val linde = listOf(109, 111, 113, 115, 125, 127, 129, 131)
+        val stairwell = entrance(1, buildingOsmId = 1)
+        val data = complexData(addresses = linde.map { address(it, buildingOsmId = 1) })
+        assertEquals(listOf(0, 1), data.suggestFloorsFor(stairwell).map { it.floor })
+
+        val streetLevel = data.copy(buildings = data.buildings.map { it.copy(streetDoors = true) })
+        assertEquals(listOf(FloorDoors(1, listOf(125, 127, 129, 131))), streetLevel.suggestFloorsFor(stairwell))
     }
 }

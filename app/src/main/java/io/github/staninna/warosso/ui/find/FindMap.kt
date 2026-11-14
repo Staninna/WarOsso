@@ -27,12 +27,16 @@ import io.github.staninna.warosso.domain.ComplexData
 import io.github.staninna.warosso.domain.Fix
 import io.github.staninna.warosso.domain.Guidance
 import io.github.staninna.warosso.domain.LatLng
+import io.github.staninna.warosso.domain.Route
 import io.github.staninna.warosso.domain.distanceTo
 import io.github.staninna.warosso.ui.components.TonalIconButton
 import io.github.staninna.warosso.ui.map.Framing
 import io.github.staninna.warosso.ui.map.MapCanvas
 import io.github.staninna.warosso.ui.map.MapEvent
+import io.github.staninna.warosso.ui.map.MapHandle
+import io.github.staninna.warosso.ui.map.MapMarker
 import io.github.staninna.warosso.ui.map.MapUser
+import io.github.staninna.warosso.ui.map.MarkerKind
 import io.github.staninna.warosso.ui.map.toScene
 import kotlinx.coroutines.flow.StateFlow
 
@@ -42,7 +46,7 @@ private val TopOverlayHeight = 140.dp
 
 /**
  * Map mode: the user's dot with its accuracy circle, every entrance, the target highlighted and
- * a straight line to it (SPEC.md 5.1).
+ * a straight line to it (SPEC.md 5.1). The target is an entrance or a front door on the street.
  */
 @Composable
 fun FindMap(
@@ -57,13 +61,21 @@ fun FindMap(
 ) {
     val resources = LocalResources.current
     val headingDeg by heading.collectAsStateWithLifecycle()
-    val target = guidance.route.entrance
+    val route = guidance.route
+    val target = route.target
 
-    val base = remember(data, resources, target.id) { data.toScene(resources, targetId = target.id) }
+    val base = remember(data, resources, route, guidance.number) {
+        val scene = data.toScene(resources, targetId = route.targetId)
+        // A front door on the street is no entrance, so it brings its own marker: the number.
+        val ownDoor = (route as? Route.StreetDoor)?.let {
+            MapMarker(MapHandle(MarkerKind.TARGET, route.targetId), target, guidance.number.toString())
+        }
+        scene.copy(markers = scene.markers + listOfNotNull(ownDoor))
+    }
     val scene = remember(base, fix, headingDeg, canMoveUser) {
         base.copy(
             user = fix?.let { MapUser(it.latLng, it.accuracyM, headingDeg, draggable = canMoveUser) },
-            route = fix?.let { it.latLng to target.latLng },
+            route = fix?.let { it.latLng to target },
         )
     }
 
@@ -75,8 +87,8 @@ fun FindMap(
         val position = fix?.latLng ?: return@LaunchedEffect
         if (following && (framedFrom?.distanceTo(position) ?: Double.MAX_VALUE) > REFRAME_AFTER_M) framedFrom = position
     }
-    val framing = remember(framedFrom, target.id, framingGeneration) {
-        Framing(framedFrom?.let { listOf(it, target.latLng) } ?: data.extent, framingGeneration)
+    val framing = remember(framedFrom, target, framingGeneration) {
+        Framing(framedFrom?.let { listOf(it, target) } ?: data.extent, framingGeneration)
     }
 
     Box(modifier.fillMaxSize()) {

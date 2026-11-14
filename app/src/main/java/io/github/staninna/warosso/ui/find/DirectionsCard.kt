@@ -52,6 +52,7 @@ import io.github.staninna.warosso.R
 import io.github.staninna.warosso.domain.ComplexData
 import io.github.staninna.warosso.domain.EntranceType
 import io.github.staninna.warosso.domain.Guidance
+import io.github.staninna.warosso.domain.Route
 import io.github.staninna.warosso.ui.buildingName
 import io.github.staninna.warosso.ui.components.BigButton
 import io.github.staninna.warosso.ui.directionsLine
@@ -60,11 +61,13 @@ import io.github.staninna.warosso.ui.doorHintTitle
 import io.github.staninna.warosso.ui.entranceName
 import io.github.staninna.warosso.ui.entranceTypeName
 import io.github.staninna.warosso.ui.floorStepTitle
+import io.github.staninna.warosso.ui.floorTitle
+import io.github.staninna.warosso.ui.icon
 
 /**
- * Where to go, in the order you walk it: building, entrance, floor, door. Collapsed it is a
- * summary with the distance. Expanded, which arrival does by itself, it fills the screen with
- * one large step per line.
+ * Where to go, in the order you walk it: building, entrance, floor, door. A front door on the
+ * street skips the entrance. Collapsed it is a summary with the distance. Expanded, which arrival
+ * does by itself, it fills the screen with one large step per line.
  */
 @Composable
 fun DirectionsCard(
@@ -77,7 +80,8 @@ fun DirectionsCard(
 ) {
     val resources = LocalResources.current
     val route = guidance.route
-    val building = resources.buildingName(data, route.entrance)
+    val building = resources.buildingName(data, route)
+    val note = (route as? Route.ViaEntrance)?.entrance?.note
 
     Surface(
         color = MaterialTheme.colorScheme.surfaceContainer,
@@ -130,20 +134,30 @@ fun DirectionsCard(
                     modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(vertical = 20.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    val entranceName = resources.entranceName(data, route.entrance)
-                    when (route.entrance.type) {
-                        EntranceType.STAIRWELL -> Step(R.drawable.ic_stairs, entranceName, resources.entranceTypeName(EntranceType.STAIRWELL))
-                        EntranceType.INTERCOM -> Step(R.drawable.ic_doorbell, stringResource(R.string.step_ring, guidance.number), entranceName)
+                    val numberLine = stringResource(R.string.step_number, guidance.number)
+                    when (route) {
+                        is Route.ViaEntrance -> {
+                            val type = route.entrance.type
+                            val entranceName = resources.entranceName(data, route.entrance)
+                            when (type) {
+                                EntranceType.STAIRWELL, EntranceType.DOOR -> Step(type.icon, entranceName, resources.entranceTypeName(type))
+                                EntranceType.INTERCOM -> Step(type.icon, stringResource(R.string.step_ring, guidance.number), entranceName)
+                            }
+                            Step(R.drawable.ic_floor, resources.floorStepTitle(route))
+                            Step(R.drawable.ic_door_front, resources.doorHintTitle(route.door.hint), numberLine)
+                        }
+                        is Route.StreetDoor -> {
+                            Step(R.drawable.ic_floor, resources.floorTitle(0), stringResource(R.string.step_from_street))
+                            Step(R.drawable.ic_door_front, stringResource(R.string.step_own_door), numberLine)
+                        }
                     }
-                    Step(R.drawable.ic_floor, resources.floorStepTitle(route))
-                    Step(R.drawable.ic_door_front, resources.doorHintTitle(route.door.hint), stringResource(R.string.step_number, guidance.number))
-                    route.entrance.note?.let { Step(R.drawable.ic_info, it) }
+                    note?.let { Step(R.drawable.ic_info, it) }
                 }
                 BigButton(stringResource(R.string.action_done), onDone, icon = R.drawable.ic_check)
             } else {
-                route.entrance.note?.let { note ->
+                note?.let {
                     Text(
-                        text = note,
+                        text = it,
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 2,

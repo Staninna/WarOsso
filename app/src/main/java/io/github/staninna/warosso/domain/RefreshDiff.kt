@@ -23,14 +23,14 @@ data class RefreshDiff(
 
 /** This snapshot with its OSM-derived parts swapped for [fresh]. The owner's setup stays as it is. */
 fun ComplexData.withOsm(fresh: OsmData): ComplexData {
-    val customNames = buildings.associate { it.osmId to it.customName }
+    val known = buildings.associateBy { it.osmId }
     val freshIds = fresh.buildings.mapTo(HashSet()) { it.osmId }
-    // A building that left OSM stays while it carries setup: an entrance or a name of the owner's.
+    // A building that left OSM stays while it carries setup: an entrance or a setting of the owner's.
     val withEntrance = entrances.mapTo(HashSet()) { it.buildingOsmId }
-    val orphaned = buildings.filter { it.osmId !in freshIds && (it.osmId in withEntrance || it.customName != null) }
+    val orphaned = buildings.filter { it.osmId !in freshIds && (it.osmId in withEntrance || it.hasSettings) }
     return copy(
         addresses = fresh.addresses,
-        buildings = fresh.buildings.map { it.copy(customName = customNames[it.osmId]) } + orphaned,
+        buildings = fresh.buildings.map { it.withSettingsOf(known[it.osmId]) } + orphaned,
     )
 }
 

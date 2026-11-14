@@ -22,6 +22,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -45,12 +46,12 @@ import io.github.staninna.warosso.ui.components.ConnectedItem
 import io.github.staninna.warosso.ui.components.ConnectedSection
 import io.github.staninna.warosso.ui.components.Placeholder
 
-/** Every building with house numbers, to give it a name of your own. */
+/** Every building with house numbers, to name it and to say whether its ground floor needs an entrance. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BuildingsSheet(data: ComplexData, onRename: (osmId: Long, name: String) -> Unit, onDismiss: () -> Unit) {
+fun BuildingsSheet(data: ComplexData, onChange: (osmId: Long, name: String, streetDoors: Boolean) -> Unit, onDismiss: () -> Unit) {
     val resources = LocalResources.current
-    var renaming by rememberSaveable { mutableStateOf<Long?>(null) }
+    var editing by rememberSaveable { mutableStateOf<Long?>(null) }
 
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column(Modifier.verticalScroll(rememberScrollState()).padding(bottom = 24.dp)) {
@@ -58,63 +59,76 @@ fun BuildingsSheet(data: ComplexData, onRename: (osmId: Long, name: String) -> U
                 data.complexBuildings.forEach { building ->
                     val numbers = data.numbersOf(building.osmId)
                     val entrances = data.entrances.count { it.buildingOsmId == building.osmId }
+                    val ownDoors = data.streetDoorNumbers(building.osmId).size
                     ConnectedItem(
                         title = resources.buildingName(data, building),
                         subtitle = listOfNotNull(
                             resources.buildingNumbers(data, building),
                             pluralStringResource(R.plurals.count_numbers, numbers.size, numbers.size),
                             pluralStringResource(R.plurals.count_entrances, entrances, entrances),
+                            pluralStringResource(R.plurals.count_own_doors, ownDoors, ownDoors).takeIf { building.streetDoors },
                         ).joinToString(" · "),
                         leading = { Icon(painterResource(R.drawable.ic_apartment), contentDescription = null) },
-                        trailing = { Icon(painterResource(R.drawable.ic_edit), contentDescription = stringResource(R.string.action_rename)) },
+                        trailing = { Icon(painterResource(R.drawable.ic_edit), contentDescription = stringResource(R.string.action_edit)) },
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                        onClick = { renaming = building.osmId },
+                        onClick = { editing = building.osmId },
                     )
                 }
             }
         }
     }
 
-    renaming?.let(data::building)?.let { building ->
-        RenameBuildingDialog(
+    editing?.let(data::building)?.let { building ->
+        BuildingDialog(
             data = data,
             building = building,
-            onRename = { onRename(building.osmId, it) },
-            onDismiss = { renaming = null },
+            onSave = { name, streetDoors -> onChange(building.osmId, name, streetDoors) },
+            onDismiss = { editing = null },
         )
     }
 }
 
+/** A building's name, and whether its ground-floor homes have their front door on the street. */
 @Composable
-private fun RenameBuildingDialog(data: ComplexData, building: Building, onRename: (String) -> Unit, onDismiss: () -> Unit) {
+private fun BuildingDialog(data: ComplexData, building: Building, onSave: (name: String, streetDoors: Boolean) -> Unit, onDismiss: () -> Unit) {
     val resources = LocalResources.current
     var name by rememberSaveable { mutableStateOf(building.customName.orEmpty()) }
+    var streetDoors by rememberSaveable { mutableStateOf(building.streetDoors) }
     // What the building is called when the field is left empty.
     val fallback = resources.buildingName(data, building.copy(customName = null))
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.building_rename_title)) },
+        title = { Text(resources.buildingName(data, building)) },
         text = {
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                singleLine = true,
-                label = { Text(stringResource(R.string.building_rename_label)) },
-                placeholder = { Text(fallback) },
-                supportingText = { Text(stringResource(R.string.building_rename_hint, fallback)) },
-                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
-                modifier = Modifier.fillMaxWidth(),
-            )
+            Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    singleLine = true,
+                    label = { Text(stringResource(R.string.building_rename_label)) },
+                    placeholder = { Text(fallback) },
+                    supportingText = { Text(stringResource(R.string.building_rename_hint, fallback)) },
+                    keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                ConnectedItem(
+                    title = stringResource(R.string.building_street_doors),
+                    subtitle = stringResource(R.string.building_street_doors_hint),
+                    trailing = { Switch(checked = streetDoors, onCheckedChange = null) },
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    onClick = { streetDoors = !streetDoors },
+                )
+            }
         },
         confirmButton = {
-            TextButton(onClick = { onRename(name); onDismiss() }) { Text(stringResource(R.string.action_save)) }
+            TextButton(onClick = { onSave(name, streetDoors); onDismiss() }) { Text(stringResource(R.string.action_save)) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) } },
     )
 }
 
-/** The validation view: house numbers in the complex that no entrance lists yet, per building. */
+/** The validation view: house numbers in the complex that lead nowhere yet, per building. */
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun MissingNumbersSheet(data: ComplexData, onDismiss: () -> Unit) {

@@ -9,7 +9,7 @@
     <string name="action_ok">OK</string>
     <string name="action_add">Add</string>
     <string name="action_save">Save</string>
-    <string name="action_rename">Rename</string>
+    <string name="action_edit">Edit</string>
     <string name="action_retry">Try again</string>
     <string name="action_allow">Allow</string>
     <string name="action_turn_on">Turn on</string>
@@ -21,6 +21,7 @@
     <string name="entrance_default_name">Entrance %1$d</string>
     <string name="entrance_type_stairwell">Stairwell</string>
     <string name="entrance_type_intercom">Intercom</string>
+    <string name="entrance_type_door">Door</string>
     <string name="number_range">%1$d-%2$d</string>
     <string name="floor_ground">Ground floor</string>
     <string name="floor_n">Floor %1$d</string>
@@ -42,6 +43,10 @@
         <item quantity="one">%1$d entrance</item>
         <item quantity="other">%1$d entrances</item>
     </plurals>
+    <plurals name="count_own_doors">
+        <item quantity="one">%1$d own front door</item>
+        <item quantity="other">%1$d own front doors</item>
+    </plurals>
 
     <!-- Find -->
     <string name="find_prompt">Which number?</string>
@@ -55,7 +60,7 @@
     <string name="not_found_did_you_mean">Did you mean one of these?</string>
     <string name="not_found_no_suggestions">The address list has no numbers at all. Refresh it from OpenStreetMap in Settings.</string>
     <string name="not_set_up_title">%1$d is not set up yet</string>
-    <string name="not_set_up_body">It is in the address list, but no entrance lists this door.</string>
+    <string name="not_set_up_body">It is in the address list, but no entrance lists this door and its building has no front doors on the street.</string>
     <string name="not_set_up_action">Open Setup</string>
 
     <!-- Guidance -->
@@ -78,6 +83,9 @@
     <string name="step_inner_stairs_to_floor">inner stairs to floor %1$d</string>
     <string name="step_to_floor">floor %1$d</string>
     <string name="step_number">Number %1$d</string>
+    <string name="directions_street_door">Ground floor · own front door on the street</string>
+    <string name="step_from_street">Straight from the street</string>
+    <string name="step_own_door">Own front door</string>
 
     <!-- Setup -->
     <string name="setup_title">Setup</string>
@@ -99,15 +107,16 @@
     <string name="setup_area_body">Drag a corner to move it. Tap a small dot to add a corner, tap a corner to remove it.</string>
     <string name="setup_area_reset">Fit to buildings</string>
     <string name="setup_street_title">Street of the complex</string>
-    <string name="building_rename_title">Name this building</string>
     <string name="building_rename_label">Name</string>
     <string name="building_rename_hint">Leave empty to call it %1$s.</string>
+    <string name="building_street_doors">Ground floor needs no entrance</string>
+    <string name="building_street_doors_hint">Numbers that no entrance lists are front doors on the street. You walk straight to them.</string>
     <plurals name="missing_title">
-        <item quantity="one">%1$d number has no entrance yet</item>
-        <item quantity="other">%1$d numbers have no entrance yet</item>
+        <item quantity="one">%1$d number is not set up yet</item>
+        <item quantity="other">%1$d numbers are not set up yet</item>
     </plurals>
-    <string name="missing_body">These are in the address list and inside the complex area, but no entrance lists them.</string>
-    <string name="missing_none_title">Every number has an entrance</string>
+    <string name="missing_body">These are in the address list and inside the complex area, but no entrance lists them. If they are front doors on the street, say so for their building under Buildings.</string>
+    <string name="missing_none_title">Every number is set up</string>
     <string name="missing_none_body">The whole address list inside the complex area is covered.</string>
 
     <!-- Entrance editor -->
@@ -115,6 +124,7 @@
     <string name="entrance_type">Type</string>
     <string name="entrance_type_stairwell_hint">Outdoor stairs up to the galleries.</string>
     <string name="entrance_type_intercom_hint">A shared front door with an intercom.</string>
+    <string name="entrance_type_door_hint">A plain door: no intercom, no outdoor stairs. A home\'s own front door, for example.</string>
     <string name="entrance_inner_stairs">Stairs behind the door</string>
     <string name="entrance_inner_stairs_hint">The directions will say to take the inner stairs.</string>
     <string name="entrance_name">Name</string>

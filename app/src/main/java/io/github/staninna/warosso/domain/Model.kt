@@ -1,5 +1,6 @@
 package io.github.staninna.warosso.domain
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -56,7 +57,19 @@ data class Building(
     val customName: String?,
     /** A ring without a repeated closing point. Around all parts when there are several. */
     val outline: List<LatLng>,
-)
+    /**
+     * The ground-floor homes have their own front door on the street and need no entrance: a
+     * number of this building that no entrance lists is walked to directly.
+     */
+    @ColumnInfo(defaultValue = "0") val streetDoors: Boolean = false,
+) {
+    /** The owner set something on this building. That keeps it through a refresh and puts it in an export. */
+    val hasSettings: Boolean get() = customName != null || streetDoors
+
+    /** This building with the owner's settings of [other], or without any when [other] is null. */
+    fun withSettingsOf(other: Building?): Building =
+        copy(customName = other?.customName, streetDoors = other?.streetDoors == true)
+}
 
 enum class EntranceType {
     /** Outdoor stairs up to the galleries. */
@@ -64,6 +77,9 @@ enum class EntranceType {
 
     /** A shared front door with an intercom panel. */
     INTERCOM,
+
+    /** A plain door: no intercom, no outdoor stairs. A home's own front door, for one. */
+    DOOR,
 }
 
 /** The doors on one floor, ordered left to right as seen from the entrance, facing the building. */
@@ -133,14 +149,23 @@ data class ComplexData(
     val setup: Setup
         get() {
             val withEntrance = entrances.mapTo(HashSet()) { it.buildingOsmId }
-            return Setup(complex, buildings.filter { it.customName != null || it.osmId in withEntrance }, entrances)
+            return Setup(complex, buildings.filter { it.hasSettings || it.osmId in withEntrance }, entrances)
         }
 
-    /** Complex numbers no entrance serves yet. */
-    val unservedNumbers: List<Int> by lazy {
-        val served = entrances.flatMapTo(HashSet()) { it.doorNumbers }
-        bagNumbers.filterNot { it in served }
+    private val servedNumbers: Set<Int> by lazy { entrances.flatMapTo(HashSet()) { it.doorNumbers } }
+
+    /** The addresses reached straight from the street, by number: no entrance lists them and their building has [Building.streetDoors]. */
+    private val streetDoors: Map<Int, Address> by lazy {
+        complexAddresses
+            .filter { it.number !in servedNumbers && it.buildingOsmId?.let(::building)?.streetDoors == true }
+            .associateBy { it.number }
     }
+
+    /** Complex numbers that lead nowhere yet: no entrance lists them and they have no front door on the street. */
+    val unservedNumbers: List<Int> by lazy { bagNumbers.filterNot { it in servedNumbers || it in streetDoors } }
+
+    /** There is at least one number to walk to. */
+    val canGuide: Boolean get() = entrances.isNotEmpty() || streetDoors.isNotEmpty()
 
     /** Buildings that hold at least one complex address or an entrance, ordered by lowest number. */
     val complexBuildings: List<Building> by lazy {
@@ -165,6 +190,12 @@ data class ComplexData(
     /** The same numbers, split by the OSM outline they sit in: the halves of a block, each ascending. */
     fun numbersByPartOf(buildingOsmId: Long): List<List<Int>> =
         addressesByBuilding[buildingOsmId].orEmpty().groupBy({ it.partOsmId }, { it.number }).values.toList()
+
+    /** The address of [number] when its front door is on the street, see [Building.streetDoors]. */
+    fun streetDoor(number: Int): Address? = streetDoors[number]
+
+    /** The numbers of a building that are reached straight from the street, ascending. */
+    fun streetDoorNumbers(buildingOsmId: Long): List<Int> = numbersOf(buildingOsmId).filter { it in streetDoors }
 
     fun entrance(id: Long): Entrance? = entrances.firstOrNull { it.id == id }
 

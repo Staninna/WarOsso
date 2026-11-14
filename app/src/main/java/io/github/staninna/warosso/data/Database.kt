@@ -1,5 +1,6 @@
 package io.github.staninna.warosso.data
 
+import androidx.room.AutoMigration
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Insert
@@ -20,8 +21,10 @@ import kotlinx.serialization.json.Json
 
 @Database(
     entities = [Complex::class, Address::class, Building::class, Entrance::class],
-    version = 1,
+    version = 2,
     exportSchema = true,
+    // 2 added building.streetDoors.
+    autoMigrations = [AutoMigration(from = 1, to = 2)],
 )
 @TypeConverters(ListConverters::class)
 abstract class WarOssoDatabase : RoomDatabase() {
@@ -79,8 +82,8 @@ interface ComplexDao {
     @Query("DELETE FROM entrance WHERE id = :id")
     suspend fun deleteEntrance(id: Long)
 
-    @Query("UPDATE building SET customName = :name WHERE osmId = :osmId")
-    suspend fun renameBuilding(osmId: Long, name: String?)
+    @Query("UPDATE building SET customName = :name, streetDoors = :streetDoors WHERE osmId = :osmId")
+    suspend fun updateBuilding(osmId: Long, name: String?, streetDoors: Boolean)
 
     @Insert
     suspend fun insertBuildings(buildings: List<Building>)

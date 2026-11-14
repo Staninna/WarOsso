@@ -43,7 +43,7 @@ import io.github.staninna.warosso.domain.Entrance
 import io.github.staninna.warosso.domain.EntranceType
 import io.github.staninna.warosso.domain.FloorDoors
 import io.github.staninna.warosso.domain.nextFloor
-import io.github.staninna.warosso.domain.suggestFloors
+import io.github.staninna.warosso.domain.suggestFloorsFor
 import io.github.staninna.warosso.domain.withDoors
 import io.github.staninna.warosso.domain.withFloor
 import io.github.staninna.warosso.domain.withoutFloor
@@ -76,7 +76,7 @@ fun EntranceEditorScreen(entranceId: Long, onBack: () -> Unit) {
     val (data, entrance) = current
     val resources = LocalResources.current
     var dialog by rememberSaveable { mutableStateOf<EditorDialog?>(null) }
-    val suggestions = remember(data, entrance) { suggestFloors(data.numbersByPartOf(entrance.buildingOsmId), entrance.floors) }
+    val suggestions = remember(data, entrance) { data.suggestFloorsFor(entrance) }
 
     Scaffold(
         topBar = {
@@ -173,7 +173,13 @@ private fun DetailsSection(
             )
             Spacer(Modifier.height(8.dp))
             Text(
-                text = stringResource(if (entrance.type == EntranceType.STAIRWELL) R.string.entrance_type_stairwell_hint else R.string.entrance_type_intercom_hint),
+                text = stringResource(
+                    when (entrance.type) {
+                        EntranceType.STAIRWELL -> R.string.entrance_type_stairwell_hint
+                        EntranceType.INTERCOM -> R.string.entrance_type_intercom_hint
+                        EntranceType.DOOR -> R.string.entrance_type_door_hint
+                    },
+                ),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
