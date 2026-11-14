@@ -12,7 +12,15 @@ data class PositionReading(
     /** Direction of travel, clockwise from true north, or null when the provider does not know. */
     val courseDeg: Float?,
     val timeMs: Long,
-)
+) {
+    /** [courseDeg] when the user walks fast enough for it to mean something. */
+    val walkingCourseDeg: Float? get() = courseDeg.takeIf { (speedMps ?: 0f) >= WALKING_ABOVE_MPS }
+
+    private companion object {
+        /** Below this the reported direction of travel is mostly noise. A slow walk is about 1 m/s. */
+        const val WALKING_ABOVE_MPS = 0.7f
+    }
+}
 
 /**
  * Steadies the position from one fix to the next.

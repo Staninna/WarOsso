@@ -7,12 +7,15 @@ import io.github.staninna.warosso.domain.PositionFilter
 import io.github.staninna.warosso.domain.PositionReading
 import io.github.staninna.warosso.domain.Rotation
 import io.github.staninna.warosso.domain.Vec3
+import io.github.staninna.warosso.domain.Walk
+import io.github.staninna.warosso.domain.WalkTracker
 import io.github.staninna.warosso.domain.angleDelta
 import io.github.staninna.warosso.domain.distanceTo
 import io.github.staninna.warosso.domain.isMagneticDisturbance
 import io.github.staninna.warosso.domain.offset
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import kotlin.math.abs
@@ -86,7 +89,7 @@ class SensingTest {
     private fun compassPose(headingDeg: Double) = Orientation.of(headingDeg.toFloat(), tiltDeg = 75f).rotation
     private fun gyroPose(headingDeg: Double, gyroNorthDeg: Double = 37.0) = Rotation.about(Vec3.UP, gyroNorthDeg) * compassPose(headingDeg)
 
-    private fun headingOf(rotation: Rotation) = Orientation(rotation, reliable = true).headingDeg.toDouble()
+    private fun headingOf(rotation: Rotation) = Orientation(rotation).headingDeg.toDouble()
 
     /** Feeds [seconds] of readings at 50 a second and returns the last heading. */
     private fun CompassFusion.run(
@@ -110,7 +113,7 @@ class SensingTest {
     fun `the first reading takes its north from the compass`() {
         val fused = CompassFusion().update(gyroPose(120.0), compassPose(120.0), disturbed = false, timeNanos = 0)
         assertEquals(120.0, headingOf(fused), 0.01)
-        assertEquals(75f, Orientation(fused, reliable = true).tiltDeg, 0.01f)
+        assertEquals(75f, Orientation(fused).tiltDeg, 0.01f)
     }
 
     @Test
@@ -131,11 +134,75 @@ class SensingTest {
     }
 
     @Test
-    fun `a disturbed field moves nothing at all`() {
+    fun `a compass that is pulled far aside is sat out while it passes`() {
         val fusion = CompassFusion()
         fusion.run(0.0, 20.0, gyroHeading = { 200.0 }, compassHeading = { 200.0 })
-        val swung = fusion.run(20.0, 30.0, disturbed = true, gyroHeading = { 200.0 }, compassHeading = { 260.0 })
-        assertEquals(200.0, swung, 0.01)
+        // Walking past a car: the field's strength gives it away and the compass swings 60 degrees.
+        val beside = fusion.run(20.0, 8.0, disturbed = true, gyroHeading = { 200.0 }, compassHeading = { 260.0 })
+        assertEquals(200.0, beside, 0.01)
+        val past = fusion.run(28.0, 5.0, gyroHeading = { 200.0 }, compassHeading = { 200.0 })
+        assertEquals(200.0, past, 0.01)
+    }
+
+    @Test
+    fun `a compass that stays elsewhere is believed in the end`() {
+        val fusion = CompassFusion()
+        fusion.run(0.0, 20.0, gyroHeading = { 200.0 }, compassHeading = { 200.0 })
+        assertEquals(260.0, fusion.run(20.0, 5.0, gyroHeading = { 200.0 }, compassHeading = { 260.0 }), 1.0)
+
+        // Also with a field that reads as disturbed all day, as with a magnet in the phone's case.
+        val magnet = CompassFusion()
+        magnet.run(0.0, 20.0, disturbed = true, gyroHeading = { 200.0 }, compassHeading = { 200.0 })
+        assertEquals(260.0, magnet.run(20.0, 15.0, disturbed = true, gyroHeading = { 200.0 }, compassHeading = { 260.0 }), 1.0)
+    }
+
+    @Test
+    fun `a wrong first reading does not stick`() {
+        val fusion = CompassFusion()
+        // The compass starts out pointing backwards and finds north half a second later.
+        val compass = { second: Double -> if (second < 0.5) 200.0 else 20.0 }
+        val heading = fusion.run(0.0, 15.0, disturbed = true, gyroHeading = { 20.0 }, compassHeading = compass)
+        assertEquals(20.0, heading, 1.0)
+    }
+
+    @Test
+    fun `a disturbed field is followed more slowly`() {
+        fun after(disturbed: Boolean): Double {
+            val fusion = CompassFusion()
+            fusion.run(0.0, 60.0, gyroHeading = { 200.0 }, compassHeading = { 200.0 })
+            return fusion.run(60.0, 5.0, disturbed = disturbed, gyroHeading = { 200.0 }, compassHeading = { 215.0 })
+        }
+        val calm = angleDelta(200.0, after(disturbed = false))
+        val pulled = angleDelta(200.0, after(disturbed = true))
+        assertTrue("calm $calm, pulled $pulled", pulled > 0.5 && pulled < calm / 2)
+    }
+
+    @Test
+    fun `a turn by hand holds against the compass until it is handed back`() {
+        val fusion = CompassFusion()
+        fusion.run(0.0, 20.0, gyroHeading = { 200.0 }, compassHeading = { 200.0 })
+        assertFalse(fusion.byHand)
+
+        fusion.turn(-150.0)
+        assertTrue(fusion.byHand)
+        assertEquals(50.0, fusion.run(20.0, 60.0, gyroHeading = { 200.0 }, compassHeading = { 200.0 }), 0.01)
+        // The phone still turns with the gyroscope.
+        assertEquals(140.0, fusion.run(80.0, 1.0, gyroHeading = { 290.0 }, compassHeading = { 290.0 }), 0.01)
+
+        fusion.followCompass()
+        assertFalse(fusion.byHand)
+        assertEquals(290.0, fusion.run(81.0, 1.0, gyroHeading = { 290.0 }, compassHeading = { 290.0 }), 0.01)
+    }
+
+    @Test
+    fun `without a gyroscope a turn by hand is a fixed correction on the compass`() {
+        val fusion = CompassFusion()
+        fun heading(compassDeg: Double, second: Long) =
+            headingOf(fusion.update(compassPose(compassDeg), compassPose(compassDeg), disturbed = false, timeNanos = second * 1_000_000_000))
+        assertEquals(70.0, heading(70.0, 0), 0.01)
+        fusion.turn(30.0)
+        assertEquals(100.0, heading(70.0, 1), 0.01)
+        assertEquals(190.0, heading(160.0, 2), 0.01)
     }
 
     @Test
@@ -150,7 +217,7 @@ class SensingTest {
     fun `after a calibration the new north is learned fast`() {
         val fusion = CompassFusion()
         fusion.run(0.0, 20.0, gyroHeading = { 300.0 }, compassHeading = { 300.0 })
-        fusion.reset()
+        fusion.relearn()
         val heading = fusion.run(20.0, 1.0, gyroHeading = { 300.0 }, compassHeading = { 320.0 })
         assertEquals(320.0, heading, 1.0)
     }
@@ -160,5 +227,42 @@ class SensingTest {
         assertFalse(isMagneticDisturbance(measuredUt = 51f, expectedUt = 49f))
         assertTrue(isMagneticDisturbance(measuredUt = 60f, expectedUt = 49f))
         assertTrue(isMagneticDisturbance(measuredUt = 38f, expectedUt = 49f))
+    }
+
+    @Test
+    fun `the direction of travel only counts at walking pace`() {
+        assertEquals(40f, reading(home, 0, speedMps = 1.2f, courseDeg = 40f).walkingCourseDeg)
+        assertNull(reading(home, 0, speedMps = 0.3f, courseDeg = 40f).walkingCourseDeg)
+        assertNull(reading(home, 0, speedMps = null, courseDeg = 40f).walkingCourseDeg)
+        assertNull(reading(home, 0, speedMps = 1.2f, courseDeg = null).walkingCourseDeg)
+    }
+
+    private fun WalkTracker.walk(vararg steps: Pair<Float?, Float?>): Walk? = steps.map { (course, heading) -> update(course, heading) }.last()
+
+    @Test
+    fun `a heading that points backwards all along a walk is caught`() {
+        val walk = WalkTracker().walk(350f to 175f, 355f to 180f, 5f to 170f, 10f to 185f)
+        assertEquals(0.0, angleDelta(0.0, walk!!.courseDeg), 0.01)
+        assertTrue(walk.headingAgainst)
+    }
+
+    @Test
+    fun `looking around while walking is no reason to doubt the heading`() {
+        // Ahead, sideways at a building, and one glance back.
+        assertFalse(WalkTracker().walk(90f to 95f, 90f to 170f, 90f to 10f, 90f to 85f)!!.headingAgainst)
+        assertFalse(WalkTracker().walk(90f to 270f, 90f to 270f, 90f to 270f, 90f to 190f)!!.headingAgainst)
+        assertFalse(WalkTracker().walk(90f to null, 90f to 270f, 90f to 270f, 90f to 270f)!!.headingAgainst)
+    }
+
+    @Test
+    fun `there is no walk while standing, turning or just setting off`() {
+        assertNull(WalkTracker().walk(90f to 270f, 90f to 270f, 90f to 270f))
+        assertNull(WalkTracker().walk(90f to 270f, 90f to 270f, 150f to 270f, 90f to 270f))
+
+        val tracker = WalkTracker()
+        tracker.walk(90f to 270f, 90f to 270f, 90f to 270f, 90f to 270f)
+        // Standing still for a fix starts the count again.
+        assertNull(tracker.walk(null to 270f, 90f to 270f, 90f to 270f, 90f to 270f))
+        assertTrue(tracker.update(90f, 270f)!!.headingAgainst)
     }
 }

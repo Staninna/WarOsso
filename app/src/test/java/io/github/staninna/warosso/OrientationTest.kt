@@ -50,19 +50,19 @@ class OrientationTest {
 
     @Test
     fun `a flat phone points where its top edge points`() {
-        val north = Orientation(flatFacingNorth, reliable = true)
+        val north = Orientation(flatFacingNorth)
         assertEquals(0f, north.headingDeg, 0.01f)
         assertEquals(0f, north.tiltDeg, 0.01f)
-        assertEquals(90f, Orientation(flatFacingEast, reliable = true).headingDeg, 0.01f)
+        assertEquals(90f, Orientation(flatFacingEast).headingDeg, 0.01f)
     }
 
     @Test
     fun `an upright phone points where its camera looks`() {
-        val north = Orientation(uprightFacingNorth, reliable = true)
+        val north = Orientation(uprightFacingNorth)
         assertEquals(0f, north.headingDeg, 0.01f)
         assertEquals(90f, north.tiltDeg, 0.01f)
         assertEquals(0f, north.elevationDeg, 0.01f)
-        assertEquals(90f, Orientation(uprightFacingEast, reliable = false).headingDeg, 0.01f)
+        assertEquals(90f, Orientation(uprightFacingEast).headingDeg, 0.01f)
     }
 
     @Test
@@ -159,7 +159,7 @@ class OrientationTest {
     fun `rolling the phone tilts the horizon across the screen`() {
         // Upright, facing north, rolled 10 degrees clockwise as the user sees it.
         val rolled = Rotation.about(Vec3.NORTH, 10.0) * uprightFacingNorth
-        val camera = ArCamera(Orientation(rolled, reliable = true), fieldOfView)
+        val camera = ArCamera(Orientation(rolled), fieldOfView)
         assertTrue(camera.mark(-20.0, wholeView).y > 0.5f)
         assertEquals(0.5f, camera.mark(0.0, wholeView).y, 1e-6f)
         assertTrue(camera.mark(20.0, wholeView).y < 0.5f)

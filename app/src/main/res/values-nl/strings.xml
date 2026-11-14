@@ -72,6 +72,10 @@
     <string name="banner_gps_searching">Gps zoeken…</string>
     <string name="banner_gps_weak">Gps zwak ±%1$d m</string>
     <string name="banner_compass">Kompas is van slag. Beweeg de telefoon in een 8.</string>
+    <string name="banner_heading_against">De richting lijkt omgedraaid. Wijs met de telefoon je looprichting aan en tik op Herstel.</string>
+    <string name="banner_heading_by_hand">Richting met de hand gezet.</string>
+    <string name="action_fix">Herstel</string>
+    <string name="action_use_compass">Kompas gebruiken</string>
     <string name="banner_camera_off">Camera staat uit. Sta hem toe om de ingangen voor je te zien.</string>
     <string name="arrived_title">Je bent er</string>
     <string name="directions_line">%1$s → %2$s · %3$s</string>

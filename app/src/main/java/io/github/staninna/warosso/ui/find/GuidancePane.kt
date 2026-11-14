@@ -61,6 +61,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.staninna.warosso.R
 import io.github.staninna.warosso.domain.LatLng
+import io.github.staninna.warosso.domain.North
 import io.github.staninna.warosso.domain.Orientation
 import io.github.staninna.warosso.domain.ViewMode
 import io.github.staninna.warosso.sensors.LocationState
@@ -76,7 +77,13 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 
-/** Guidance to a door: camera or map behind, the number on top, directions at the bottom. */
+/**
+ * Guidance to a door: camera or map behind, the number on top, directions at the bottom.
+ *
+ * @param headingAgainstWalk the user walks one way while the phone claims to point the other, see [io.github.staninna.warosso.domain.Walk].
+ * @param onTurnHeading the user turns the heading by hand, by this many degrees clockwise.
+ * @param onAlignHeadingToWalk the user points the phone where they walk and wants the heading set to that.
+ */
 @Composable
 fun GuidancePane(
     state: FindUiState.Guiding,
@@ -84,16 +91,20 @@ fun GuidancePane(
     viewMode: ViewMode,
     pose: StateFlow<Orientation?>,
     mapHeading: StateFlow<Float?>,
+    headingAgainstWalk: Boolean,
     canMoveUser: Boolean,
     onMoveUser: (LatLng) -> Unit,
     onToggleViewMode: () -> Unit,
+    onTurnHeading: (Float) -> Unit,
+    onAlignHeadingToWalk: () -> Unit,
+    onFollowCompass: () -> Unit,
     onStop: () -> Unit,
 ) {
     val (data, guidance, location) = state
     val fix = location.fix
     val camera = rememberPermissionState(Manifest.permission.CAMERA)
-    val compassReliable by remember(pose) { pose.map { it?.reliable != false }.distinctUntilChanged() }
-        .collectAsStateWithLifecycle(initialValue = true)
+    val north by remember(pose) { pose.map { it?.north ?: North.COMPASS }.distinctUntilChanged() }
+        .collectAsStateWithLifecycle(initialValue = North.COMPASS)
 
     var expandedByUser by rememberSaveable(guidance.number) { mutableStateOf(false) }
     val expanded = guidance.arrived || expandedByUser
@@ -108,7 +119,7 @@ fun GuidancePane(
             label = "viewMode",
         ) { mode ->
             when (mode) {
-                ViewMode.AR -> ArView(data, guidance, fix, pose, cameraGranted = camera.granted, bottomInset = cardHeight)
+                ViewMode.AR -> ArView(data, guidance, fix, pose, cameraGranted = camera.granted, bottomInset = cardHeight, onTurnHeading = onTurnHeading)
                 ViewMode.MAP -> FindMap(data, guidance, fix, mapHeading, canMoveUser, onMoveUser, bottomInset = cardHeight)
             }
         }
@@ -140,8 +151,25 @@ fun GuidancePane(
                     action = stringResource(R.string.action_allow) to camera.request,
                 )
             }
-            ToggledBanner(visible = !compassReliable) {
+            ToggledBanner(visible = north == North.COMPASS_UNSURE) {
                 Banner(stringResource(R.string.banner_compass), warning = true) { FigureEight() }
+            }
+            // A heading the user set is theirs to undo, with the banner below.
+            ToggledBanner(visible = headingAgainstWalk && north != North.BY_HAND) {
+                Banner(
+                    text = stringResource(R.string.banner_heading_against),
+                    warning = true,
+                    icon = R.drawable.ic_screen_rotation,
+                    action = stringResource(R.string.action_fix) to onAlignHeadingToWalk,
+                )
+            }
+            ToggledBanner(visible = north == North.BY_HAND) {
+                Banner(
+                    text = stringResource(R.string.banner_heading_by_hand),
+                    warning = false,
+                    icon = R.drawable.ic_swap_horiz,
+                    action = stringResource(R.string.action_use_compass) to onFollowCompass,
+                )
             }
         }
 
@@ -235,7 +263,7 @@ private fun ToggledBanner(visible: Boolean, banner: @Composable () -> Unit) {
     AnimatedVisibility(visible, enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()) { banner() }
 }
 
-/** A one-line status over the camera or map. Warnings take the error colours to stand out in daylight. */
+/** A short status over the camera or map. Warnings take the error colours to stand out in daylight. */
 @Composable
 private fun Banner(
     text: String,

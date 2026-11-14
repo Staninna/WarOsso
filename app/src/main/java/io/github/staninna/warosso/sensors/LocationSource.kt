@@ -36,9 +36,9 @@ interface LocationSource {
 }
 
 /** A fix at [latLng] with the magnetic declination of that spot, so headings can be made true. */
-fun fixAt(latLng: LatLng, accuracyM: Float, altitudeM: Float = 0f): Fix {
+fun fixAt(latLng: LatLng, accuracyM: Float, altitudeM: Float = 0f, courseDeg: Float? = null): Fix {
     val field = GeomagneticField(latLng.lat.toFloat(), latLng.lon.toFloat(), altitudeM, System.currentTimeMillis())
-    return Fix(latLng, accuracyM, field.declination)
+    return Fix(latLng, accuracyM, field.declination, courseDeg)
 }
 
 /**
@@ -69,7 +69,8 @@ class PlatformLocationSource(context: Context) : LocationSource {
                     courseDeg = location.bearing.takeIf { location.hasBearing() },
                     timeMs = location.elapsedRealtimeNanos / 1_000_000,
                 )
-                trySend(LocationState.Located(fixAt(filter.update(reading), location.accuracy, location.altitude.toFloat())))
+                val fix = fixAt(filter.update(reading), location.accuracy, location.altitude.toFloat(), reading.walkingCourseDeg)
+                trySend(LocationState.Located(fix))
             }
 
             override fun onProviderDisabled(provider: String) {

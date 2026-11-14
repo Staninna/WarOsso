@@ -68,14 +68,25 @@ data class Rotation(val w: Double, val x: Double, val y: Double, val z: Double) 
     }
 }
 
+/** Where a pose gets its north from. */
+enum class North {
+    /** The compass, and it is sure of itself. */
+    COMPASS,
+
+    /** The compass, but it asks for calibration. */
+    COMPASS_UNSURE,
+
+    /** The user turned the view into place. The gyroscope holds it there and the compass is left out. */
+    BY_HAND,
+}
+
 /**
  * How the phone is held.
  *
  * @param rotation the turn from the phone's own axes to the world's. The phone's x points to its
  *   right edge, y to its top edge and z out of the screen. The camera looks along -z.
- * @param reliable false when the compass asks for calibration.
  */
-data class Orientation(val rotation: Rotation, val reliable: Boolean) {
+data class Orientation(val rotation: Rotation, val north: North = North.COMPASS) {
     /** Where the screen faces. */
     private val screenNormal = rotation.rotate(Vec3.UP)
 
@@ -114,9 +125,9 @@ data class Orientation(val rotation: Rotation, val reliable: Boolean) {
 
     companion object {
         /** A phone held without roll: facing [headingDeg] and tipped up by [tiltDeg] from lying flat. */
-        fun of(headingDeg: Float, tiltDeg: Float, reliable: Boolean = true): Orientation = Orientation(
+        fun of(headingDeg: Float, tiltDeg: Float, north: North = North.COMPASS): Orientation = Orientation(
             rotation = Rotation.about(Vec3.UP, -headingDeg.toDouble()) * Rotation.about(Vec3.EAST, tiltDeg.toDouble()),
-            reliable = reliable,
+            north = north,
         )
     }
 }

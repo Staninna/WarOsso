@@ -2,6 +2,7 @@ package io.github.staninna.warosso.sensors
 
 import io.github.staninna.warosso.domain.Complex
 import io.github.staninna.warosso.domain.LatLng
+import io.github.staninna.warosso.domain.North
 import io.github.staninna.warosso.domain.Orientation
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -44,22 +45,30 @@ class SimulatedLocationSource(real: LocationSource, simulator: PositionSimulator
         }
 }
 
-class SimulatedOrientationSource(real: OrientationSource, simulator: PositionSimulator) : OrientationSource {
+class SimulatedOrientationSource(private val real: OrientationSource, private val simulator: PositionSimulator) : OrientationSource {
     /** Starts from a flat, north-facing phone, so the overrides also work where the sensor is missing. */
     override val readings: Flow<Orientation> = combine(
         real.readings.onStart { emit(Orientation.of(headingDeg = 0f, tiltDeg = 0f)) },
         simulator.state,
     ) { reading, simulation ->
-        val reliable = simulation.compassReliable && reading.reliable
+        val north = if (simulation.compassReliable) reading.north else North.COMPASS_UNSURE
         when {
             !simulation.enabled -> reading
-            simulation.headingDeg == null && simulation.tiltDeg == null -> reading.copy(reliable = reliable)
+            simulation.headingDeg == null && simulation.tiltDeg == null -> reading.copy(north = north)
             // A faked heading or tilt replaces the whole pose: the phone is then held without roll.
             else -> Orientation.of(
                 headingDeg = simulation.headingDeg ?: reading.headingDeg,
                 tiltDeg = simulation.tiltDeg ?: reading.tiltDeg,
-                reliable = reliable,
+                north = north,
             )
         }
     }
+
+    /** A faked heading is turned as well, or a turn would show nothing while it is on. */
+    override fun turn(byDeg: Double) {
+        real.turn(byDeg)
+        simulator.update { it.copy(headingDeg = it.headingDeg?.plus(byDeg.toFloat())) }
+    }
+
+    override fun followCompass() = real.followCompass()
 }

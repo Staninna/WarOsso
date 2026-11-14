@@ -76,6 +76,10 @@
     <string name="banner_gps_searching">Looking for GPS…</string>
     <string name="banner_gps_weak">GPS weak ±%1$d m</string>
     <string name="banner_compass">Compass is off. Move the phone in a figure 8.</string>
+    <string name="banner_heading_against">The direction looks turned around. Point the phone the way you walk, then tap Fix.</string>
+    <string name="banner_heading_by_hand">Direction set by hand.</string>
+    <string name="action_fix">Fix</string>
+    <string name="action_use_compass">Use compass</string>
     <string name="banner_camera_off">Camera is off. Allow it to see the entrances in front of you.</string>
     <string name="arrived_title">You\'re here</string>
     <string name="directions_line">%1$s → %2$s · %3$s</string>

@@ -1,7 +1,13 @@
 package io.github.staninna.warosso.domain
 
-/** A position reading. [declinationDeg] is how far magnetic north is east of true north there. */
-data class Fix(val latLng: LatLng, val accuracyM: Float, val declinationDeg: Float = 0f) {
+/**
+ * A position reading.
+ *
+ * @param declinationDeg how far magnetic north is east of true north there.
+ * @param courseDeg the direction the user walks in, clockwise from true north. Null while they
+ *   stand still or the receiver does not tell.
+ */
+data class Fix(val latLng: LatLng, val accuracyM: Float, val declinationDeg: Float = 0f, val courseDeg: Float? = null) {
     /** Too vague to trust the arrow. */
     val isWeak: Boolean get() = accuracyM > WEAK_ACCURACY_M
 

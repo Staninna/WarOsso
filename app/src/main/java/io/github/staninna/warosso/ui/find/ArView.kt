@@ -18,6 +18,7 @@ import androidx.compose.animation.core.animateValueAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -42,6 +43,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,6 +55,7 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalResources
@@ -98,6 +101,9 @@ private val ArrowSize = 172.dp
  * The camera with the complex drawn over it: a label pointing at every entrance and an arrow on
  * the ground towards the target. Without the camera permission the labels and the arrow still
  * work, on a plain background.
+ *
+ * @param onTurnHeading the user dragged the labels sideways to where the entrances really are.
+ *   Called with the degrees the heading turns by, clockwise.
  */
 @Composable
 fun ArView(
@@ -107,6 +113,7 @@ fun ArView(
     pose: StateFlow<Orientation?>,
     cameraGranted: Boolean,
     bottomInset: Dp,
+    onTurnHeading: (Float) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var lens by remember { mutableStateOf(CameraLens.TYPICAL) }
@@ -131,6 +138,7 @@ fun ArView(
                 width = maxWidth,
                 height = maxHeight,
                 bottomInset = bottomInset,
+                onTurnHeading = onTurnHeading,
             )
         }
     }
@@ -163,6 +171,7 @@ private fun ArOverlay(
     width: Dp,
     height: Dp,
     bottomInset: Dp,
+    onTurnHeading: (Float) -> Unit,
 ) {
     val resources = LocalResources.current
     val route = guidance.route
@@ -204,8 +213,18 @@ private fun ArOverlay(
     val rowPx = with(density) { LabelRowHeight.toPx() }
     val pointerPx = with(density) { PointerHeight.toPx() }
     val colors = MaterialTheme.colorScheme
+    val turnHeading by rememberUpdatedState(onTurnHeading)
 
-    Box(Modifier.fillMaxSize()) {
+    Box(
+        Modifier.fillMaxSize().pointerInput(fieldOfView, widthPx) {
+            detectHorizontalDragGestures { change, dragAmount ->
+                change.consume()
+                // The labels follow the finger. Labels that belong further right mean the phone
+                // points further left than it thought.
+                turnHeading(-dragAmount / widthPx * fieldOfView.horizontalDeg.toFloat())
+            }
+        },
+    ) {
         // A dot on the exact spot and a stem up to the label: a label is wide, an entrance is not.
         Canvas(Modifier.fillMaxSize()) {
             labels.values.filter { it.offScreen == null }.forEach { label ->

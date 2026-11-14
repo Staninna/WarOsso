@@ -60,6 +60,7 @@ fun FindScreen(onOpenSetup: () -> Unit, onOpenSettings: () -> Unit) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val viewMode by viewModel.viewMode.collectAsStateWithLifecycle()
     val canMoveUser by viewModel.canMoveUser.collectAsStateWithLifecycle()
+    val walk by viewModel.walk.collectAsStateWithLifecycle()
 
     val locationPermission = rememberPermissionState(
         Manifest.permission.ACCESS_FINE_LOCATION,
@@ -99,9 +100,13 @@ fun FindScreen(onOpenSetup: () -> Unit, onOpenSettings: () -> Unit) {
                         viewMode = viewMode,
                         pose = viewModel.pose,
                         mapHeading = viewModel.mapHeading,
+                        headingAgainstWalk = walk?.headingAgainst == true,
                         canMoveUser = canMoveUser,
                         onMoveUser = viewModel::moveSimulatedUser,
                         onToggleViewMode = viewModel::toggleViewMode,
+                        onTurnHeading = viewModel::turnHeading,
+                        onAlignHeadingToWalk = viewModel::alignHeadingToWalk,
+                        onFollowCompass = viewModel::followCompass,
                         onStop = viewModel::stop,
                     )
                 }

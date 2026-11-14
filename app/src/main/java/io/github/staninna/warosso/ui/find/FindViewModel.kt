@@ -11,7 +11,10 @@ import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.Lookup
 import io.github.staninna.warosso.domain.Orientation
 import io.github.staninna.warosso.domain.ViewMode
+import io.github.staninna.warosso.domain.Walk
+import io.github.staninna.warosso.domain.WalkTracker
 import io.github.staninna.warosso.domain.afterTilt
+import io.github.staninna.warosso.domain.angleDelta
 import io.github.staninna.warosso.domain.guide
 import io.github.staninna.warosso.domain.lookup
 import io.github.staninna.warosso.sensors.ArrivalBuzzer
@@ -29,6 +32,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -72,7 +76,7 @@ class FindViewModel(
     private val complex: ComplexRepository,
     private val settings: SettingsRepository,
     locationSource: LocationSource,
-    orientationSource: OrientationSource,
+    private val orientationSource: OrientationSource,
     private val buzzer: ArrivalBuzzer,
     private val simulator: PositionSimulator?,
 ) : ViewModel() {
@@ -118,6 +122,15 @@ class FindViewModel(
     }
         .runningReduce { previous, next -> next.smoothedFrom(previous) }
         .stateIn(viewModelScope, whileOnScreen, null)
+
+    /**
+     * The walk the last fixes add up to, with whether the heading agrees with it. Null while the
+     * user stands or turns.
+     */
+    val walk: StateFlow<Walk?> = flow {
+        val tracker = WalkTracker()
+        location.collect { emit(tracker.update(it.fix?.courseDeg, pose.value?.headingDeg)) }
+    }.stateIn(viewModelScope, whileOnScreen, null)
 
     /** The heading for the map's cone. A few updates a second is plenty there. */
     val mapHeading: StateFlow<Float?> = pose
@@ -166,6 +179,18 @@ class FindViewModel(
     fun toggleViewMode() {
         manualMode.update { if (viewMode.value == ViewMode.AR) ViewMode.MAP else ViewMode.AR }
     }
+
+    /** Turns the heading by hand, clockwise. The compass is left out from then on. */
+    fun turnHeading(byDeg: Float) = orientationSource.turn(byDeg.toDouble())
+
+    /** Sets the heading to the direction the user walks in. They are asked to point the phone that way first. */
+    fun alignHeadingToWalk() {
+        val course = walk.value?.courseDeg ?: return
+        val heading = pose.value?.headingDeg ?: return
+        orientationSource.turn(angleDelta(heading.toDouble(), course))
+    }
+
+    fun followCompass() = orientationSource.followCompass()
 
     /** Puts the simulated user at [point]. Does nothing unless simulation is on. */
     fun moveSimulatedUser(point: LatLng) {

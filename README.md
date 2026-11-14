@@ -10,6 +10,11 @@ Lay it flat and you get a map with your position and a line to the entrance.
 The camera view is as good as the phone's GPS and compass, no better: expect a label to be a few
 metres off its door. The map is the steadier of the two.
 
+A compass can be plain wrong, next to a car or with a magnet in the phone's case. When the labels
+sit in the wrong place, drag them sideways onto the real entrances. The phone then holds that
+direction on its gyroscope until you tap "Use compass". When you walk one way and the app thinks
+the phone points the other, it says so: point the phone the way you walk and tap "Fix".
+
 - 100% free software, GPL-3.0, and so is every library in it.
 - No Google services. Location comes from the phone's own GPS, the map from
   [OpenFreeMap](https://openfreemap.org) through [MapLibre](https://maplibre.org).
