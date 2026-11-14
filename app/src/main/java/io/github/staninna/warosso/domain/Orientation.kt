@@ -3,56 +3,122 @@ package io.github.staninna.warosso.domain
 import kotlin.math.acos
 import kotlin.math.asin
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
 
-/**
- * How the phone is held.
- *
- * @param headingDeg where the user faces, clockwise from magnetic north: the camera's direction
- *   when the phone is upright, the top edge's direction when it lies flat.
- * @param tiltDeg 0 with the phone flat and the screen up, 90 with the phone upright.
- * @param elevationDeg how far the camera looks above the horizon. Negative looks down.
- * @param reliable false when the compass asks for calibration.
- */
-data class Orientation(
-    val headingDeg: Float,
-    val tiltDeg: Float,
-    val elevationDeg: Float,
-    val reliable: Boolean,
-) {
-    /** The same pose with its heading turned from magnetic to true north. */
-    fun withDeclination(declinationDeg: Float): Orientation =
-        copy(headingDeg = normalizeDegrees((headingDeg + declinationDeg).toDouble()).toFloat())
+/** A direction in space. In world axes x is east, y is north and z is up. */
+data class Vec3(val x: Double, val y: Double, val z: Double) {
+    infix fun dot(other: Vec3): Double = x * other.x + y * other.y + z * other.z
 
-    /** This reading, with the heading eased from [previous] along the short way round. */
-    fun smoothedFrom(previous: Orientation, factor: Float = 0.25f): Orientation {
-        val step = angleDelta(previous.headingDeg.toDouble(), headingDeg.toDouble()) * factor
-        return copy(headingDeg = normalizeDegrees(previous.headingDeg + step).toFloat())
+    operator fun unaryMinus(): Vec3 = Vec3(-x, -y, -z)
+
+    companion object {
+        val EAST = Vec3(1.0, 0.0, 0.0)
+        val NORTH = Vec3(0.0, 1.0, 0.0)
+        val UP = Vec3(0.0, 0.0, 1.0)
+    }
+}
+
+/** A turn in space, as a unit quaternion. */
+data class Rotation(val w: Double, val x: Double, val y: Double, val z: Double) {
+    /** [v] after this turn. */
+    fun rotate(v: Vec3): Vec3 {
+        // v + 2w (q × v) + 2 q × (q × v), with q the vector part.
+        val cx = y * v.z - z * v.y
+        val cy = z * v.x - x * v.z
+        val cz = x * v.y - y * v.x
+        return Vec3(
+            v.x + 2 * (w * cx + y * cz - z * cy),
+            v.y + 2 * (w * cy + z * cx - x * cz),
+            v.z + 2 * (w * cz + x * cy - y * cx),
+        )
+    }
+
+    /** The turn back. */
+    val inverse: Rotation get() = Rotation(w, -x, -y, -z)
+
+    /** [other] first, then this turn. */
+    operator fun times(other: Rotation): Rotation = Rotation(
+        w * other.w - x * other.x - y * other.y - z * other.z,
+        w * other.x + x * other.w + y * other.z - z * other.y,
+        w * other.y - x * other.z + y * other.w + z * other.x,
+        w * other.z + x * other.y - y * other.x + z * other.w,
+    )
+
+    /** The turn that lies [fraction] of the way from this one to [to], along the short way round. */
+    fun towards(to: Rotation, fraction: Double): Rotation {
+        // q and -q are the same turn. Blending needs the one on this turn's side.
+        val side = if (w * to.w + x * to.x + y * to.y + z * to.z < 0) -1 else 1
+        val bw = w + (side * to.w - w) * fraction
+        val bx = x + (side * to.x - x) * fraction
+        val by = y + (side * to.y - y) * fraction
+        val bz = z + (side * to.z - z) * fraction
+        val length = sqrt(bw * bw + bx * bx + by * by + bz * bz)
+        return Rotation(bw / length, bx / length, by / length, bz / length)
+    }
+
+    companion object {
+        /** A turn of [degrees] around the unit vector [axis], counter-clockwise seen from its tip. */
+        fun about(axis: Vec3, degrees: Double): Rotation {
+            val half = Math.toRadians(degrees) / 2
+            val s = sin(half)
+            return Rotation(cos(half), axis.x * s, axis.y * s, axis.z * s)
+        }
     }
 }
 
 /**
- * Reads heading and tilt from a rotation matrix as `SensorManager.getRotationMatrixFromVector`
- * fills it: row-major 3×3, device axes to world axes (x east, y north, z up).
+ * How the phone is held.
+ *
+ * @param rotation the turn from the phone's own axes to the world's. The phone's x points to its
+ *   right edge, y to its top edge and z out of the screen. The camera looks along -z.
+ * @param reliable false when the compass asks for calibration.
  */
-fun orientationFromRotationMatrix(r: FloatArray, reliable: Boolean): Orientation {
-    // Third column: the screen normal (device +z) in world axes. The camera looks along -z.
-    val normalEast = r[2]
-    val normalNorth = r[5]
-    val normalUp = r[8].coerceIn(-1f, 1f)
-    // Second column: the phone's top edge (device +y) in world axes.
-    val topEast = r[1]
-    val topNorth = r[4]
+data class Orientation(val rotation: Rotation, val reliable: Boolean) {
+    /** Where the screen faces. */
+    private val screenNormal = rotation.rotate(Vec3.UP)
 
-    val tilt = Math.toDegrees(acos(normalUp).toDouble()).toFloat()
-    // Upright, the top edge points at the sky and says nothing about heading; flat, the camera
-    // looks at the ground. Each vector is used where its horizontal part is long.
-    val heading = if (tilt > 45f) atan2(-normalEast, -normalNorth) else atan2(topEast, topNorth)
-    return Orientation(
-        headingDeg = normalizeDegrees(Math.toDegrees(heading.toDouble())).toFloat(),
-        tiltDeg = tilt,
-        elevationDeg = Math.toDegrees(asin(-normalUp).toDouble()).toFloat(),
-        reliable = reliable,
-    )
+    /** 0 with the phone flat and the screen up, 90 with the phone upright. */
+    val tiltDeg: Float = Math.toDegrees(acos(screenNormal.z.coerceIn(-1.0, 1.0))).toFloat()
+
+    /** How far the camera looks above the horizon. Negative looks down. */
+    val elevationDeg: Float = Math.toDegrees(asin((-screenNormal.z).coerceIn(-1.0, 1.0))).toFloat()
+
+    /**
+     * Where the user faces, clockwise from north: the camera's direction when the phone is
+     * upright, the top edge's direction when it lies flat.
+     */
+    val headingDeg: Float = run {
+        // Upright, the top edge points at the sky and says nothing about heading; flat, the camera
+        // looks at the ground. Each vector is used where its horizontal part is long.
+        val heading = if (tiltDeg > 45f) {
+            atan2(-screenNormal.x, -screenNormal.y)
+        } else {
+            val topEdge = rotation.rotate(Vec3.NORTH)
+            atan2(topEdge.x, topEdge.y)
+        }
+        normalizeDegrees(Math.toDegrees(heading)).toFloat()
+    }
+
+    /** The same pose with its heading turned from magnetic to true north. */
+    fun withDeclination(declinationDeg: Float): Orientation =
+        copy(rotation = Rotation.about(Vec3.UP, -declinationDeg.toDouble()) * rotation)
+
+    /**
+     * This reading, eased from [previous]. The whole pose moves as one, so a label follows a turn
+     * of the phone equally fast sideways and up and down.
+     */
+    fun smoothedFrom(previous: Orientation, factor: Double = 0.25): Orientation =
+        copy(rotation = previous.rotation.towards(rotation, factor))
+
+    companion object {
+        /** A phone held without roll: facing [headingDeg] and tipped up by [tiltDeg] from lying flat. */
+        fun of(headingDeg: Float, tiltDeg: Float, reliable: Boolean = true): Orientation = Orientation(
+            rotation = Rotation.about(Vec3.UP, -headingDeg.toDouble()) * Rotation.about(Vec3.EAST, tiltDeg.toDouble()),
+            reliable = reliable,
+        )
+    }
 }
 
 /** Which of the two guidance views is on screen. */

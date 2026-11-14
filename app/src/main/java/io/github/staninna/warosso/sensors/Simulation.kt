@@ -47,18 +47,18 @@ class SimulatedLocationSource(real: LocationSource, simulator: PositionSimulator
 class SimulatedOrientationSource(real: OrientationSource, simulator: PositionSimulator) : OrientationSource {
     /** Starts from a flat, north-facing phone, so the overrides also work where the sensor is missing. */
     override val readings: Flow<Orientation> = combine(
-        real.readings.onStart { emit(Orientation(headingDeg = 0f, tiltDeg = 0f, elevationDeg = -90f, reliable = true)) },
+        real.readings.onStart { emit(Orientation.of(headingDeg = 0f, tiltDeg = 0f)) },
         simulator.state,
     ) { reading, simulation ->
-        if (!simulation.enabled) {
-            reading
-        } else {
-            val tilt = simulation.tiltDeg ?: reading.tiltDeg
-            reading.copy(
+        val reliable = simulation.compassReliable && reading.reliable
+        when {
+            !simulation.enabled -> reading
+            simulation.headingDeg == null && simulation.tiltDeg == null -> reading.copy(reliable = reliable)
+            // A faked heading or tilt replaces the whole pose: the phone is then held without roll.
+            else -> Orientation.of(
                 headingDeg = simulation.headingDeg ?: reading.headingDeg,
-                tiltDeg = tilt,
-                elevationDeg = if (simulation.tiltDeg != null) tilt - 90f else reading.elevationDeg,
-                reliable = simulation.compassReliable && reading.reliable,
+                tiltDeg = simulation.tiltDeg ?: reading.tiltDeg,
+                reliable = reliable,
             )
         }
     }

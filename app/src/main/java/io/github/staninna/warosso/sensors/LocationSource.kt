@@ -10,6 +10,8 @@ import android.location.LocationRequest
 import android.os.SystemClock
 import io.github.staninna.warosso.domain.Fix
 import io.github.staninna.warosso.domain.LatLng
+import io.github.staninna.warosso.domain.PositionFilter
+import io.github.staninna.warosso.domain.PositionReading
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -41,7 +43,7 @@ fun fixAt(latLng: LatLng, accuracyM: Float, altitudeM: Float = 0f): Fix {
 
 /**
  * GPS through the platform [LocationManager], with the platform's fused provider as a fallback
- * for when GPS has gone quiet. No Play Services.
+ * for when GPS has gone quiet. No Play Services. Every fix passes a [PositionFilter].
  */
 class PlatformLocationSource(context: Context) : LocationSource {
     private val manager = context.getSystemService(LocationManager::class.java)
@@ -51,6 +53,7 @@ class PlatformLocationSource(context: Context) : LocationSource {
     override val state: Flow<LocationState> = callbackFlow {
         // Starts as "silent for long enough", so the fused provider can deliver the very first fix.
         var lastGpsFixAt = SystemClock.elapsedRealtime() - GPS_SILENCE_MS
+        val filter = PositionFilter()
 
         val listener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
@@ -59,8 +62,14 @@ class PlatformLocationSource(context: Context) : LocationSource {
                 if (fromGps) lastGpsFixAt = now
                 // The fused provider only fills in when GPS has been silent for a while.
                 if (!fromGps && now - lastGpsFixAt < GPS_SILENCE_MS) return
-                val fix = fixAt(LatLng(location.latitude, location.longitude), location.accuracy, location.altitude.toFloat())
-                trySend(LocationState.Located(fix))
+                val reading = PositionReading(
+                    latLng = LatLng(location.latitude, location.longitude),
+                    accuracyM = location.accuracy,
+                    speedMps = location.speed.takeIf { location.hasSpeed() },
+                    courseDeg = location.bearing.takeIf { location.hasBearing() },
+                    timeMs = location.elapsedRealtimeNanos / 1_000_000,
+                )
+                trySend(LocationState.Located(fixAt(filter.update(reading), location.accuracy, location.altitude.toFloat())))
             }
 
             override fun onProviderDisabled(provider: String) {

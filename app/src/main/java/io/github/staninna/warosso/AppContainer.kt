@@ -9,6 +9,7 @@ import io.github.staninna.warosso.data.OverpassClient
 import io.github.staninna.warosso.data.SettingsRepository
 import io.github.staninna.warosso.data.WarOssoDatabase
 import io.github.staninna.warosso.data.settingsStore
+import io.github.staninna.warosso.domain.Complex
 import io.github.staninna.warosso.sensors.ArrivalBuzzer
 import io.github.staninna.warosso.sensors.LocationSource
 import io.github.staninna.warosso.sensors.OrientationSource
@@ -41,7 +42,7 @@ class AppContainer(context: Context) {
     val location: LocationSource = PlatformLocationSource(context).let { real ->
         simulator?.let { SimulatedLocationSource(real, it) } ?: real
     }
-    val orientation: OrientationSource = SensorOrientationSource(context).let { real ->
+    val orientation: OrientationSource = SensorOrientationSource(context, near = Complex.DEFAULT_CENTER).let { real ->
         simulator?.let { SimulatedOrientationSource(real, it) } ?: real
     }
 
