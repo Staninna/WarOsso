@@ -1,10 +1,14 @@
 package io.github.staninna.warosso
 
+import io.github.staninna.warosso.domain.DoorHint
 import io.github.staninna.warosso.domain.Fix
+import io.github.staninna.warosso.domain.FloorDoors
 import io.github.staninna.warosso.domain.Guidance
 import io.github.staninna.warosso.domain.Lookup
 import io.github.staninna.warosso.domain.Route
 import io.github.staninna.warosso.domain.closestNumbers
+import io.github.staninna.warosso.domain.copyBeside
+import io.github.staninna.warosso.domain.distanceTo
 import io.github.staninna.warosso.domain.guide
 import io.github.staninna.warosso.domain.lookup
 import io.github.staninna.warosso.domain.nearestTo
@@ -20,18 +24,18 @@ class LookupTest {
     private val east = CENTER.offset(60.0, 90.0)
     private val south = CENTER.offset(60.0, 180.0)
 
-    // Door 171 hangs on a gallery that all three stairwells reach.
+    // Door 171 hangs on a walkway that the stairwells of three buildings reach.
     private val data = complexData(
         addresses = listOf(151, 153, 155, 171, 173).map { address(it) },
         entrances = listOf(
             entrance(1, north, 1, listOf(151, 153), listOf(171, 173)),
-            entrance(2, east, 1, listOf(), listOf(173, 171)),
-            entrance(3, south, 1, listOf(), listOf(171)),
+            entrance(2, east, 2, listOf(), listOf(173, 171)),
+            entrance(3, south, 3, listOf(), listOf(171)),
         ),
     )
 
     @Test
-    fun `a number served by several entrances lists them all`() {
+    fun `a number served by entrances of several buildings lists them all`() {
         val found = data.lookup(171) as Lookup.Found
         assertEquals(listOf(1L, 2L, 3L), found.routes.map { it.targetId })
     }
@@ -119,6 +123,70 @@ class LookupTest {
         )
         assertEquals(listOf(7), wider.bagNumbers)
         assertEquals(Lookup.Unknown(9, listOf(7)), wider.lookup(9))
+    }
+
+    // One gallery of nine doors, six metres apart from west to east. Two stairwells stand in
+    // front of it, and the second is a copy of the first: both list every door.
+    private val galleryDoors = listOf(1, 3, 5, 7, 9, 11, 13, 15, 17)
+    private fun inFrontOfGallery(eastM: Double) = CENTER.offset(eastM, 90.0).offset(5.0, 180.0)
+    private val gallery = complexData(
+        addresses = galleryDoors.mapIndexed { i, number -> address(number, CENTER.offset(i * 6.0, 90.0), buildingOsmId = 1) },
+        entrances = listOf(
+            entrance(1, inFrontOfGallery(10.0), 1, galleryDoors),
+            entrance(2, inFrontOfGallery(39.0), 1, galleryDoors),
+        ),
+    )
+
+    @Test
+    fun `in one building a shared number goes through the entrance closest to its address`() {
+        assertEquals(listOf(1L), (gallery.lookup(9) as Lookup.Found).routes.map { it.targetId })
+        assertEquals(listOf(2L), (gallery.lookup(11) as Lookup.Found).routes.map { it.targetId })
+        assertEquals(listOf(1, 3, 5, 7, 9), gallery.numbersVia(gallery.entrance(1)!!))
+        assertEquals(listOf(11, 13, 15, 17), gallery.numbersVia(gallery.entrance(2)!!))
+    }
+
+    @Test
+    fun `moving an entrance moves the numbers that go through it`() {
+        val moved = gallery.copy(entrances = gallery.entrances.map { if (it.id == 2L) it.copy(latLng = inFrontOfGallery(20.0)) else it })
+        assertEquals(listOf(1, 3, 5), moved.numbersVia(moved.entrance(1)!!))
+        assertEquals(listOf(7, 9, 11, 13, 15, 17), moved.numbersVia(moved.entrance(2)!!))
+    }
+
+    @Test
+    fun `a number without an address stays with every entrance that lists it`() {
+        val unknown = gallery.copy(entrances = gallery.entrances.map { it.copy(floors = listOf(FloorDoors(0, galleryDoors + 99))) })
+        assertEquals(listOf(1L, 2L), (unknown.lookup(99) as Lookup.Found).routes.map { it.targetId })
+    }
+
+    @Test
+    fun `an entrance partway along the gallery tells which way to turn`() {
+        fun hintFor(number: Int) = ((gallery.lookup(number) as Lookup.Found).routes.single() as Route.ViaEntrance).door.hint
+        // The first stairwell stands between the second and the third door.
+        assertEquals(DoorHint.TurnLeft(1), hintFor(3))
+        assertEquals(DoorHint.TurnLeft(2), hintFor(1))
+        assertEquals(DoorHint.TurnRight(2), hintFor(7))
+        // The second one between the seventh and the eighth.
+        assertEquals(DoorHint.TurnLeft(1), hintFor(13))
+        assertEquals(DoorHint.TurnRight(1), hintFor(15))
+    }
+
+    @Test
+    fun `an entrance at the end of the gallery counts from that end as before`() {
+        val atTheEnd = gallery.copy(entrances = listOf(entrance(1, inFrontOfGallery(-4.0), 1, galleryDoors)))
+        val route = (atTheEnd.lookup(3) as Lookup.Found).routes.single() as Route.ViaEntrance
+        assertEquals(DoorHint.FromLeft(2), route.door.hint)
+    }
+
+    @Test
+    fun `a copy is the same entrance a few metres on, without a name or an id`() {
+        val original = gallery.entrance(1)!!.copy(name = "Trap A", note = "Blauwe deur")
+        val copy = original.copyBeside()
+        assertEquals(0L, copy.id)
+        assertNull(copy.name)
+        assertEquals(original.floors, copy.floors)
+        assertEquals(original.note, copy.note)
+        assertEquals(original.buildingOsmId, copy.buildingOsmId)
+        assertEquals(6.0, original.latLng.distanceTo(copy.latLng), 0.01)
     }
 
     // Building 1 has its ground-floor doors on the street; a stairwell serves the gallery above.

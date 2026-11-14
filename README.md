@@ -7,6 +7,9 @@ Bulkpad in Breda, and for one phone running GrapheneOS.
 Hold the phone upright and the camera shows an arrow on the ground plus a label on every entrance.
 Lay it flat and you get a map with your position and a line to the entrance.
 
+The camera view is as good as the phone's GPS and compass, no better: expect a label to be a few
+metres off its door. The map is the steadier of the two.
+
 - 100% free software, GPL-3.0, and so is every library in it.
 - No Google services. Location comes from the phone's own GPS, the map from
   [OpenFreeMap](https://openfreemap.org) through [MapLibre](https://maplibre.org).
@@ -35,6 +38,12 @@ doors they lead to. You add that once, in Setup:
 Where the ground-floor homes have their own front door on the street, they need no entrance. Open
 Buildings, tap the building and switch on "Ground floor needs no entrance". Every number of that
 building that no entrance lists is then walked to directly, to its point in the address list.
+
+A building with several stairwells needs its floors only once. Open the entrance and tap the
+copy button: the copy lands next to it on the map with the same floors and doors. Drag it to the
+other stairwell. Every number then goes through the entrance closest to its address, and moving
+either marker moves the split. Where a stairwell comes out partway along a gallery, the directions
+say which way to turn there and count the doors from the stairs.
 
 Setup shows which numbers are not covered yet. Settings can export your setup to
 `warosso.json` and import it again.

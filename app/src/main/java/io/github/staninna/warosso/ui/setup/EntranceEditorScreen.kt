@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -60,8 +61,9 @@ import io.github.staninna.warosso.ui.entranceName
 import io.github.staninna.warosso.ui.entranceTypeName
 import io.github.staninna.warosso.ui.floorTitle
 import io.github.staninna.warosso.ui.numberRange
+import io.github.staninna.warosso.ui.numberRuns
 
-private enum class EditorDialog { DELETE, BUILDING, ADD_FLOOR }
+private enum class EditorDialog { COPY, DELETE, BUILDING, ADD_FLOOR }
 
 @Composable
 fun EntranceEditorScreen(entranceId: Long, onBack: () -> Unit) {
@@ -77,10 +79,14 @@ fun EntranceEditorScreen(entranceId: Long, onBack: () -> Unit) {
     val resources = LocalResources.current
     var dialog by rememberSaveable { mutableStateOf<EditorDialog?>(null) }
     val suggestions = remember(data, entrance) { data.suggestFloorsFor(entrance) }
+    // The numbers this entrance is the way to. Fewer than it lists when a closer entrance takes some.
+    val via = remember(data, entrance) { data.numbersVia(entrance) }
 
     Scaffold(
         topBar = {
             ScreenTopBar(resources.entranceName(data, entrance), onBack) {
+                TonalIconButton(R.drawable.ic_content_copy, stringResource(R.string.entrance_copy), onClick = { dialog = EditorDialog.COPY }, size = 48.dp)
+                Spacer(Modifier.width(8.dp))
                 TonalIconButton(
                     icon = R.drawable.ic_delete,
                     contentDescription = stringResource(R.string.entrance_delete),
@@ -96,6 +102,15 @@ fun EntranceEditorScreen(entranceId: Long, onBack: () -> Unit) {
             modifier = Modifier.fillMaxSize().padding(padding).imePadding().verticalScroll(rememberScrollState()),
         ) {
             DetailsSection(data, entrance, viewModel::update, onPickBuilding = { dialog = EditorDialog.BUILDING })
+
+            if (via.size < entrance.doorNumbers.size) {
+                Text(
+                    text = if (via.isEmpty()) stringResource(R.string.entrance_shared_none) else stringResource(R.string.entrance_shared, resources.numberRuns(data, via)),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
+                )
+            }
 
             if (suggestions.isNotEmpty()) {
                 SuggestionsSection(
@@ -125,6 +140,14 @@ fun EntranceEditorScreen(entranceId: Long, onBack: () -> Unit) {
     }
 
     when (dialog) {
+        EditorDialog.COPY -> AlertDialog(
+            onDismissRequest = { dialog = null },
+            title = { Text(stringResource(R.string.entrance_copy_title)) },
+            text = { Text(stringResource(R.string.entrance_copy_body)) },
+            // Back to the map, where the copy waits to be dragged to its place.
+            confirmButton = { TextButton(onClick = { viewModel.copy(onBack) }) { Text(stringResource(R.string.entrance_copy)) } },
+            dismissButton = { TextButton(onClick = { dialog = null }) { Text(stringResource(R.string.action_cancel)) } },
+        )
         EditorDialog.DELETE -> AlertDialog(
             onDismissRequest = { dialog = null },
             title = { Text(stringResource(R.string.entrance_delete_title)) },

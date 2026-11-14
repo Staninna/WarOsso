@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 /** The entrance being edited, with the complex around it. */
 data class EntranceEditorState(val data: ComplexData, val entrance: Entrance)
@@ -27,6 +28,14 @@ class EntranceEditorViewModel(private val repository: ComplexRepository, private
 
     fun delete() {
         repository.deleteEntrance(entranceId)
+    }
+
+    /** Puts a copy of the entrance next to it on the map and calls [onCopied] once it is stored. */
+    fun copy(onCopied: () -> Unit) {
+        viewModelScope.launch {
+            repository.copyEntrance(entranceId)
+            onCopied()
+        }
     }
 
     private fun stateOf(data: ComplexData?): EntranceEditorState? =

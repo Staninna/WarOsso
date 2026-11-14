@@ -31,6 +31,8 @@
     <string name="door_from_left">%1$s door from the left</string>
     <string name="door_from_right">%1$s door from the right</string>
     <string name="door_only">the only door</string>
+    <string name="door_turn_left">turn left, %1$s door</string>
+    <string name="door_turn_right">turn right, %1$s door</string>
     <plurals name="count_doors">
         <item quantity="one">%1$d door</item>
         <item quantity="other">%1$d doors</item>
@@ -134,6 +136,11 @@
     <string name="entrance_delete">Delete entrance</string>
     <string name="entrance_delete_title">Delete this entrance?</string>
     <string name="entrance_delete_body">Its floors and doors are deleted with it.</string>
+    <string name="entrance_copy">Copy entrance</string>
+    <string name="entrance_copy_title">Copy this entrance?</string>
+    <string name="entrance_copy_body">The copy gets the same floors and doors and appears next to this one on the map. Drag it to the other stairwell. Each number then goes to the entrance closest to it.</string>
+    <string name="entrance_shared">This building has another entrance with the same numbers. Each number goes to the entrance closest to it. Through this one: %1$s.</string>
+    <string name="entrance_shared_none">This building has another entrance with the same numbers. Each number goes to the entrance closest to it. None go through this one yet: drag it to its place on the map.</string>
     <string name="suggestions_title">Suggested floors</string>
     <string name="suggestion_item">%1$s · %2$s</string>
     <string name="suggestions_add_all">Add all</string>

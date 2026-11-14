@@ -8,6 +8,7 @@ import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.OsmData
 import io.github.staninna.warosso.domain.Setup
 import io.github.staninna.warosso.domain.areaAround
+import io.github.staninna.warosso.domain.copyBeside
 import io.github.staninna.warosso.domain.holdingOrNearest
 import io.github.staninna.warosso.domain.withOsm
 import io.github.staninna.warosso.domain.withSetup
@@ -52,6 +53,9 @@ class ComplexRepository(
     suspend fun addEntrance(latLng: LatLng): Long? = awaitWrite {
         dao.buildings().holdingOrNearest(latLng)?.let { dao.upsert(Entrance(buildingOsmId = it.osmId, latLng = latLng)) }
     }
+
+    /** Stores a copy of the entrance next to it, see [copyBeside]. Null when the entrance is gone. */
+    suspend fun copyEntrance(id: Long): Long? = awaitWrite { dao.entrance(id)?.let { dao.upsert(it.copyBeside()) } }
 
     /** Applies [change] to the entrance as it is stored right now, so quick edits never overwrite each other. */
     fun updateEntrance(id: Long, change: (Entrance) -> Entrance): Job =

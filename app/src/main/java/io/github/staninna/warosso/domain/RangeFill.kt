@@ -10,6 +10,21 @@ fun fillRange(from: Int, to: Int, bagNumbers: Collection<Int>): List<Int> {
 }
 
 /**
+ * [numbers] as runs of neighbours in [bagNumbers], ascending: 19, 21, 23 and 37 read as 19-23 and
+ * 37 when BAG has no other number from 19 to 23. A number BAG does not have is a run of its own.
+ */
+fun numberRuns(numbers: Collection<Int>, bagNumbers: Collection<Int>): List<IntRange> {
+    val place = bagNumbers.sorted().distinct().withIndex().associate { (index, number) -> number to index }
+    val runs = mutableListOf<IntRange>()
+    for (number in numbers.sorted().distinct()) {
+        val last = runs.lastOrNull()
+        val follows = last != null && place[number] != null && place[number] == place[last.last]?.plus(1)
+        if (follows) runs[runs.lastIndex] = last!!.first..number else runs += number..number
+    }
+    return runs
+}
+
+/**
  * Splits a building's numbers into runs that probably share a floor. A new run starts where the
  * jump to the next number is more than twice the usual jump. In this complex a building reads
  * like 9, 11, … 17 | 27, 29, … 35 | 45, … 53: one run per floor.

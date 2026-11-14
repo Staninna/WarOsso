@@ -28,6 +28,8 @@
     <string name="door_from_left">%1$s deur van links</string>
     <string name="door_from_right">%1$s deur van rechts</string>
     <string name="door_only">de enige deur</string>
+    <string name="door_turn_left">linksaf, %1$s deur</string>
+    <string name="door_turn_right">rechtsaf, %1$s deur</string>
     <plurals name="count_doors">
         <item quantity="one">%1$d deur</item>
         <item quantity="other">%1$d deuren</item>
@@ -130,6 +132,11 @@
     <string name="entrance_delete">Ingang verwijderen</string>
     <string name="entrance_delete_title">Deze ingang verwijderen?</string>
     <string name="entrance_delete_body">De verdiepingen en deuren verdwijnen mee.</string>
+    <string name="entrance_copy">Ingang kopiëren</string>
+    <string name="entrance_copy_title">Deze ingang kopiëren?</string>
+    <string name="entrance_copy_body">De kopie krijgt dezelfde verdiepingen en deuren en staat naast deze op de kaart. Sleep hem naar het andere trappenhuis. Elk nummer gaat daarna naar de ingang die er het dichtst bij ligt.</string>
+    <string name="entrance_shared">Dit gebouw heeft nog een ingang met dezelfde nummers. Elk nummer gaat naar de ingang die er het dichtst bij ligt. Via deze: %1$s.</string>
+    <string name="entrance_shared_none">Dit gebouw heeft nog een ingang met dezelfde nummers. Elk nummer gaat naar de ingang die er het dichtst bij ligt. Via deze loopt er nog geen: sleep hem op de kaart naar zijn plek.</string>
     <string name="suggestions_title">Voorgestelde verdiepingen</string>
     <string name="suggestion_item">%1$s · %2$s</string>
     <string name="suggestions_add_all">Alles toevoegen</string>

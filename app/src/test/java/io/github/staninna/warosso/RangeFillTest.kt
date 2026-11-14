@@ -2,6 +2,7 @@ package io.github.staninna.warosso
 
 import io.github.staninna.warosso.domain.FloorDoors
 import io.github.staninna.warosso.domain.fillRange
+import io.github.staninna.warosso.domain.numberRuns
 import io.github.staninna.warosso.domain.suggestFloors
 import io.github.staninna.warosso.domain.suggestFloorsFor
 import io.github.staninna.warosso.domain.suggestRuns
@@ -105,5 +106,16 @@ class RangeFillTest {
 
         val streetLevel = data.copy(buildings = data.buildings.map { it.copy(streetDoors = true) })
         assertEquals(listOf(FloorDoors(1, listOf(125, 127, 129, 131))), streetLevel.suggestFloorsFor(stairwell))
+    }
+
+    @Test
+    fun `numbers read as runs of neighbours in BAG`() {
+        val bag = listOf(19, 21, 23, 25, 27, 29, 37, 39, 41)
+        assertEquals(listOf(19..27, 37..41), numberRuns(listOf(37, 19, 21, 23, 25, 27, 39, 41), bag))
+        assertEquals(listOf(19..21, 25..25, 39..41), numberRuns(listOf(19, 21, 25, 39, 41), bag))
+        // 29 and 37 are neighbours in BAG, so they run on: the step is whatever BAG has.
+        assertEquals(listOf(27..37), numberRuns(listOf(27, 29, 37), bag))
+        assertEquals(listOf(19..19, 99..99), numberRuns(listOf(99, 19), bag))
+        assertEquals(emptyList<IntRange>(), numberRuns(emptyList(), bag))
     }
 }

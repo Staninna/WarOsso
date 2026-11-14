@@ -110,9 +110,6 @@ data class Entrance(
     val floors: List<FloorDoors> = emptyList(),
 ) {
     val doorNumbers: List<Int> get() = floors.flatMap { it.doors }
-
-    /** Lowest and highest door number, or null while the entrance has no doors. */
-    val numberRange: IntRange? get() = doorNumbers.takeIf { it.isNotEmpty() }?.let { it.min()..it.max() }
 }
 
 /** What a building is called when it has no name of its own. */
@@ -190,6 +187,27 @@ data class ComplexData(
     /** The same numbers, split by the OSM outline they sit in: the halves of a block, each ascending. */
     fun numbersByPartOf(buildingOsmId: Long): List<List<Int>> =
         addressesByBuilding[buildingOsmId].orEmpty().groupBy({ it.partOsmId }, { it.number }).values.toList()
+
+    private val addressesByNumber: Map<Int, Address> by lazy { complexAddresses.associateBy { it.number } }
+
+    /**
+     * The entrances to reach [number] through. Where several entrances of one building list it,
+     * only the one closest to the number's address counts. That is how a copy of an entrance
+     * shares the building's numbers with its original: each takes the numbers on its side.
+     */
+    fun entrancesFor(number: Int): List<Entrance> {
+        val listing = entrances.filter { number in it.doorNumbers }
+        val address = addressesByNumber[number]?.latLng ?: return listing
+        return listing.groupBy { it.buildingOsmId }.values.map { siblings -> siblings.minBy { it.latLng.distanceTo(address) } }
+    }
+
+    /** The numbers [entrance] is the way to, see [entrancesFor]. Fewer than it lists when it shares some with a closer entrance. */
+    fun numbersVia(entrance: Entrance): List<Int> =
+        entrance.doorNumbers.filter { number -> entrancesFor(number).any { it.id == entrance.id } }
+
+    /** Where [number] is behind [entrance], with the turn to take there when the addresses tell, see [doorsLeftOf]. */
+    fun locate(entrance: Entrance, number: Int): DoorLocation? =
+        entrance.locate(number) { floor -> doorsLeftOf(entrance.latLng, floor.doors.map { addressesByNumber[it]?.latLng }) }
 
     /** The address of [number] when its front door is on the street, see [Building.streetDoors]. */
     fun streetDoor(number: Int): Address? = streetDoors[number]

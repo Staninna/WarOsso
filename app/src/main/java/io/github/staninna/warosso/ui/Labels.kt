@@ -11,6 +11,7 @@ import io.github.staninna.warosso.domain.DoorHint
 import io.github.staninna.warosso.domain.Entrance
 import io.github.staninna.warosso.domain.EntranceType
 import io.github.staninna.warosso.domain.Route
+import io.github.staninna.warosso.domain.numberRuns
 import kotlin.math.roundToInt
 
 // How domain values read on screen. Every function takes Resources, so the same wording serves
@@ -60,15 +61,22 @@ val EntranceType.icon: Int
         EntranceType.DOOR -> R.drawable.ic_door_front
     }
 
-/** "151-199", or "151" for a single door, or null while the entrance has no doors. */
-fun Resources.numberRange(entrance: Entrance): String? = entrance.numberRange?.let { numberRange(it.first, it.last) }
-
 fun Resources.numberRange(first: Int, last: Int): String =
     if (first == last) first.toString() else getString(R.string.number_range, first, last)
 
-/** What a marker or camera label says about an entrance: its numbers, or its name while it has none. */
-fun Resources.entranceBadge(data: ComplexData, entrance: Entrance): String =
-    numberRange(entrance) ?: entranceName(data, entrance)
+/** "19-27, 37-45": [numbers] as the runs BAG has them in, see [numberRuns]. */
+fun Resources.numberRuns(data: ComplexData, numbers: List<Int>): String =
+    numberRuns(numbers, data.bagNumbers).joinToString { numberRange(it.first, it.last) }
+
+/**
+ * What a marker or camera label says about an entrance: the numbers it is the way to, or its
+ * name while it has none. One or two runs are spelled out; more would not fit, so those read
+ * as lowest to highest.
+ */
+fun Resources.entranceBadge(data: ComplexData, entrance: Entrance): String {
+    val numbers = data.numbersVia(entrance).ifEmpty { return entranceName(data, entrance) }
+    return if (numberRuns(numbers, data.bagNumbers).size <= 2) numberRuns(data, numbers) else numberRange(numbers.min(), numbers.max())
+}
 
 /** "Ground floor", "Floor 2": a floor as a heading. */
 fun Resources.floorTitle(floor: Int): String =
@@ -82,6 +90,8 @@ fun Resources.ordinal(n: Int): String = MessageFormat(getString(R.string.ordinal
 fun Resources.doorHint(hint: DoorHint): String = when (hint) {
     is DoorHint.FromLeft -> getString(R.string.door_from_left, ordinal(hint.position))
     is DoorHint.FromRight -> getString(R.string.door_from_right, ordinal(hint.position))
+    is DoorHint.TurnLeft -> getString(R.string.door_turn_left, ordinal(hint.position))
+    is DoorHint.TurnRight -> getString(R.string.door_turn_right, ordinal(hint.position))
     DoorHint.Only -> getString(R.string.door_only)
 }
 

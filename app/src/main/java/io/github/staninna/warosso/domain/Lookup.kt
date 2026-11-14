@@ -29,7 +29,7 @@ sealed interface Route {
 sealed interface Lookup {
     val number: Int
 
-    /** There is a way to the number: every entrance that serves it, or else its own front door on the street. */
+    /** There is a way to the number: every entrance that serves it, see [ComplexData.entrancesFor], or else its own front door on the street. */
     data class Found(override val number: Int, val routes: List<Route>) : Lookup
 
     /** A search that leads nowhere yet. */
@@ -43,7 +43,7 @@ sealed interface Lookup {
 }
 
 fun ComplexData.lookup(number: Int): Lookup {
-    val routes = entrances.mapNotNull { entrance -> entrance.locate(number)?.let { Route.ViaEntrance(entrance, it) } }
+    val routes = entrancesFor(number).mapNotNull { entrance -> locate(entrance, number)?.let { Route.ViaEntrance(entrance, it) } }
     val streetDoor = streetDoor(number)?.let { address ->
         address.buildingOsmId?.let(::building)?.let { Route.StreetDoor(it, address.latLng) }
     }

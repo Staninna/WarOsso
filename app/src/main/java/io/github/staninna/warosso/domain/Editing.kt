@@ -15,6 +15,15 @@ fun Entrance.withDoors(floor: Int, change: (List<Int>) -> List<Int>): Entrance =
 /** The floor number to offer for a new floor: one above the highest, starting at the ground floor. */
 val Entrance.nextFloor: Int get() = (floors.maxOfOrNull { it.floor } ?: -1) + 1
 
+/**
+ * A copy of this entrance for another way into the same building: same kind, same floors and
+ * doors, no name. It is set down a few metres to the east so both markers show, and has no id
+ * until it is stored.
+ */
+fun Entrance.copyBeside(): Entrance = copy(id = 0, latLng = latLng.offset(COPY_OFFSET_M, 90.0), name = null)
+
+private const val COPY_OFFSET_M = 6.0
+
 /** The list with the item at [index] swapped one place to the left (`by = -1`) or right (`by = 1`). */
 fun <T> List<T>.moved(index: Int, by: Int): List<T> {
     val destination = index + by
