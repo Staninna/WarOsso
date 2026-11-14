@@ -1,5 +1,6 @@
 package io.github.staninna.warosso.ui.find
 
+import android.os.SystemClock
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.staninna.warosso.data.ComplexRepository
@@ -10,6 +11,7 @@ import io.github.staninna.warosso.domain.Guidance
 import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.Lookup
 import io.github.staninna.warosso.domain.Orientation
+import io.github.staninna.warosso.domain.TurnedAroundAlert
 import io.github.staninna.warosso.domain.ViewMode
 import io.github.staninna.warosso.domain.Walk
 import io.github.staninna.warosso.domain.WalkTracker
@@ -25,6 +27,7 @@ import io.github.staninna.warosso.sensors.PositionSimulator
 import io.github.staninna.warosso.sensors.fix
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -132,6 +135,19 @@ class FindViewModel(
         location.collect { emit(tracker.update(it.fix?.courseDeg, pose.value?.headingDeg)) }
     }.stateIn(viewModelScope, whileOnScreen, null)
 
+    private val turnedAroundAlert = TurnedAroundAlert()
+    private val dismissals = MutableStateFlow(0)
+
+    /**
+     * The course of the walk the heading pointed against, while the "turned around" warning shows.
+     * Checked every second too, so the warning also goes when GPS falls silent.
+     */
+    val headingAgainstCourse: StateFlow<Double?> = combine(walk, everySecond, dismissals) { latest, _, _ ->
+        turnedAroundAlert.update(latest, SystemClock.elapsedRealtime())
+    }
+        .distinctUntilChanged()
+        .stateIn(viewModelScope, whileOnScreen, null)
+
     /** The heading for the map's cone. A few updates a second is plenty there. */
     val mapHeading: StateFlow<Float?> = pose
         .sample(MAP_HEADING_INTERVAL_MS)
@@ -185,9 +201,11 @@ class FindViewModel(
 
     /** Sets the heading to the direction the user walks in. They are asked to point the phone that way first. */
     fun alignHeadingToWalk() {
-        val course = walk.value?.courseDeg ?: return
+        val course = headingAgainstCourse.value ?: return
         val heading = pose.value?.headingDeg ?: return
         orientationSource.turn(angleDelta(heading.toDouble(), course))
+        turnedAroundAlert.dismiss()
+        dismissals.update { it + 1 }
     }
 
     fun followCompass() = orientationSource.followCompass()
@@ -198,6 +216,12 @@ class FindViewModel(
     }
 
     private companion object {
+        val everySecond = flow {
+            while (true) {
+                emit(Unit)
+                delay(1_000)
+            }
+        }
         const val MAX_DIGITS = 4
         const val MAP_HEADING_INTERVAL_MS = 150L
     }
