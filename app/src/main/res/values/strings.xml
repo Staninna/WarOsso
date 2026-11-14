@@ -97,7 +97,7 @@
     <string name="setup_no_buildings">The map data has no buildings. Refresh from OpenStreetMap in Settings.</string>
     <string name="setup_area_title">Complex area</string>
     <string name="setup_area_body">Drag a corner to move it. Tap a small dot to add a corner, tap a corner to remove it.</string>
-    <string name="setup_area_reset">Reset to circle</string>
+    <string name="setup_area_reset">Fit to buildings</string>
     <string name="setup_street_title">Street of the complex</string>
     <string name="building_rename_title">Name this building</string>
     <string name="building_rename_label">Name</string>

@@ -40,10 +40,10 @@ import io.github.staninna.warosso.R
 import io.github.staninna.warosso.domain.Building
 import io.github.staninna.warosso.domain.ComplexData
 import io.github.staninna.warosso.ui.buildingName
+import io.github.staninna.warosso.ui.buildingNumbers
 import io.github.staninna.warosso.ui.components.ConnectedItem
 import io.github.staninna.warosso.ui.components.ConnectedSection
 import io.github.staninna.warosso.ui.components.Placeholder
-import io.github.staninna.warosso.ui.numberRange
 
 /** Every building with house numbers, to give it a name of your own. */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,7 +61,7 @@ fun BuildingsSheet(data: ComplexData, onRename: (osmId: Long, name: String) -> U
                     ConnectedItem(
                         title = resources.buildingName(data, building),
                         subtitle = listOfNotNull(
-                            numbers.takeIf { it.isNotEmpty() }?.let { resources.numberRange(it.first(), it.last()) },
+                            resources.buildingNumbers(data, building),
                             pluralStringResource(R.plurals.count_numbers, numbers.size, numbers.size),
                             pluralStringResource(R.plurals.count_entrances, entrances, entrances),
                         ).joinToString(" · "),

@@ -7,7 +7,7 @@ import io.github.staninna.warosso.domain.centroid
 import io.github.staninna.warosso.domain.circlePolygon
 import io.github.staninna.warosso.domain.distanceTo
 import io.github.staninna.warosso.domain.sectorPolygon
-import io.github.staninna.warosso.ui.buildingName
+import io.github.staninna.warosso.ui.buildingMapLabel
 import io.github.staninna.warosso.ui.entranceBadge
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
@@ -56,7 +56,7 @@ data class MapUser(
  */
 fun ComplexData.toScene(resources: Resources, targetId: Long? = null, interactiveEntrances: Boolean = false): MapScene = MapScene(
     area = complex.polygon,
-    buildings = complexBuildings.map { MapBuilding(it.outline, resources.buildingName(this, it)) },
+    buildings = complexBuildings.map { MapBuilding(it.outline, resources.buildingMapLabel(this, it)) },
     markers = entrances.map { entrance ->
         val kind = if (entrance.id == targetId) MarkerKind.TARGET else MarkerKind.ENTRANCE
         MapMarker(MapHandle(kind, entrance.id), entrance.latLng, resources.entranceBadge(this, entrance), interactiveEntrances)

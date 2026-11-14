@@ -93,7 +93,7 @@
     <string name="setup_no_buildings">De kaartgegevens bevatten geen gebouwen. Haal ze opnieuw op bij OpenStreetMap via Instellingen.</string>
     <string name="setup_area_title">Gebied van het complex</string>
     <string name="setup_area_body">Versleep een hoek om hem te verplaatsen. Tik op een kleine stip voor een extra hoek, tik op een hoek om hem weg te halen.</string>
-    <string name="setup_area_reset">Terug naar cirkel</string>
+    <string name="setup_area_reset">Rond de gebouwen</string>
     <string name="setup_street_title">Straat van het complex</string>
     <string name="building_rename_title">Geef dit gebouw een naam</string>
     <string name="building_rename_label">Naam</string>

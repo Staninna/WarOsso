@@ -22,6 +22,16 @@ fun Resources.buildingName(data: ComplexData, building: Building): String =
         BuildingLabel.Unnumbered -> getString(R.string.building_unnumbered)
     }
 
+/** The numbers a building holds, "141-247", or null when it has none in the complex. */
+fun Resources.buildingNumbers(data: ComplexData, building: Building): String? =
+    data.numbersOf(building.osmId).takeIf { it.isNotEmpty() }?.let { numberRange(it.first(), it.last()) }
+
+/** The label on the map: the name, with the numbers on a second line when the name does not already say them. */
+fun Resources.buildingMapLabel(data: ComplexData, building: Building): String {
+    val numbers = buildingNumbers(data, building).takeIf { data.labelOf(building) is BuildingLabel.Named }
+    return listOfNotNull(buildingName(data, building), numbers).joinToString("\n")
+}
+
 fun Resources.buildingName(data: ComplexData, entrance: Entrance): String =
     data.building(entrance.buildingOsmId)?.let { buildingName(data, it) } ?: getString(R.string.building_unnumbered)
 

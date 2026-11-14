@@ -49,6 +49,7 @@ import io.github.staninna.warosso.domain.withFloor
 import io.github.staninna.warosso.domain.withoutFloor
 import io.github.staninna.warosso.ui.appViewModel
 import io.github.staninna.warosso.ui.buildingName
+import io.github.staninna.warosso.ui.buildingNumbers
 import io.github.staninna.warosso.ui.components.BigButton
 import io.github.staninna.warosso.ui.components.ConnectedChoice
 import io.github.staninna.warosso.ui.components.ConnectedItem
@@ -256,6 +257,7 @@ private fun BuildingPicker(data: ComplexData, selected: Long, onPick: (Long) -> 
                 data.complexBuildings.forEach { building ->
                     ConnectedItem(
                         title = resources.buildingName(data, building),
+                        subtitle = resources.buildingNumbers(data, building),
                         leading = { RadioButton(selected = building.osmId == selected, onClick = null) },
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                         onClick = { onPick(building.osmId); onDismiss() },

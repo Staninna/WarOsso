@@ -6,6 +6,10 @@ import io.github.staninna.warosso.data.parseOverpass
 import io.github.staninna.warosso.domain.BuildingLabel
 import io.github.staninna.warosso.domain.Complex
 import io.github.staninna.warosso.domain.ComplexData
+import io.github.staninna.warosso.domain.areaAround
+import io.github.staninna.warosso.domain.distanceTo
+import io.github.staninna.warosso.domain.distanceToEdge
+import io.github.staninna.warosso.domain.isInside
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertThrows
@@ -24,6 +28,26 @@ class SeedTest {
         assertTrue(data.bagNumbers.size > 100)
         assertTrue(data.bagNumbers.all { it % 2 == 1 })
         assertEquals(data.bagNumbers, data.unservedNumbers)
+    }
+
+    @Test
+    fun `the starting area is a polygon around the complex, not a circle`() {
+        val area = areaAround("Bulkpad", seed.addresses, seed.buildings)
+        val fitted = data.copy(complex = data.complex.copy(polygon = area))
+
+        // Every number of the street is still in, and the outline keeps clear of every wall.
+        assertEquals(data.bagNumbers, fitted.bagNumbers)
+        assertTrue(fitted.complexBuildings.all { building -> building.outline.all { it.isInside(area) } })
+        assertTrue(fitted.complexBuildings.all { building -> building.outline.all { it.distanceToEdge(area) > 5.0 } })
+        // It hugs the buildings instead of reaching 150 m in every direction.
+        assertTrue("reach ${area.maxOf { it.distanceTo(Complex.DEFAULT_CENTER) }}", area.maxOf { it.distanceTo(Complex.DEFAULT_CENTER) } < 130.0)
+        assertTrue("corners ${area.size}", area.size in 4..16)
+    }
+
+    @Test
+    fun `a street without buildings falls back to the circle`() {
+        assertEquals(Complex.defaultPolygon(), areaAround("Nowhere", seed.addresses, seed.buildings))
+        assertEquals(Complex.defaultPolygon(), areaAround("Bulkpad", seed.addresses, emptyList()))
     }
 
     @Test

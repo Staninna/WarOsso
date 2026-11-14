@@ -22,7 +22,10 @@ data class Complex(
         val DEFAULT_CENTER = LatLng(51.597787, 4.800806)
         const val DEFAULT_RADIUS_M = 150.0
 
-        /** Twelve corners: round enough, and few enough to drag into shape in Setup. */
+        /**
+         * The area when OSM has no buildings to wrap, see [areaAround]. Twelve corners: round
+         * enough, and few enough to drag into shape in Setup.
+         */
         fun defaultPolygon(): List<LatLng> = circlePolygon(DEFAULT_CENTER, DEFAULT_RADIUS_M, vertices = 12)
     }
 }
@@ -151,6 +154,9 @@ data class ComplexData(
     val extent: List<LatLng> by lazy { complexBuildings.flatMap { it.outline }.ifEmpty { complex.polygon } }
 
     val streets: List<String> by lazy { addresses.map { it.street }.distinct().sorted() }
+
+    /** The outline that wraps the buildings on the complex's street, to start over from in Setup. */
+    fun fittedArea(): List<LatLng> = areaAround(complex.street, addresses, buildings)
 
     fun building(osmId: Long): Building? = buildingsById[osmId]
 

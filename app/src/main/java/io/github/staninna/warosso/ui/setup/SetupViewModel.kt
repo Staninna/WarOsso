@@ -3,7 +3,6 @@ package io.github.staninna.warosso.ui.setup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.staninna.warosso.data.ComplexRepository
-import io.github.staninna.warosso.domain.Complex
 import io.github.staninna.warosso.domain.ComplexData
 import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.edgeMidpoints
@@ -95,8 +94,9 @@ class SetupViewModel(private val repository: ComplexRepository) : ViewModel() {
         areaDraft.value = repository.data.value?.complex?.polygon
     }
 
+    /** Starts the outline over, wrapped around the buildings on the complex's street. */
     fun resetArea() {
-        areaDraft.value = Complex.defaultPolygon()
+        areaDraft.value = repository.data.value?.fittedArea()
     }
 
     fun cancelAreaEdit() {

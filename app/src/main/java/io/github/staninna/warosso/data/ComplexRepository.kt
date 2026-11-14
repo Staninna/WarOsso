@@ -7,6 +7,7 @@ import io.github.staninna.warosso.domain.Entrance
 import io.github.staninna.warosso.domain.LatLng
 import io.github.staninna.warosso.domain.OsmData
 import io.github.staninna.warosso.domain.Setup
+import io.github.staninna.warosso.domain.areaAround
 import io.github.staninna.warosso.domain.holdingOrNearest
 import io.github.staninna.warosso.domain.withOsm
 import io.github.staninna.warosso.domain.withSetup
@@ -63,11 +64,12 @@ class ComplexRepository(
     /** Replaces the owner's setup with an imported one, see [withSetup]. */
     suspend fun replaceSetup(setup: Setup) = awaitWrite { transform { it.withSetup(setup) } }
 
-    /** The bundled BAG/OSM seed as a first snapshot: the default circle around the street with the most addresses. */
+    /** The bundled BAG/OSM seed as a first snapshot: the street with the most addresses, outlined around its buildings. */
     private fun seed(): ComplexData {
         val osm = parseOverpass(readSeed())
         val street = osm.addresses.groupingBy { it.street }.eachCount().maxByOrNull { it.value }?.key.orEmpty()
-        return ComplexData(Complex(street, Complex.defaultPolygon()), osm.addresses, osm.buildings, entrances = emptyList())
+        val area = areaAround(street, osm.addresses, osm.buildings)
+        return ComplexData(Complex(street, area), osm.addresses, osm.buildings, entrances = emptyList())
     }
 
     private suspend fun transform(change: (ComplexData) -> ComplexData) {
