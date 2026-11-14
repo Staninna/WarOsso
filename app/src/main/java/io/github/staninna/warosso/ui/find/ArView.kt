@@ -171,7 +171,8 @@ private fun ArOverlay(
     // order, nearer labels are drawn over farther ones and nothing ever covers the target.
     val places = remember(data, fix.latLng, route, guidance.number, resources) {
         fun place(id: Long, at: LatLng, text: String) = Place(id, at, text, id == targetId, fix.latLng.distanceTo(at))
-        val entrances = data.entrances.map { place(it.id, it.latLng, resources.entranceBadge(data, it)) }
+        // A camera label is narrow: it holds one run of numbers.
+        val entrances = data.entrances.map { place(it.id, it.latLng, resources.entranceBadge(data, it, maxRuns = 1)) }
         // A front door on the street is no entrance, so it brings its own label: the number.
         val ownDoor = (route as? Route.StreetDoor)?.let { place(targetId, it.target, guidance.number.toString()) }
         (entrances + listOfNotNull(ownDoor)).sortedWith(compareBy<Place> { it.isTarget }.thenByDescending { it.distanceM })

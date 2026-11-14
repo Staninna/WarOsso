@@ -70,12 +70,12 @@ fun Resources.numberRuns(data: ComplexData, numbers: List<Int>): String =
 
 /**
  * What a marker or camera label says about an entrance: the numbers it is the way to, or its
- * name while it has none. One or two runs are spelled out; more would not fit, so those read
- * as lowest to highest.
+ * name while it has none. Up to [maxRuns] runs are spelled out; more would not fit, so those
+ * read as lowest to highest.
  */
-fun Resources.entranceBadge(data: ComplexData, entrance: Entrance): String {
+fun Resources.entranceBadge(data: ComplexData, entrance: Entrance, maxRuns: Int = 2): String {
     val numbers = data.numbersVia(entrance).ifEmpty { return entranceName(data, entrance) }
-    return if (numberRuns(numbers, data.bagNumbers).size <= 2) numberRuns(data, numbers) else numberRange(numbers.min(), numbers.max())
+    return if (numberRuns(numbers, data.bagNumbers).size <= maxRuns) numberRuns(data, numbers) else numberRange(numbers.min(), numbers.max())
 }
 
 /** "Ground floor", "Floor 2": a floor as a heading. */
